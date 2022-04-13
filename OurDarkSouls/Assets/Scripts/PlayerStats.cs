@@ -35,6 +35,9 @@ namespace SG
 
             maxStamina = SetMaxStaminaFromStaminaLevel();
             currentStamina = maxStamina;
+            staminaBar.SetMaxStamina(maxStamina);
+            staminaBar.SetCurrentStamina(currentStamina);
+
         }
 
         private int SetMaxHealthFromHealthLevel()
