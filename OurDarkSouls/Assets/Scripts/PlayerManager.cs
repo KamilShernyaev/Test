@@ -41,12 +41,13 @@ namespace SG
             float delta = Time.deltaTime;
             isInteracting = anim.GetBool("isInteracting");
             canDoCombo = anim.GetBool("canDoCombo");
+            anim.SetBool("isInAir", isInAir);
 
             inputHandler.TickInput(delta);
             playerLocomotion.HandleMovement(delta);
             playerLocomotion.HandleRollingAndSprinting(delta);
-
             playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
+            playerLocomotion.HandleJumping();
 
             CheckForInteractableObject();
         }
@@ -72,8 +73,8 @@ namespace SG
             inputHandler.d_Pad_Down = false;
             inputHandler.d_Pad_Left = false;
             inputHandler.d_Pad_Right = false;
-
-            inputHandler.a_Input = false;       
+            inputHandler.a_Input = false; 
+            inputHandler.jump_Input = false;      
 
             if (isInAir)
             {
