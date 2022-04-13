@@ -169,9 +169,14 @@ namespace SG
               if(inventoryFlag)
               {
                 uIManager.OpenSelectWindow();
+                uIManager.UpdateUI();
+                uIManager.hudWindow.SetActive(false);
               }
-              else{
+              else
+              {
                 uIManager.CloseSelectWindow();
+                uIManager.CloseAllInventoryWindow();
+                uIManager.hudWindow.SetActive(true);
               }
             }
           }
