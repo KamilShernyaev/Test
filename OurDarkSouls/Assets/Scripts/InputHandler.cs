@@ -11,6 +11,8 @@ namespace SG
         public float moveAmount;
         public float mouseX;
         public float mouseY;
+
+        public bool a_Input;
         public bool b_Input;
 
         public bool rb_input;
@@ -64,6 +66,8 @@ namespace SG
               HandleRollInput(delta);
               HandleAttackInput(delta);
               HandleQuickSlotsInput();
+
+              HandleInteractingButtonInput();
           }
           private void MoveInput(float delta)
 
@@ -137,6 +141,11 @@ namespace SG
             {
               playerInventory.ChangeLeftWeapon();
             }
+          }
+
+          private void HandleInteractingButtonInput()
+          {
+            inputActions.PlayerActions.A.performed += i => a_Input = true;
           }
     }
 }
