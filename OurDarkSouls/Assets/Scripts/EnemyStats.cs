@@ -34,7 +34,7 @@ namespace SG
             currentHealth = currentHealth - damage;
 
 
-            animator.Play("TakeDamage");
+            animator.Play("Damage_01");
 
             if(currentHealth <= 0)
             {

@@ -49,7 +49,6 @@ namespace SG
                 inputActions = new PlayesControls();
                 inputActions.PlayerMovement.Movement.performed += inputActions => movementInput = inputActions.ReadValue<Vector2>();
                 inputActions.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
-                b_Input = inputActions.PlayerActions.Roll.phase == UnityEngine.InputSystem.InputActionPhase.Performed;
                 inputActions.PlayerActions.RB.performed += i => rb_input = true;
                 inputActions.PlayerActions.RT.performed += i => rt_input = true;
                 inputActions.PlayerQuickSlots.DPadRight.performed += i => d_Pad_Right = true;
@@ -82,8 +81,7 @@ namespace SG
 
           private void HandleRollInput(float delta)
           {
-
-
+            b_Input = inputActions.PlayerActions.Roll.phase == UnityEngine.InputSystem.InputActionPhase.Started;
             if(b_Input)
             {
               rollInputTimer += delta;
