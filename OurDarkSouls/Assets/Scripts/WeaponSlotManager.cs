@@ -44,7 +44,7 @@ namespace SG
             {
                 leftHandSlot.LoadWeaponModel(weaponItem);
                 LoadLeftWeaponDamageCollider();
-                quickSlotsUI.UpdateWeaponQuickSlotUI(true, weaponItem);
+                quickSlotsUI.UpdateWeaponQuickSlotsUI(true, weaponItem);
                 #region Handle Left Weapon Idle Animations
                 if(weaponItem != null)
                 {

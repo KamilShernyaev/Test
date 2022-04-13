@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 534e857c15b92dd43bf69826813d0660, type: 3}
   m_Name: Shield
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 21300000, guid: 6edb4cd76e6b2fe47b4c0762c895ac0b, type: 3}
+  itemIcon: {fileID: 21300000, guid: 33604758f302db743a15b4366b6dfab8, type: 3}
   itemName: Shield
   modelPrefab: {fileID: 2449920508647380901, guid: fcb83939c572b4f4d81fed209ddcda98, type: 3}
   isUnarmed: 0
@@ -21,3 +21,6 @@ MonoBehaviour:
   OH_Light_Attack_1: OH_Light_Attack_01
   OH_Light_Attack_2: OH_Light_Attack_02
   OH_Heavy_Attack_1: OH_Heavy_Attack_01
+  baseStamina: 0
+  lightAttackMultiplier: 0
+  heavyAttackMultiplier: 0
