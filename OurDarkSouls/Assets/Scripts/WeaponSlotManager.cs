@@ -97,12 +97,18 @@ namespace SG
 
         public void CloseRightHandDamageCollider()
         {
-            rightHandDamageCollider.DisableDamageCollider();
+            if(rightHandDamageCollider != null)
+            {
+                rightHandDamageCollider.DisableDamageCollider();
+            }
         }
 
         public void CloseLeftHandDamageCollider()
         {
+            if(leftHandDamageCollider !=null)
+            {
             leftHandDamageCollider.DisableDamageCollider();
+            }
         }
 
         #endregion
