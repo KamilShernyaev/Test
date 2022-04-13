@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace SG
 {
-    public class Interactible : MonoBehaviour
+    public class Interactable : MonoBehaviour
     {
         public float radius = 0.6f;
-        public string interactibleText;
+        public string interactableText;
 
         private void OnDrawGizmosSelected() 
         {

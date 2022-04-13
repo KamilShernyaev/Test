@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 namespace SG
 {
     public class PlayerManager : MonoBehaviour
@@ -77,7 +78,7 @@ namespace SG
 
         public void CheckForInteractableObject()
         {
-            RaycastHit raycastHit;
+            RaycastHit hit;
 
             if (Physics.SphereCast(transform.position, 0.3f, transform.forward, out hit, 1f, cameraHandler.ignoreLayers))
             {

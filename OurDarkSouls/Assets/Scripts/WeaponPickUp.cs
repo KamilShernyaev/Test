@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SG
 {
-    public class WeaponPickUp : Interactible
+    public class WeaponPickUp : Interactable
     {
        public WeaponItem weapon;
 
