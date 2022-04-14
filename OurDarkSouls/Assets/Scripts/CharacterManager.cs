@@ -5,6 +5,6 @@ using UnityEngine;
 namespace SG{
     public class CharacterManager : MonoBehaviour
     {
-       public Transform lickOnTransform;
+       public Transform lockOnTransform;
     }
 }

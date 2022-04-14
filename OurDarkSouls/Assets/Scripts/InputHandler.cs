@@ -19,6 +19,8 @@ namespace SG
         public bool jump_Input;
         public bool inventory_Input;
         public bool lockOnInput;
+        public bool right_Stick_Right_Input;
+        public bool right_Stick_Left_Input;
 
         public bool d_Pad_Up;
         public bool d_Pad_Down;
@@ -66,6 +68,8 @@ namespace SG
                 inputActions.PlayerActions.Jump.performed += i => jump_Input = true;
                 inputActions.PlayerActions.Inventory.performed += i => inventory_Input = true;
                 inputActions.PlayerActions.LockOn.performed += i => lockOnInput = true;
+                inputActions.PlayerMovement.LockOnTargetRight.performed += i  => right_Stick_Right_Input = true;
+                inputActions.PlayerMovement.LockOnTargetLeft.performed += i  => right_Stick_Left_Input = true; 
               }
               inputActions.Enable();
           }
@@ -180,8 +184,7 @@ namespace SG
           private void HandleLockOnInput()
           {
             if (lockOnInput && lockOnFlag == false)
-            {
-              cameraManager.ClearLockOnTarget();
+            {             
               lockOnInput = false;
               cameraManager.HandleLockOn();
               if (cameraManager.nearestLockOnTarget != null)
@@ -195,6 +198,27 @@ namespace SG
               lockOnInput = false;
               lockOnFlag = false;
               cameraManager.ClearLockOnTarget();
+            }
+
+            if (lockOnFlag && right_Stick_Left_Input)
+            {
+              right_Stick_Left_Input = false;
+              cameraManager.HandleLockOn();
+              if (cameraManager.leftLockTarget != null)
+              {
+                cameraManager.currentLockOnTarget = cameraManager.leftLockTarget;
+              }
+            }
+
+            if (lockOnFlag && right_Stick_Right_Input)
+            {
+              right_Stick_Left_Input = false;
+              cameraManager.HandleLockOn();
+              
+              if(cameraManager.RightLockTarget != null)
+              {
+                cameraManager.currentLockOnTarget = cameraManager.RightLockTarget;
+              }
             }
           }
     }
