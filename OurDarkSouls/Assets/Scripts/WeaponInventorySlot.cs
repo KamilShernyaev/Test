@@ -16,6 +16,7 @@ namespace SG
             icon.sprite = item.itemIcon;
             icon.enabled = true;
             gameObject.SetActive(true);
+            icon.gameObject.SetActive(true);
         }
 
         public void ClearInventorySlot()
@@ -24,6 +25,8 @@ namespace SG
             icon.sprite = null;
             icon.enabled = false;
             gameObject.SetActive(false);
+            icon.gameObject.SetActive(false);
+
         }
     }
 }

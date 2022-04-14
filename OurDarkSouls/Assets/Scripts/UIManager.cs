@@ -24,16 +24,6 @@ public class UIManager : MonoBehaviour
             weaponInventorySlots = weaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>(); 
         }
 
-        public void OpenSelectWindow()
-        {
-            selectWindow.SetActive(true);
-        }
-
-        public void CloseSelectWindow()
-        {
-            selectWindow.SetActive(false);
-        }
-
         public void UpdateUI()
         {
             #region Weapon Inventory Slots;
@@ -56,6 +46,18 @@ public class UIManager : MonoBehaviour
 
             #endregion
         }
+
+        public void OpenSelectWindow()
+        {
+            selectWindow.SetActive(true);
+        }
+
+        public void CloseSelectWindow()
+        {
+            selectWindow.SetActive(false);
+        }
+
+
 
         public void CloseAllInventoryWindow()
         {
