@@ -20,7 +20,7 @@ namespace SG
             weapon = newWeapon;
             icon.sprite = weapon.itemIcon;
             icon.enabled = true;
-            gameObject.SetActive(true);
+            this.gameObject.SetActive(true);
         }
 
         public void ClearItem()
@@ -28,7 +28,7 @@ namespace SG
             weapon = null;
             icon.sprite = null;
             icon.enabled = false;
-            gameObject.SetActive(false);
+            this.gameObject.SetActive(false);
         }
     }
 }
