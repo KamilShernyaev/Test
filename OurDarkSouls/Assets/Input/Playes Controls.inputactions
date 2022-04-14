@@ -139,6 +139,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "LockOn",
+                    "type": "Button",
+                    "id": "cbef416e-ec5d-4441-a7de-ae14406b826d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "21e23494-1406-47c4-bd9f-726100515760",
@@ -241,6 +249,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Inventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3ca72eb5-3063-44e6-8a07-9b2d27f34eeb",
+                    "path": "<Keyboard>/n",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LockOn",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

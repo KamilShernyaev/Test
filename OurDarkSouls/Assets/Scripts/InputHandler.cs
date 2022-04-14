@@ -18,6 +18,7 @@ namespace SG
         public bool rt_input;
         public bool jump_Input;
         public bool inventory_Input;
+        public bool lockOnInput;
 
         public bool d_Pad_Up;
         public bool d_Pad_Down;
@@ -27,6 +28,7 @@ namespace SG
         public bool rollFlag;
         public bool sprintFlag;
         public bool comboFlag;
+        public bool lockOnFlag;
         public bool inventoryFlag;
         public float rollInputTimer;
         
@@ -34,6 +36,7 @@ namespace SG
         PlayerAttacker playerAttacker;
         PlayerInventory playerInventory;
         PlayerManager playerManager;
+        CameraHandler cameraManager;
         UIManager uIManager;
 
         Vector2 movementInput;
@@ -45,6 +48,7 @@ namespace SG
             playerInventory = GetComponent<PlayerInventory>();
             playerManager = GetComponent<PlayerManager>();
             uIManager = FindObjectOfType<UIManager>();
+            cameraManager = FindObjectOfType<CameraHandler>();
           }
         public void OnEnable() 
           {
@@ -61,6 +65,7 @@ namespace SG
                 inputActions.PlayerActions.A.performed += i => a_Input = true;
                 inputActions.PlayerActions.Jump.performed += i => jump_Input = true;
                 inputActions.PlayerActions.Inventory.performed += i => inventory_Input = true;
+                inputActions.PlayerActions.LockOn.performed += i => lockOnInput = true;
               }
               inputActions.Enable();
           }
@@ -75,6 +80,7 @@ namespace SG
               HandleAttackInput(delta);
               HandleQuickSlotsInput();
               HandleInventoryInput();
+              HandleLockOnInput();
           }
           private void MoveInput(float delta)
 
@@ -168,6 +174,27 @@ namespace SG
                 uIManager.CloseAllInventoryWindow();
                 uIManager.hudWindow.SetActive(true);
               }
+            }
+          }
+
+          private void HandleLockOnInput()
+          {
+            if (lockOnInput && lockOnFlag == false)
+            {
+              cameraManager.ClearLockOnTarget();
+              lockOnInput = false;
+              cameraManager.HandleLockOn();
+              if (cameraManager.nearestLockOnTarget != null)
+              {
+                cameraManager.currentLockOnTarget = cameraManager.nearestLockOnTarget;
+                lockOnFlag = true;
+              }
+            }
+            else if (lockOnInput && lockOnFlag)
+            {
+              lockOnInput = false;
+              lockOnFlag = false;
+              cameraManager.ClearLockOnTarget();
             }
           }
     }
