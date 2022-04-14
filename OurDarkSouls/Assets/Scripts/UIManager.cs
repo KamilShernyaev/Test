@@ -3,27 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace SG
 {
-    
-
-public class UIManager : MonoBehaviour
-{
+    public class UIManager : MonoBehaviour
+    {
         public PlayerInventory playerInventory;
-        EquipmentWindowUI equipmentWindowUI;
+        public EquipmentWindowUI equipmentWindowUI;
 
         [Header("UI Windows")]
         public GameObject hudWindow;
         public GameObject selectWindow;
+        public GameObject equipmentScreenWindow;
         public GameObject weaponInventoryWindow;
+
+        [Header("Equipment Window Slot Selected")]
+        public bool rightHandSlot01Selected;
+        public bool rightHandSlot02Selected;
+        public bool leftHandSlot01Selected;
+        public bool leftHandSlot02Selected;
 
         [Header("Weapon Inventory")]
         public GameObject weaponInventorySlotPrefab;
         public Transform weaponInventorySlotsParent;
         WeaponInventorySlot[] weaponInventorySlots;
 
-        private void Awake() 
-        {
-            equipmentWindowUI = FindObjectOfType<EquipmentWindowUI>();
-        }
         private void Start() 
         {
             weaponInventorySlots = weaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>(); 
@@ -63,11 +64,19 @@ public class UIManager : MonoBehaviour
             selectWindow.SetActive(false);
         }
 
-
-
         public void CloseAllInventoryWindow()
+            {
+                ResetAllSelectedSlot();
+                weaponInventoryWindow.SetActive(false);
+                equipmentScreenWindow.SetActive(false);
+            }
+
+        public void ResetAllSelectedSlot()
         {
-            weaponInventoryWindow.SetActive(false);
+            rightHandSlot01Selected = false;
+            rightHandSlot02Selected = false;
+            leftHandSlot01Selected = false;
+            leftHandSlot02Selected = false;
         }
-}
+    }
 }

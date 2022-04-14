@@ -7,6 +7,8 @@ namespace SG
 {
     public class HandEquipmentSlotUI : MonoBehaviour
     {
+        UIManager uIManager;
+
         public Image icon;
         WeaponItem weapon;
 
@@ -15,6 +17,10 @@ namespace SG
         public bool leftHandSLot01;
         public bool leftHandSLot02;
 
+        private void Awake() 
+        {
+            uIManager = FindObjectOfType<UIManager>();
+        }
         public void AddItem(WeaponItem newWeapon)
         {
             weapon = newWeapon;
@@ -29,6 +35,26 @@ namespace SG
             icon.sprite = null;
             icon.enabled = false;
             this.gameObject.SetActive(false);
+        }
+    
+        public void SelectThisSlot()
+        {
+            if(rightHandSLot01)
+            {
+                uIManager.rightHandSlot01Selected = true;
+            }
+            else if(rightHandSLot02)
+            {
+                uIManager.rightHandSlot02Selected = true;
+            }
+            else if(leftHandSLot01)
+            {
+                uIManager.leftHandSlot01Selected = true;
+            }
+            else
+            {
+                uIManager.leftHandSlot02Selected = true;
+            }
         }
     }
 }
