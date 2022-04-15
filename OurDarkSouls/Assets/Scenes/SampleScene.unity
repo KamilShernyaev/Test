@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657892, g: 0.4964128, b: 0.5748173, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2741,6 +2741,7 @@ MonoBehaviour:
   mouseY: 0
   a_Input: 0
   b_Input: 0
+  y_Input: 0
   rb_input: 0
   rt_input: 0
   jump_Input: 0
@@ -2753,6 +2754,7 @@ MonoBehaviour:
   d_Pad_Left: 0
   d_Pad_Right: 0
   rollFlag: 0
+  twoHandFlag: 0
   sprintFlag: 0
   comboFlag: 0
   lockOnFlag: 0
@@ -2851,7 +2853,7 @@ MonoBehaviour:
   unarmedWeapon: {fileID: 11400000, guid: 4c55f3c1fba57aa4f8c83e6d90a00365, type: 2}
   weaponsInRightHandSlots:
   - {fileID: 11400000, guid: 4c55f3c1fba57aa4f8c83e6d90a00365, type: 2}
-  - {fileID: 11400000, guid: ae65e082c7b362c4e92ee6e39fee3975, type: 2}
+  - {fileID: 11400000, guid: 4e601bdbb714df94a9407701ffd97dbd, type: 2}
   weaponsInLeftHandSlots:
   - {fileID: 11400000, guid: 4c55f3c1fba57aa4f8c83e6d90a00365, type: 2}
   - {fileID: 11400000, guid: 15ec4a1678263fd47b77550103fec42e, type: 2}
@@ -5142,14 +5144,14 @@ MonoBehaviour:
     m_Bits: 4294965503
   enviromentLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 6
   lookspeed: 0.0021
   followSpeed: 0.01
   pivotSpeed: 0.01
-  lockedPivotPosition: 2.25
-  unlockedPivotPosition: 1.65
+  lockedPivotPosition: 5
+  unlockedPivotPosition: 5
   minimupPivot: 20
-  maximumPivot: 50
+  maximumPivot: 74.6
   currentLockOnTarget: {fileID: 0}
   nearestLockOnTarget: {fileID: 0}
   leftLockTarget: {fileID: 0}
