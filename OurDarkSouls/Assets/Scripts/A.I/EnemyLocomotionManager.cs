@@ -12,8 +12,7 @@ namespace SG
         public NavMeshAgent navMeshAgent;
         public Rigidbody enemyRigidbody;
 
-        public CharacterStats currentTarget;
-        public LayerMask detectionLayer;
+        //Удалил public LayerMask detectionLayer и перенес его в IdleState
 
         public float distanceFromTarget;
         public float stoppingDistance = 1f;
@@ -34,31 +33,10 @@ namespace SG
             enemyRigidbody.isKinematic = false;
         }
 
-        public void HandleDerection()
-        {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, enemyManager.detectionRadius, detectionLayer);
-
-            for (int i = 0; i < colliders.Length; i++)
-            {
-                CharacterStats characterStats = colliders[i].transform.GetComponent<CharacterStats>();
-
-                if(characterStats != null)
-                {
-                    Vector3 targetDirection = characterStats.transform.position - transform.position;
-                    float viewableAngle = Vector3.Angle(targetDirection, transform.forward);
-
-                    if (viewableAngle > enemyManager.mininumDetectionAngle && viewableAngle < enemyManager.maximumDetectionAngle)
-                    {
-                        currentTarget = characterStats;
-                    }                
-                }
-            }
-        }
-
         public void HandleMoveToTarget()
         {
-            Vector3 targetDirection = currentTarget.transform.position - transform.position;
-            distanceFromTarget = Vector3.Distance(currentTarget.transform.position, transform.position);
+            Vector3 targetDirection = enemyManager.currentTarget.transform.position - transform.position;//Поставил EnemyManager
+            distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, transform.position);//Поставил EnemyManager
             float viewableAngle = Vector3.Angle(targetDirection, transform.position);
 
             if(enemyManager.isPreformingAction)
@@ -87,7 +65,7 @@ namespace SG
         {
             if(enemyManager.isPreformingAction)
             {
-                Vector3 direction = currentTarget.transform.position - transform.position;
+                Vector3 direction = enemyManager.currentTarget.transform.position - transform.position;//Поставил enemyManager
                 direction.y = 0;
                 direction.Normalize();
 
@@ -105,7 +83,7 @@ namespace SG
                 Vector3 targetVelocity = enemyRigidbody.velocity;
 
                 navMeshAgent.enabled = true;
-                navMeshAgent.SetDestination(currentTarget.transform.position);
+                navMeshAgent.SetDestination(enemyManager.currentTarget.transform.position);//Поставил enemyManager
                 enemyRigidbody.velocity = targetVelocity;
                 transform.rotation = Quaternion.Slerp(transform.rotation, navMeshAgent.transform.rotation, rotationSpeed/Time.deltaTime);
             }

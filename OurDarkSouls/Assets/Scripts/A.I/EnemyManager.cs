@@ -8,6 +8,11 @@ namespace SG
     public class EnemyManager : CharacterManager
     {
         EnemyLocomotionManager enemyLocomotionManager;
+        
+        EnemyStats enemyStats; //Новое
+        public State currentState;   //Новое
+        public CharacterStats currentTarget; //Новое
+
         public bool isPreformingAction;
 
         [Header ("A.I. Settings")]
@@ -17,6 +22,7 @@ namespace SG
         private void Awake() 
         {
             enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
+            enemyStats = GetComponent<EnemyStats>(); //новое
         }
 
         private void Update() 
@@ -26,19 +32,26 @@ namespace SG
 
         private void FixedUpdate() 
         {
-            HandleCurrentAction();
+            HandleStateMachine();
         }
 
-        private void HandleCurrentAction()
-        {
-            if (enemyLocomotionManager.currentTarget == null)
+        private void HandleStateMachine()
+        { //Удалил скрипт вставил новый
+            if(currentState != null)
             {
-                enemyLocomotionManager.HandleDerection();
+                State nextState = currentState.Tick(this, enemyStats, enemyAnimatorManager);
+
+                if(nextState != null)
+                {
+                    SwitchToNextState(nextState);
+                }
             }
-            else
-            {
-                enemyLocomotionManager.HandleMoveToTarget();
-            }
+            
         }
+        private void SwitchToNextState(State state)
+        {
+            currentState = state;
+        }
+            // Конец нового скрипта
     }
 }
