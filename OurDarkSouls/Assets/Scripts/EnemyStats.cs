@@ -4,12 +4,8 @@ using UnityEngine;
 
 namespace SG
 {
-    public class EnemyStats : MonoBehaviour
+    public class EnemyStats : CharacterStats
     {
-        public int healthLevel = 10;
-        public int maxHelth;
-        public int currentHealth;
-
         Animator animator;
 
         private void Awake() 
