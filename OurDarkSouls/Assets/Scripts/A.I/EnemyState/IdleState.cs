@@ -6,7 +6,7 @@ namespace SG
 {
     public class IdleState : State
     {
-        public PursueTargetState pursueTargetState;//Новая переменная
+        public PursueTargetState pursueTargetState;
         public LayerMask detectionLayer;
 
         public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
@@ -42,7 +42,7 @@ namespace SG
                 return this;
             }
             #endregion
-            //Удалить отсюда все строчки и добавить метод HandleDetection из EnemyLocomotionManager
+            
         }
     }
 }

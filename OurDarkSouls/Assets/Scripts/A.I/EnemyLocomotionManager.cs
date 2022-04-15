@@ -12,11 +12,8 @@ namespace SG
         public NavMeshAgent navMeshAgent;
         public Rigidbody enemyRigidbody;
 
-        //Удалил public LayerMask detectionLayer и перенес его в IdleState
-
         public float distanceFromTarget;
         public float stoppingDistance = 1f;
-
         public float rotationSpeed = 15;
 
         private void Awake() 

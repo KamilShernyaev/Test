@@ -7,16 +7,12 @@ namespace SG
     public class EnemyManager : CharacterManager
     {
         EnemyLocomotionManager enemyLocomotionManager;
-        
-        EnemyStats enemyStats; //Новое
+        EnemyAnimatorManager enemyAnimationManager;
+        EnemyStats enemyStats;
         public State currentState;   //Новое
         public CharacterStats currentTarget; //Новое
 
-        EnemyAnimatorManager enemyAnimatorManager;
         public bool isPreformingAction;
-
-        public EnemyAttackAction[] enemyAttacks;
-        public EnemyAttackAction currentAttack;
 
         [Header ("A.I. Settings")]
         public float detectionRadius = 20;        
@@ -27,8 +23,8 @@ namespace SG
         private void Awake() 
         {
             enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
-            enemyStats = GetComponent<EnemyStats>(); //новое
-            enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
+            enemyStats = GetComponent<EnemyStats>();
+            enemyAnimationManager = GetComponentInChildren<EnemyAnimatorManager>();
         }
 
         private void Update() 
@@ -42,41 +38,23 @@ namespace SG
         }
 
         private void HandleStateMachine()
-        { //Удалил скрипт вставил новый
+        { 
             if(currentState != null)
-        private void HandleCurrentAction()
-        {
-            if (enemyLocomotionManager.currentTarget != null)
             {
-                enemyLocomotionManager.distanceFromTarget = Vector3.Distance(enemyLocomotionManager.currentTarget.transform.position, transform.position);
-            }
-
-            if (enemyLocomotionManager.currentTarget == null)
-            {
-                enemyLocomotionManager.HandleDerection();
-            }
-            else if (enemyLocomotionManager.distanceFromTarget > enemyLocomotionManager.stoppingDistance)
-            {
-                State nextState = currentState.Tick(this, enemyStats, enemyAnimatorManager);
-
+                State nextState = currentState.Tick(this, enemyStats, enemyAnimationManager);
+            
                 if(nextState != null)
                 {
                     SwitchToNextState(nextState);
                 }
             }
-            
         }
+            
         private void SwitchToNextState(State state)
         {
             currentState = state;
         }
-            // Конец нового скрипта
-            else if(enemyLocomotionManager.distanceFromTarget <= enemyLocomotionManager.stoppingDistance)
-            {
-                AttackTarget();
-            }
-        }
-
+        
         private void HandleRecoveryTimer()
         {
             if(currentRecoveryTime > 0)
@@ -96,70 +74,71 @@ namespace SG
 
         private void AttackTarget()
         {
-            if(isPreformingAction)
-            return;
+        //     if(isPreformingAction)
+        //     return;
 
-            if (currentAttack == null)
-            {
-                GetNewAttack();
-            }
-            else
-            {
-                isPreformingAction = true;
-                currentRecoveryTime = currentAttack.recoveryTime;
-                enemyAnimatorManager.PlayTargetAnimation(currentAttack.actionAnimation, true);
-                currentAttack = null;
-            }
+        //     if (currentAttack == null)
+        //     {
+        //         GetNewAttack();
+        //     }
+        //     else
+        //     {
+        //         isPreformingAction = true;
+        //         currentRecoveryTime = currentAttack.recoveryTime;
+        //         enemyAnimatorManager.PlayTargetAnimation(currentAttack.actionAnimation, true);
+        //         currentAttack = null;
+        //     }
         }
 
         private void GetNewAttack()
         {
-            Vector3 tagretDirection = enemyLocomotionManager.currentTarget.transform.position - transform.position;
-            float viewableAngle = Vector3.Angle(tagretDirection, transform.forward);
-            enemyLocomotionManager.distanceFromTarget = Vector3.Distance(enemyLocomotionManager.currentTarget.transform.position, transform.position);
+            // Vector3 tagretDirection = enemyLocomotionManager.currentTarget.transform.position - transform.position;
+            // float viewableAngle = Vector3.Angle(tagretDirection, transform.forward);
+            // enemyLocomotionManager.distanceFromTarget = Vector3.Distance(enemyLocomotionManager.currentTarget.transform.position, transform.position);
 
-            int maxScore = 0;
+            // int maxScore = 0;
 
-            for (int i = 0; i < enemyAttacks.Length; i++)
-            {
-                EnemyAttackAction enemyAttackAction = enemyAttacks[i];
+            // for (int i = 0; i < enemyAttacks.Length; i++)
+            // {
+            //     EnemyAttackAction enemyAttackAction = enemyAttacks[i];
 
-                if (enemyLocomotionManager.distanceFromTarget <= enemyAttackAction.maximumDistanceNeededToAttack && enemyLocomotionManager.distanceFromTarget >= enemyAttackAction.mininumDistanceNeededToAttack)
-                {
-                    if (viewableAngle <= enemyAttackAction.maximumAttackAngle 
-                    && viewableAngle >= enemyAttackAction.minimumAttackAngle)
-                    {
-                        maxScore += enemyAttackAction.attackScore;
-                    }
-                }
-            }
+            //     if (enemyLocomotionManager.distanceFromTarget <= enemyAttackAction.maximumDistanceNeededToAttack && enemyLocomotionManager.distanceFromTarget >= enemyAttackAction.mininumDistanceNeededToAttack)
+            //     {
+            //         if (viewableAngle <= enemyAttackAction.maximumAttackAngle 
+            //         && viewableAngle >= enemyAttackAction.minimumAttackAngle)
+            //         {
+            //             maxScore += enemyAttackAction.attackScore;
+            //         }
+            //     }
+            // }
             
-            int randomValue = Random.Range(0, maxScore);
-            int temporaryScore = 0;
+            // int randomValue = Random.Range(0, maxScore);
+            // int temporaryScore = 0;
 
-            for (int i = 0; i < enemyAttacks.Length; i++)
-            {
-                EnemyAttackAction enemyAttackAction = enemyAttacks[i];
+            // for (int i = 0; i < enemyAttacks.Length; i++)
+            // {
+            //     EnemyAttackAction enemyAttackAction = enemyAttacks[i];
 
-                if (enemyLocomotionManager.distanceFromTarget <= enemyAttackAction.maximumDistanceNeededToAttack
-                && enemyLocomotionManager.distanceFromTarget >= enemyAttackAction.mininumDistanceNeededToAttack)
-                {
-                    if (viewableAngle <= enemyAttackAction.maximumAttackAngle 
-                    && viewableAngle >= enemyAttackAction.minimumAttackAngle)
-                    {
-                       if (currentAttack != null)
-                       return;
+            //     if (enemyLocomotionManager.distanceFromTarget <= enemyAttackAction.maximumDistanceNeededToAttack
+            //     && enemyLocomotionManager.distanceFromTarget >= enemyAttackAction.mininumDistanceNeededToAttack)
+            //     {
+            //         if (viewableAngle <= enemyAttackAction.maximumAttackAngle 
+            //         && viewableAngle >= enemyAttackAction.minimumAttackAngle)
+            //         {
+            //            if (currentAttack != null)
+            //            return;
 
-                       temporaryScore += enemyAttackAction.attackScore;
+            //            temporaryScore += enemyAttackAction.attackScore;
 
-                       if (temporaryScore > randomValue)
-                       {
-                           currentAttack = enemyAttackAction;
-                       }
-                    }
-                }
-            }
+            //            if (temporaryScore > randomValue)
+            //            {
+            //                currentAttack = enemyAttackAction;
+            //            }
+            //         }
+            //     }
+            // }
         }
         #endregion
     }
 }
+
