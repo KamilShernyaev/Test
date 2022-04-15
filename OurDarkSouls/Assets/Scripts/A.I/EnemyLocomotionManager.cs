@@ -37,6 +37,11 @@ namespace SG
         {
             Vector3 targetDirection = enemyManager.currentTarget.transform.position - transform.position;//Поставил EnemyManager
             distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, transform.position);//Поставил EnemyManager
+            if (enemyManager.isPreformingAction)
+                return;
+
+            // Vector3 targetDirection = currentTarget.transform.position - transform.position;
+            // distanceFromTarget = Vector3.Distance(currentTarget.transform.position, transform.position);
             float viewableAngle = Vector3.Angle(targetDirection, transform.position);
 
             if(enemyManager.isPreformingAction)
