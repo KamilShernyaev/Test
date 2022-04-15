@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657892, g: 0.4964128, b: 0.5748173, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2223,9 +2223,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lockOnTransform: {fileID: 1699528836}
   isPreformingAction: 0
+  enemyAttacks:
+  - {fileID: 0}
+  currentAttack: {fileID: 11400000, guid: cdb62fa5f91e23649832cd76c1a6eede, type: 2}
   detectionRadius: 20
   maximumDetectionAngle: 50
   mininumDetectionAngle: -50
+  currentRecoveryTime: 0
 --- !u!114 &914934045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3385,7 +3389,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3740041761224976866, guid: 27d7e1d89b161824791900bb64080f2b, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3740041761224976866, guid: 27d7e1d89b161824791900bb64080f2b, type: 3}
       propertyPath: m_LocalScale.x
