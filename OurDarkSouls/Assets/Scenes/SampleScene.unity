@@ -3008,6 +3008,7 @@ MonoBehaviour:
   isInAir: 0
   isGrounded: 0
   canDoCombo: 0
+  isInvulnerable: 0
 --- !u!114 &1003025066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3063,6 +3064,8 @@ MonoBehaviour:
   staminaLevel: 10
   maxStamina: 0
   currentStamina: 0
+  staminaRegenerationAmount: 30
+  staminaRegenTimer: 0
 --- !u!1 &1016930904
 GameObject:
   m_ObjectHideFlags: 0
