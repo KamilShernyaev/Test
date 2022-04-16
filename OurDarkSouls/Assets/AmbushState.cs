@@ -35,7 +35,7 @@ namespace SG
 					float viewableAngle = Vector3.Angle(targetsDirection, enemyManager.transform.forward);
 
 					if(viewableAngle > enemyManager.mininumDetectionAngle &&
-					viewableAngle > enemyManager.maximumDetectionAngle)
+					viewableAngle < enemyManager.maximumDetectionAngle)
 					{
 						enemyManager.currentTarget = characterStats;
 						isSleeping = false;
