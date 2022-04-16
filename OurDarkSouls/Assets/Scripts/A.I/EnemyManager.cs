@@ -17,7 +17,6 @@ namespace SG
 
         public bool isPreformingAction; 
         public bool isInteracting;
-        public float distanceFromTarget;
         public float rotationSpeed = 15;
         public float maximumAttackRange = 1.5f;
 
@@ -25,7 +24,6 @@ namespace SG
         public float detectionRadius = 20;        
         public float maximumDetectionAngle = 50;
         public float mininumDetectionAngle = -50;
-        public float viewableAngle;
 
         public float currentRecoveryTime = 0;
         private void Awake() 
