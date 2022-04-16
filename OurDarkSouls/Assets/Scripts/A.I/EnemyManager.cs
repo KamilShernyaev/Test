@@ -15,7 +15,8 @@ namespace SG
         public NavMeshAgent navMeshAgent;
         public Rigidbody enemyRigidbody;
 
-        public bool isPreformingAction;   
+        public bool isPreformingAction; 
+        public bool isInteracting;
         public float distanceFromTarget;
         public float rotationSpeed = 15;
         public float maximumAttackRange = 1.5f;
@@ -45,6 +46,8 @@ namespace SG
         private void Update() 
         {
             HandleRecoveryTimer();
+
+            isInteracting = enemyAnimationManager.anim.GetBool("isInteracting");
         }
 
         private void FixedUpdate() 
