@@ -45,6 +45,10 @@ namespace SG
 //конец Новый скрипт
 
 
+        public CapsuleCollider characterCollider;
+        public CapsuleCollider characterCollisionBlockerCollider;
+
+
         private void Awake() 
         {
             cameraHandler = FindObjectOfType<CameraHandler>();
@@ -62,6 +66,7 @@ namespace SG
 
             playerManager.isGrounded = true;
             ignoreForGroundCheck = ~(1 << 8 | 1 << 11);
+            Physics.IgnoreCollision(characterCollider, characterCollisionBlockerCollider, true);
         }
 
        

@@ -5,6 +5,7 @@ namespace SG
 {
     public class WeaponSlotManager : MonoBehaviour
     {
+        PlayerManager playerManager; 
         public WeaponItem attackingWeapon;
 
         WeaponHolderSlot leftHandSlot;
@@ -22,6 +23,7 @@ namespace SG
 
         private void Awake() 
         {
+            playerManager = GetComponentInParent<PlayerManager>();
             animator = GetComponent<Animator>();
             quickSlotsUI = FindObjectOfType<QuickSlotsUI>();
             playerStats = GetComponentInParent<PlayerStats>();
@@ -100,6 +102,7 @@ namespace SG
         #region Handle Weapons Damage Collider
         private void LoadLeftWeaponDamageCollider()
         {
+                                    //rightHandSlot использовать для обхода ошибки при ударе по противнику
             leftHandDamageCollider = leftHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
         }
 
@@ -108,32 +111,23 @@ namespace SG
             rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
         }
     
-        public void OpenRightDamageCollider()
+        public void OpenDamageCollider()
         {
-            rightHandDamageCollider.EnableDamageColider();
-        }
-
-        public void OpenLeftDamageCollider()
-        {
-            leftHandDamageCollider.EnableDamageColider();
-        }
-
-        public void CloseRightHandDamageCollider()
-        {
-            if(rightHandDamageCollider != null)
+            if(playerManager.isUsingRightHand)
             {
-                rightHandDamageCollider.DisableDamageCollider();
+                rightHandDamageCollider.EnableDamageColider();
+            }
+            else if (playerManager.isUsingLeftHand)
+            {
+                leftHandDamageCollider.EnableDamageColider();
             }
         }
 
-        public void CloseLeftHandDamageCollider()
-        {
-            if(leftHandDamageCollider !=null)
-            {
+        public void CloseDamageCollider()
+        {        
+            rightHandDamageCollider.DisableDamageCollider();
             leftHandDamageCollider.DisableDamageCollider();
-            }
         }
-
         #endregion
         
         #region Handle Weapons Stamina Drainage
