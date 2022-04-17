@@ -11,6 +11,7 @@ namespace SG
 
 		public override void AttemptToCastSpell(AnimatorHadler animatorHandler, PlayerStats playerStats)
 		{
+			base.AttemptToCastSpell(animatorHandler, playerStats);
 			GameObject instantiatedWarmUpSpellFX = Instantiate(spellWarmUpFX, animatorHandler.transform);
 			animatorHandler.PlayTargetAnimation(spellAnimation, true);
 			Debug.Log("Attempting to cast spell...");
@@ -18,6 +19,7 @@ namespace SG
 
 		public override void SuccessfullyCastSpell(AnimatorHadler animatorHandler, PlayerStats playerStats)
 		{
+			base.SuccessfullyCastSpell(animatorHandler, playerStats);
 			GameObject instantiatedSpellFX = Instantiate(spellCastFX, animatorHandler.transform);
 			playerStats.HealPlayer(healAmount);
 			Debug.Log("Spell cast successful");			

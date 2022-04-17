@@ -17,6 +17,7 @@ MonoBehaviour:
   spellWarmUpFX: {fileID: 1767915015889295976, guid: c1a106e5cbf2aae4fa2074c011b72fd8, type: 3}
   spellCastFX: {fileID: 3733469355936568682, guid: 41b5c5eb17f155044ab3b7fc109a8701, type: 3}
   spellAnimation: Heal Spell
+  focusPointCost: 35
   isFaithSpell: 1
   isMagicSpell: 0
   isPyroSpell: 0

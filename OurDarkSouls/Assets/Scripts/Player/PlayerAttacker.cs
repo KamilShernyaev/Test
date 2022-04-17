@@ -110,9 +110,22 @@ namespace SG
         
         private void PerformRBMagicAction(WeaponItem weapon)
         {
-            if(playerInventory.currentSpell != null && playerInventory.currentSpell.isFaithSpell)
+            if (playerManager.isInteracting)
+                return;
+                
+            if(weapon.isFaithCaster)
             {
-                playerInventory.currentSpell.AttemptToCastSpell(animatorHadler, playerStats);
+                if(playerInventory.currentSpell != null && playerInventory.currentSpell.isFaithSpell)
+                {
+                    if (playerStats.currentFocusPoints >= playerInventory.currentSpell.focusPointCost)
+                    {
+                        playerInventory.currentSpell.AttemptToCastSpell(animatorHadler, playerStats);
+                    }
+                    else
+                    {
+                        animatorHadler.PlayTargetAnimation("Shrug", true);
+                    }
+                }
             }
         }
 
