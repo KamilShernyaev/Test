@@ -688,7 +688,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 283360094}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.84, z: -0.7}
+  m_LocalPosition: {x: 0, y: 1.84, z: -0.933}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 229891366}
@@ -2019,7 +2019,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 808427645}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: Combat Transforms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2645,7 +2645,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lockOnTransform: {fileID: 1699528836}
   backStabBoxCollider: {fileID: 0}
-  backStabCollider: {fileID: 0}
+  backStabCollider: {fileID: 283360096}
   currentState: {fileID: 126929462}
   currentTarget: {fileID: 0}
   navMeshAgent: {fileID: 0}
@@ -3207,7 +3207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lockOnTransform: {fileID: 1189867043}
   backStabBoxCollider: {fileID: 0}
-  backStabCollider: {fileID: 0}
+  backStabCollider: {fileID: 1445656580}
   interactableUIGameObject: {fileID: 1670924765}
   itemInteractableGameObject: {fileID: 1460072043}
   isInteracting: 0
@@ -4204,7 +4204,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1369350657}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.6, z: 0.341}
+  m_LocalPosition: {x: 0, y: 1.6, z: 0.481}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1213251220}
@@ -5506,7 +5506,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1685004890}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: Back Stabber Standing Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}

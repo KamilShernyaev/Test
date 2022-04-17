@@ -260,8 +260,11 @@ namespace SG
 
           private void HandleCritivalAttackInput()
           {
-            critical_Attack_Input = false;
-            playerAttacker.AttemptBackStabOrRiposte();
+            if (critical_Attack_Input)
+            {
+              critical_Attack_Input = false;
+              playerAttacker.AttemptBackStabOrRiposte();
+            }
           }
     }
 }

@@ -355,7 +355,7 @@ public class @PlayesControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""7268c8a2-293c-4619-bf7a-95c8859d65e0"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/m"",
                     ""interactions"": ""Hold"",
                     ""processors"": """",
                     ""groups"": """",

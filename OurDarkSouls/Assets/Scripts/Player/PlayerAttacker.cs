@@ -90,7 +90,7 @@ namespace SG
                     playerManager.transform.rotation = targetRotation;
 
                     animatorHadler.PlayTargetAnimation("Back Stab", true);
-                    enemyCharacterManager.GetComponentInChildren<AnimatorHadler>().PlayTargetAnimation("Back Stabbed", true);
+                    enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Back Stabbed", true);
                 }
             }
         }
