@@ -185,17 +185,17 @@
                     "interactions": ""
                 },
                 {
-                    "name": "RT",
+                    "name": "Critical Attack",
                     "type": "Button",
-                    "id": "5a667671-c5d2-46b8-9b0c-679c2fe9bf7f",
+                    "id": "8734c971-a907-4d52-99c2-63778edd68ff",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 },
                 {
-                    "name": "Critical Attack",
+                    "name": "RT",
                     "type": "Button",
-                    "id": "d51b6c97-492a-40d9-9015-9c1edd7062d4",
+                    "id": "5a667671-c5d2-46b8-9b0c-679c2fe9bf7f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -341,9 +341,9 @@
                 },
                 {
                     "name": "",
-                    "id": "7268c8a2-293c-4619-bf7a-95c8859d65e0",
+                    "id": "621d8680-4358-4157-9ad7-d3a9715399dc",
                     "path": "<Keyboard>/m",
-                    "interactions": "Hold",
+                    "interactions": "Tap",
                     "processors": "",
                     "groups": "",
                     "action": "Critical Attack",
