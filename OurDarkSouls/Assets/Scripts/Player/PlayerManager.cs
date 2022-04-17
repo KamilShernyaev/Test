@@ -11,6 +11,8 @@ namespace SG
         CameraHandler cameraHandler;
         PlayerStats playerStats;
         PlayerLocomotion playerLocomotion;
+        
+        AnimatorManager playerAnimatorManager;
 
         InteractableUI interactableUI;
         public GameObject interactableUIGameObject;
@@ -96,6 +98,10 @@ namespace SG
             }
         }
 
+        #region Player Interactions
+
+       
+
         public void CheckForInteractableObject()
         {
             RaycastHit hit;
@@ -132,5 +138,14 @@ namespace SG
                 }
             }
         }
+        
+        public void OpenChestInteraction(Transform playerStandHereWhenOpeningChest)
+        {
+            playerLocomotion.rigidbody.velocity = Vector3.zero;
+            transform.position = playerStandHereWhenOpeningChest.transform.position;
+            playerAnimatorManager.PlayTargetAnimation("Open Chest", true);
+        }
+
+        #endregion
     }
 }
