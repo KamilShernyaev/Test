@@ -92,5 +92,17 @@ namespace SG
                 }
             }
         }
+
+        public void HealPlayer(int healAmount)
+        {
+            currentHealth = currentHealth + healAmount;
+
+            if(currentHealth > maxHelth)
+            {
+                currentHealth = maxHelth;
+            }
+
+            healthBar.SetCurrentHealth(currentHealth);
+        }
     }
 }

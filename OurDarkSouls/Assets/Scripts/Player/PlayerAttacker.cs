@@ -7,6 +7,7 @@ namespace SG
     {
         AnimatorHadler animatorHadler;
         PlayerManager playerManager;
+        PlayerStats playerStats;
         PlayerInventory playerInventory;
         InputHandler inputHandler;
         WeaponSlotManager weaponSlotManager;
@@ -15,6 +16,7 @@ namespace SG
         {
             animatorHadler = GetComponent<AnimatorHadler>();
             playerManager = GetComponentInParent<PlayerManager>();
+            playerStats = GetComponentInParent<PlayerStats>();
             playerInventory = GetComponentInParent<PlayerInventory>();
             weaponSlotManager = GetComponent<WeaponSlotManager>();
             inputHandler = GetComponentInParent<InputHandler>();
@@ -110,10 +112,14 @@ namespace SG
         {
             if(playerInventory.currentSpell != null && playerInventory.currentSpell.isFaithSpell)
             {
-                
+                playerInventory.currentSpell.AttemptToCastSpell(animatorHadler, playerStats);
             }
         }
-        
+
+        private void SuccessfullyCastSpell()
+        {
+            playerInventory.currentSpell.SuccessfullyCastSpell(animatorHadler, playerStats);
+        }        
 
         #endregion
     }
