@@ -26,6 +26,9 @@ namespace SG
 
         public void HandleWeaponCombo(WeaponItem weapon)
         {
+            if(playerStats.currentStamina <= 0)
+                return;
+
             if(inputHandler.comboFlag)
             {
                 animatorHadler.anim.SetBool("canDoCombo", false);
@@ -44,6 +47,9 @@ namespace SG
         
         public void HandleLightAttack(WeaponItem weapon)
         {
+            if(playerStats.currentStamina <= 0)
+                return;
+
             weaponSlotManager.attackingWeapon = weapon;
 
             if(inputHandler.twoHandFlag)
@@ -60,6 +66,9 @@ namespace SG
 
         public void HandleHeavyAttack(WeaponItem weapon)
         {
+            if(playerStats.currentStamina <= 0)
+                return;
+
             weaponSlotManager.attackingWeapon = weapon;
 
             if(inputHandler.twoHandFlag)

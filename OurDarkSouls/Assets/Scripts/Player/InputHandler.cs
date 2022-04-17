@@ -43,6 +43,7 @@ namespace SG
         PlayerAttacker playerAttacker;
         PlayerInventory playerInventory;
         PlayerManager playerManager;
+        PlayerStats playerStats;
         WeaponSlotManager weaponSlotManager;
         CameraHandler cameraManager;
         AnimatorHadler animatorHadler;
@@ -56,6 +57,7 @@ namespace SG
             playerAttacker = GetComponentInChildren<PlayerAttacker>();
             playerInventory = GetComponent<PlayerInventory>();
             playerManager = GetComponent<PlayerManager>();
+            playerStats = GetComponent<PlayerStats>();
             uIManager = FindObjectOfType<UIManager>();
             cameraManager = FindObjectOfType<CameraHandler>();
             weaponSlotManager = GetComponentInChildren<WeaponSlotManager>();
@@ -74,6 +76,8 @@ namespace SG
                 inputActions.PlayerActions.RB.performed += i => rb_input = true;
                 inputActions.PlayerActions.RT.performed += i => rt_input = true;
                 inputActions.PlayerActions.A.performed += i => a_Input = true;
+                inputActions.PlayerActions.Roll.performed += i => b_Input = true;
+                inputActions.PlayerActions.Roll.canceled += i => b_Input = false;
                 inputActions.PlayerActions.Jump.performed += i => jump_Input = true;
                 inputActions.PlayerActions.Inventory.performed += i => inventory_Input = true;
                 inputActions.PlayerActions.LockOn.performed += i => lockOnInput = true;
@@ -111,19 +115,27 @@ namespace SG
 
           private void HandleRollInput(float delta)
           {
-            b_Input = inputActions.PlayerActions.Roll.phase == UnityEngine.InputSystem.InputActionPhase.Started;
-            sprintFlag = b_Input;
-
             if(b_Input)
             {
               rollInputTimer += delta;
 
+              if(playerStats.currentStamina <= 0)
+              {
+                b_Input = false;
+                sprintFlag = false;
+              }
+
+              if(moveAmount >0.5f && playerStats.currentStamina > 0)
+              {
+                sprintFlag = true;
+              }
             }
             else
             {
+              sprintFlag = false;
+
               if(rollInputTimer > 0 && rollInputTimer < 0.5f)
               {
-                sprintFlag = false;
                 rollFlag = true;
               }
 

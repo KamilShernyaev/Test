@@ -7,6 +7,7 @@ namespace SG
     {
         CameraHandler cameraHandler;
         PlayerManager playerManager;
+        PlayerStats playerStats;
         Transform cameraObject;
         InputHandler inputHandler;
         //Новый скрипт
@@ -28,7 +29,6 @@ namespace SG
         LayerMask ignoreForGroundCheck;
         public float isAirTimer;
 
-//конец Новый скрипт
         [Header("Movement Stats")]
         [SerializeField]
         float movementSpeed = 5;
@@ -39,11 +39,14 @@ namespace SG
 
         [SerializeField]
         float rotationSpeed = 10;
+        [SerializeField] 
+        float fallingSpeed = 45;
 
-//Новый скрипт
-        [SerializeField] float fallingSpeed = 45;
-//конец Новый скрипт
-
+        [Header("Stamina Costs")]
+        [SerializeField]
+        int rollStaminaCost = 15;
+        int backstepStaminaCost = 12;
+        int sprintStaminsCost = 1;
 
         public CapsuleCollider characterCollider;
         public CapsuleCollider characterCollisionBlockerCollider;
@@ -52,14 +55,16 @@ namespace SG
         private void Awake() 
         {
             cameraHandler = FindObjectOfType<CameraHandler>();
+            playerManager = GetComponent<PlayerManager>();
+            playerStats = GetComponent<PlayerStats>();
+            rigidbody = GetComponent<Rigidbody>();
+            inputHandler = GetComponent<InputHandler>();
+            animatorHadler = GetComponentInChildren<AnimatorHadler>();
         }
 
         void Start()
         {
-            playerManager = GetComponent<PlayerManager>();
-            rigidbody = GetComponent<Rigidbody>();
-            inputHandler = GetComponent<InputHandler>();
-            animatorHadler = GetComponentInChildren<AnimatorHadler>();
+            
             cameraObject = Camera.main.transform;
             myTransform = transform;
             animatorHadler.Initialize();
@@ -150,6 +155,7 @@ namespace SG
                 speed = sprintSpeed;
                 playerManager.isSprinting = true;
                 moveDirection *= speed;
+                playerStats.TakeStaminaDamage(sprintStaminsCost);
             }
             else
             {
@@ -189,7 +195,10 @@ namespace SG
         {
             if(animatorHadler.anim.GetBool("isInteracting"))
                 return;
-            
+
+            if(playerStats.currentStamina <= 0)
+                return;
+
             if(inputHandler.rollFlag)
             {
                 moveDirection = cameraObject.forward * inputHandler.vertical;
@@ -200,10 +209,13 @@ namespace SG
                     animatorHadler.PlayTargetAnimation("Rolling", true);
                     moveDirection.y = 0;
                     Quaternion rollRotation = Quaternion.LookRotation(moveDirection);
+                    myTransform.rotation = rollRotation;
+                    playerStats.TakeStaminaDamage(rollStaminaCost);
                 }
                 else
                 {
                     animatorHadler.PlayTargetAnimation("Backstep", true);
+                    playerStats.TakeStaminaDamage(backstepStaminaCost);
                 }
             }
         }
@@ -287,23 +299,14 @@ namespace SG
             {
                 myTransform.position = targetPosition;
             }
-
-            // if(playerManager.isGrounded)
-            // {
-            //     if(playerManager.isInteracting || inputHandler.moveAmount > 0)
-            //     {
-            //         myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, Time.deltaTime);
-            //     }
-            //     else
-            //     {
-            //         myTransform.position = targetPosition;
-            //     }
-            // }
         }
 
         public void HandleJumping()
         {
             if(playerManager.isInteracting)
+                return;
+
+            if(playerStats.currentStamina <= 0)
                 return;
 
             if(inputHandler.jump_Input)
