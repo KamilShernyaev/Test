@@ -193,6 +193,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "Critical Attack",
+                    "type": "Button",
+                    "id": "d51b6c97-492a-40d9-9015-9c1edd7062d4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "LockOn",
                     "type": "Button",
                     "id": "cbef416e-ec5d-4441-a7de-ae14406b826d",
@@ -302,7 +310,7 @@
                     "name": "",
                     "id": "00fbc157-9f62-4fa7-a795-a738aaa38948",
                     "path": "<Keyboard>/e",
-                    "interactions": "",
+                    "interactions": "Tap",
                     "processors": "",
                     "groups": "",
                     "action": "RB",
@@ -328,6 +336,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "RT",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7268c8a2-293c-4619-bf7a-95c8859d65e0",
+                    "path": "<Keyboard>/m",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Critical Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
