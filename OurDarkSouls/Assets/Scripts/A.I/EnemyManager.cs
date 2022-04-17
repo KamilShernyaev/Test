@@ -31,6 +31,7 @@ namespace SG
             enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
             enemyStats = GetComponent<EnemyStats>();
             enemyRigidbody = GetComponent<Rigidbody>();
+            backStabCollider = GetComponentInChildren<BackStabCollider>();
             enemyAnimationManager = GetComponentInChildren<EnemyAnimatorManager>();
             navMeshAgent = GetComponentInChildren<NavMeshAgent>();
             navMeshAgent.enabled = false;
