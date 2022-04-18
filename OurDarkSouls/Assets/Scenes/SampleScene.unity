@@ -1136,7 +1136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveDirection: {x: 0, y: 0, z: 0}
   myTransform: {fileID: 0}
-  animatorHadler: {fileID: 0}
+  playerAnimatorManager: {fileID: 0}
   rigidbody: {fileID: 1003025063}
   normalCamera: {fileID: 0}
   groundDetectiondRayStartPoint: 0.7
@@ -10093,7 +10093,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 2
   interactableText: Open Chest
-  playerStandingPosition: {fileID: 2069414872}
+  playerStandingPosition: {fileID: 0}
   itemSpawner: {fileID: 6664022221881477782, guid: ff4abace9fbb034488d74e776358cb6b, type: 3}
   itemInChest: {fileID: 11400000, guid: bf88f266bca7d5f44bb6b2226abd44dc, type: 2}
 --- !u!64 &3007065904111783339

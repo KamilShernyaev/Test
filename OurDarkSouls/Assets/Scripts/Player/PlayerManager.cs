@@ -32,17 +32,14 @@ namespace SG
 
         private void Awake() 
         {
+          inputHandler = GetComponent<InputHandler>();
+          anim = GetComponentInChildren<Animator>();
+          playerStats = GetComponent<PlayerStats>();
+          playerLocomotion = GetComponent<PlayerLocomotion>();
+          interactableUI = FindObjectOfType<InteractableUI>();
           cameraHandler = FindObjectOfType<CameraHandler>();
           backStabCollider = GetComponentInChildren<BackStabCollider>();
-        }
-
-        void Start() 
-        {
-            inputHandler = GetComponent<InputHandler>();
-            anim = GetComponentInChildren<Animator>();
-            playerStats = GetComponent<PlayerStats>();
-            playerLocomotion = GetComponent<PlayerLocomotion>();
-            interactableUI = FindObjectOfType<InteractableUI>();
+          playerAnimatorManager = GetComponentInChildren<PlayerAnimatorManager>();
         }
 
         void Update() 
@@ -143,6 +140,8 @@ namespace SG
         {
             playerLocomotion.rigidbody.velocity = Vector3.zero;
             transform.position = playerStandHereWhenOpeningChest.transform.position;
+            Debug.Log("PlayerManager");
+           
             playerAnimatorManager.PlayTargetAnimation("Open Chest", true);
         }
 

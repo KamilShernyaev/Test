@@ -45,7 +45,7 @@ namespace SG
         PlayerManager playerManager;
         WeaponSlotManager weaponSlotManager;
         CameraHandler cameraManager;
-        AnimatorHadler animatorHadler;
+        PlayerAnimatorManager playerAnimatorManager;
         UIManager uIManager;
 
         Vector2 movementInput;
@@ -59,7 +59,7 @@ namespace SG
             uIManager = FindObjectOfType<UIManager>();
             cameraManager = FindObjectOfType<CameraHandler>();
             weaponSlotManager = GetComponentInChildren<WeaponSlotManager>();
-            animatorHadler = GetComponentInChildren<AnimatorHadler>();
+            playerAnimatorManager = GetComponentInChildren<PlayerAnimatorManager>();
           }
         public void OnEnable() 
           {

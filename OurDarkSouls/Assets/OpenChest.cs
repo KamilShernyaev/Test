@@ -20,6 +20,7 @@ namespace SG
 
         public override void Interact(PlayerManager playerManager)
         {
+           
             Vector3 rotatationDirection = transform.position - playerManager.transform.position;
             rotatationDirection.y = 0;
             rotatationDirection.Normalize();
@@ -28,7 +29,11 @@ namespace SG
             Quaternion targetRotation = Quaternion.Slerp(playerManager.transform.rotation, tr, 300 * Time.deltaTime);
             playerManager.transform.rotation = targetRotation;
 
-            playerManager.OpenChestInteraction(playerStandingPosition);
+             Debug.Log("OpenChest");
+
+             
+            playerManager.OpenChestInteraction(playerStandingPosition);// tut
+
             animator.Play("Chest Open");
             StartCoroutine(SpawnItemInChest());
 
@@ -43,6 +48,7 @@ namespace SG
 
         private IEnumerator SpawnItemInChest()
         {
+            Debug.Log("spawn");
             yield return new WaitForSeconds(1f);
             Instantiate(itemSpawner, transform);
             Destroy(openChest);

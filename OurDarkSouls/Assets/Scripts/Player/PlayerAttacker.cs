@@ -6,7 +6,7 @@ namespace SG
     public class PlayerAttacker : MonoBehaviour
     {
         PlayerManager playerManager;
-        AnimatorHadler animatorHadler;
+        PlayerAnimatorManager playerAnimatorManager;
         PlayerStats playerStats;
         PlayerInventory playerInventory;
         InputHandler inputHandler;
@@ -16,7 +16,7 @@ namespace SG
 
         private void Awake() 
         {
-            animatorHadler = GetComponent<AnimatorHadler>();
+            playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
             playerManager = GetComponentInParent<PlayerManager>();
             playerStats = GetComponentInParent<PlayerStats>();
             playerInventory = GetComponentInParent<PlayerInventory>();
@@ -28,15 +28,15 @@ namespace SG
         {
             if(inputHandler.comboFlag)
             {
-                animatorHadler.anim.SetBool("canDoCombo", false);
+                playerAnimatorManager.anim.SetBool("canDoCombo", false);
 
                 if(lastAttack == weapon.OH_Light_Attack_1)
                 {
-                    animatorHadler.PlayTargetAnimation(weapon.OH_Light_Attack_2, true);
+                    playerAnimatorManager.PlayTargetAnimation(weapon.OH_Light_Attack_2, true);
                 }
                 else if(lastAttack == weapon.TH_light_attack_01)
                 {
-                    animatorHadler.PlayTargetAnimation(weapon.TH_light_attack_02, true);
+                    playerAnimatorManager.PlayTargetAnimation(weapon.TH_light_attack_02, true);
                 }
                 
             }
@@ -48,12 +48,12 @@ namespace SG
 
             if(inputHandler.twoHandFlag)
             {
-                animatorHadler.PlayTargetAnimation(weapon.TH_light_attack_01, true);
+                playerAnimatorManager.PlayTargetAnimation(weapon.TH_light_attack_01, true);
                 lastAttack = weapon.TH_light_attack_01;
             }
             else
             {
-                animatorHadler.PlayTargetAnimation(weapon.OH_Light_Attack_1, true);
+                playerAnimatorManager.PlayTargetAnimation(weapon.OH_Light_Attack_1, true);
                 lastAttack = weapon.OH_Light_Attack_1;
             }
         }
@@ -64,12 +64,12 @@ namespace SG
 
             if(inputHandler.twoHandFlag)
             {
-                animatorHadler.PlayTargetAnimation(weapon.TH_Heavy_attack_01, true);
+                playerAnimatorManager.PlayTargetAnimation(weapon.TH_Heavy_attack_01, true);
                 lastAttack = weapon.TH_Heavy_attack_01;
             }
             else
             {
-                animatorHadler.PlayTargetAnimation(weapon.OH_Heavy_Attack_1, true);
+                playerAnimatorManager.PlayTargetAnimation(weapon.OH_Heavy_Attack_1, true);
                 lastAttack = weapon.OH_Heavy_Attack_1;
             }
         }
@@ -105,7 +105,7 @@ namespace SG
                 if(playerManager.canDoCombo)
                     return;
 
-                animatorHadler.anim.SetBool("isUsingRightHand", true);
+                playerAnimatorManager.anim.SetBool("isUsingRightHand", true);
                 HandleLightAttack(playerInventory.rightWeapon);
             }
         }
@@ -121,11 +121,11 @@ namespace SG
                 {
                     if (playerStats.currentFocusPoints >= playerInventory.currentSpell.focusPointCost)
                     {
-                        playerInventory.currentSpell.AttemptToCastSpell(animatorHadler, playerStats);
+                        playerInventory.currentSpell.AttemptToCastSpell(playerAnimatorManager, playerStats);
                     }
                     else
                     {
-                        animatorHadler.PlayTargetAnimation("Shrug", true);
+                        playerAnimatorManager.PlayTargetAnimation("Shrug", true);
                     }
                 }
             }
@@ -133,7 +133,7 @@ namespace SG
 
         private void SuccessfullyCastSpell()
         {
-            playerInventory.currentSpell.SuccessfullyCastSpell(animatorHadler, playerStats);
+            playerInventory.currentSpell.SuccessfullyCastSpell(playerAnimatorManager, playerStats);
         }        
 
         #endregion
@@ -158,7 +158,7 @@ namespace SG
                     Quaternion targetRotation = Quaternion.Slerp(playerManager.transform.rotation, tr, 500 * Time.deltaTime);
                     playerManager.transform.rotation = targetRotation;
 
-                    animatorHadler.PlayTargetAnimation("Back_Stab", true);
+                    playerAnimatorManager.PlayTargetAnimation("Back_Stab", true);
                     enemyCharacterManager.GetComponentInChildren<EnemyAnimatorManager>().PlayTargetAnimation("Back_Stabbed", true);
                 }
             }

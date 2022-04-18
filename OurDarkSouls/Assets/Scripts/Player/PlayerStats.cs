@@ -10,7 +10,7 @@ namespace SG
         HealthBar healthBar;
         StaminaBar staminaBar;
         FocusPointBar focusPointBar;
-        AnimatorHadler animatorHadler;
+        PlayerAnimatorManager playerAnimatorManager;
 
         public float staminaRegenerationAmount = 30;
         public float staminaRegenTimer = 0;
@@ -21,7 +21,7 @@ namespace SG
             healthBar = FindObjectOfType<HealthBar>();
             staminaBar = FindObjectOfType<StaminaBar>();
             focusPointBar = FindObjectOfType<FocusPointBar>();
-            animatorHadler = GetComponentInChildren<AnimatorHadler>();
+            playerAnimatorManager = GetComponentInChildren<PlayerAnimatorManager>();
         }
 
         void Start()
@@ -73,12 +73,12 @@ namespace SG
             currentHealth = currentHealth - damage;
             healthBar.SetCurrentHealth(currentHealth);
 
-            animatorHadler.PlayTargetAnimation("TakeDamage", true);
+            playerAnimatorManager.PlayTargetAnimation("TakeDamage", true);
 
             if(currentHealth <= 0)
             {
                 currentHealth = 0;
-                animatorHadler.PlayTargetAnimation("Death", true);
+                playerAnimatorManager.PlayTargetAnimation("Death", true);
                 isDead = true;
             }
         }

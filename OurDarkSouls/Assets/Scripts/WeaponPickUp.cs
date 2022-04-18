@@ -20,14 +20,14 @@ namespace SG
        {
            PlayerInventory playerInventory;
            PlayerLocomotion playerLocomotion;
-           AnimatorHadler animatorHedler;
+           PlayerAnimatorManager playerAnimatorManager;
 
            playerInventory = playerManager.GetComponent<PlayerInventory>();
            playerLocomotion = playerManager.GetComponent<PlayerLocomotion>();
-           animatorHedler = playerManager.GetComponentInChildren<AnimatorHadler>();
+           playerAnimatorManager = playerManager.GetComponentInChildren<PlayerAnimatorManager>();
 
            playerLocomotion.rigidbody.velocity = Vector3.zero;
-           animatorHedler.PlayTargetAnimation("Pick Up Item", true);
+           playerAnimatorManager.PlayTargetAnimation("Pick Up Item", true);
            playerInventory.weaponsInventory.Add(weapon);
            playerManager.itemInteractableGameObject.GetComponentInChildren<Text>().text = weapon.itemName;
            playerManager.itemInteractableGameObject.GetComponentInChildren<RawImage>().texture = weapon.itemIcon.texture;

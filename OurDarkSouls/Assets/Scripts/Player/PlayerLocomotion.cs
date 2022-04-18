@@ -16,7 +16,7 @@ namespace SG
         [HideInInspector]
         public Transform myTransform;
         [HideInInspector]
-        public AnimatorHadler animatorHadler;
+        public PlayerAnimatorManager playerAnimatorManager;
         public new Rigidbody rigidbody;
         public GameObject normalCamera;
 
@@ -59,10 +59,10 @@ namespace SG
             playerManager = GetComponent<PlayerManager>();
             rigidbody = GetComponent<Rigidbody>();
             inputHandler = GetComponent<InputHandler>();
-            animatorHadler = GetComponentInChildren<AnimatorHadler>();
+            playerAnimatorManager = GetComponentInChildren<PlayerAnimatorManager>();
             cameraObject = Camera.main.transform;
             myTransform = transform;
-            animatorHadler.Initialize();
+            playerAnimatorManager.Initialize();
 
             playerManager.isGrounded = true;
             ignoreForGroundCheck = ~(1 << 8 | 1 << 11);
@@ -171,15 +171,15 @@ namespace SG
 
             if(inputHandler.lockOnFlag && inputHandler.sprintFlag == false)
             {
-                animatorHadler.UpdateAnimatorValues(inputHandler.vertical, inputHandler.horizontal, playerManager.isSprinting);
+                playerAnimatorManager.UpdateAnimatorValues(inputHandler.vertical, inputHandler.horizontal, playerManager.isSprinting);
 
             }
             else
             {
-                animatorHadler.UpdateAnimatorValues(inputHandler.moveAmount, 0, playerManager.isSprinting);
+                playerAnimatorManager.UpdateAnimatorValues(inputHandler.moveAmount, 0, playerManager.isSprinting);
             }
 
-            if(animatorHadler.canRotate)
+            if(playerAnimatorManager.canRotate)
             {
                 HandleRotation(delta);
             }
@@ -187,7 +187,7 @@ namespace SG
 
         public void HandleRollingAndSprinting(float delta)
         {
-            if(animatorHadler.anim.GetBool("isInteracting"))
+            if(playerAnimatorManager.anim.GetBool("isInteracting"))
                 return;
             
             if(inputHandler.rollFlag)
@@ -197,13 +197,13 @@ namespace SG
 
                 if(inputHandler.moveAmount > 0)
                 {
-                    animatorHadler.PlayTargetAnimation("Rolling", true);
+                    playerAnimatorManager.PlayTargetAnimation("Rolling", true);
                     moveDirection.y = 0;
                     Quaternion rollRotation = Quaternion.LookRotation(moveDirection);
                 }
                 else
                 {
-                    animatorHadler.PlayTargetAnimation("Backstep", true);
+                    playerAnimatorManager.PlayTargetAnimation("Backstep", true);
                 }
             }
         }
@@ -246,12 +246,12 @@ namespace SG
                     if(isAirTimer > 0.5f)
                     {
                         Debug.Log("You were in the air for " + isAirTimer);
-                        animatorHadler.PlayTargetAnimation("Land", true);
+                        playerAnimatorManager.PlayTargetAnimation("Land", true);
                         isAirTimer = 0;
                     }
                     else
                     {                        
-                        animatorHadler.PlayTargetAnimation("Empty", false);
+                        playerAnimatorManager.PlayTargetAnimation("Empty", false);
                         isAirTimer = 0;
                     }
 
@@ -269,7 +269,7 @@ namespace SG
                 {
                     if(playerManager.isInteracting == false)
                     {
-                        animatorHadler.PlayTargetAnimation("Falling", true);
+                        playerAnimatorManager.PlayTargetAnimation("Falling", true);
                     }
 
                     Vector3 vel = rigidbody.velocity;
@@ -312,7 +312,7 @@ namespace SG
                 {
                     moveDirection = cameraObject.forward * inputHandler.vertical;
                     moveDirection += cameraObject .right * inputHandler.horizontal;
-                    animatorHadler.PlayTargetAnimation("Jump", true);
+                    playerAnimatorManager.PlayTargetAnimation("Jump", true);
                     moveDirection.y = 0;
                     Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
                     myTransform.rotation = jumpRotation;

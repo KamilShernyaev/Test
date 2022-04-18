@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace SG
 {
-    public class AnimatorHadler : AnimatorManager
+    public class PlayerAnimatorManager : AnimatorManager
     {    
         PlayerManager playerManager;
         InputHandler inputHandler;

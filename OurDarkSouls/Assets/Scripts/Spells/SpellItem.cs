@@ -22,12 +22,12 @@ namespace SG
 		[TextArea]
 		public string spellDescription;
 
-		public virtual void AttemptToCastSpell(AnimatorHadler animatorHandler, PlayerStats playerStats)
+		public virtual void AttemptToCastSpell(PlayerAnimatorManager playerAnimatorManager, PlayerStats playerStats)
 		{
 			Debug.Log("You attempt to cast a spell!");
 		}
 
-		public virtual void SuccessfullyCastSpell(AnimatorHadler animatorHandler, PlayerStats playerStats)
+		public virtual void SuccessfullyCastSpell(PlayerAnimatorManager playerAnimatorManager, PlayerStats playerStats)
 		{
 			Debug.Log("You successfully cast a spell");
 			playerStats.DeductFocusPoints(focusPointCost);
