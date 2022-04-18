@@ -12,7 +12,9 @@ namespace SG
         InputHandler inputHandler;
         WeaponSlotManager weaponSlotManager;
         public string lastAttack;
+
         LayerMask backStabLayer = 1 << 12;
+        LayerMask riposteLayer = 1 << 13;
 
         private void Awake() 
         {
@@ -154,10 +156,10 @@ namespace SG
             transform.TransformDirection(Vector3.forward), out hit, 0.5f, backStabLayer))
             {
                 CharacterManager enemyCharacterManager = hit.transform.gameObject.GetComponentInParent<CharacterManager>();
-
+                
                 if (enemyCharacterManager != null)
                 {
-                    playerManager.transform.position = enemyCharacterManager.backStabCollider.backStabberStandPoint.position;
+                    playerManager.transform.position = enemyCharacterManager.backStabCollider.criticalDamageStandPosition.position;
                     
                     Vector3 rotarionDirection = playerManager.transform.root.eulerAngles;
                     rotarionDirection = hit.transform.position - playerManager.transform.position; 
@@ -169,6 +171,27 @@ namespace SG
 
                     playerAnimatorManager.PlayTargetAnimation("Back_Stab", true);
                     enemyCharacterManager.GetComponentInChildren<EnemyAnimatorManager>().PlayTargetAnimation("Back_Stabbed", true);
+                }
+            }
+            else if (Physics.Raycast(inputHandler.criticalAttackRayCastStartPoint.position, 
+            transform.TransformDirection(Vector3.forward), out hit, 0.7f, riposteLayer))
+            {
+                CharacterManager enemyCharacterManager = hit.transform.gameObject.GetComponentInParent<CharacterManager>();
+                
+                if (enemyCharacterManager != null && enemyCharacterManager.canBeRiposted)
+                {                
+                    playerManager.transform.position = enemyCharacterManager.riposteCollider.criticalDamageStandPosition.position;
+
+                    Vector3 rotationDirection = playerManager.transform.root.eulerAngles;
+                    rotationDirection = hit.transform.position - playerManager.transform.position;
+                    rotationDirection.y = 0;
+                    rotationDirection.Normalize();
+                    Quaternion tr = Quaternion.LookRotation(rotationDirection);
+                    Quaternion targetRotation = Quaternion.Slerp(playerManager.transform.rotation, tr, 500 * Time.deltaTime);
+                    playerManager.transform.rotation = targetRotation;
+
+                    playerAnimatorManager.PlayTargetAnimation("Riposte", true);
+                    enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Riposted", true);
                 }
             }
         }

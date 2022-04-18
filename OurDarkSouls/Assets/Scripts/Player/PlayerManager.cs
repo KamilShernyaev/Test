@@ -38,7 +38,7 @@ namespace SG
           playerLocomotion = GetComponent<PlayerLocomotion>();
           interactableUI = FindObjectOfType<InteractableUI>();
           cameraHandler = FindObjectOfType<CameraHandler>();
-          backStabCollider = GetComponentInChildren<BackStabCollider>();
+          backStabCollider = GetComponentInChildren<CriticalDamageCollider>();
           playerAnimatorManager = GetComponentInChildren<PlayerAnimatorManager>();
         }
 

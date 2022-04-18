@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SG{
+namespace SG
+{
     public class CharacterManager : MonoBehaviour
     {
        [Header("Lock On Transform")]
        public Transform lockOnTransform;
 
        [Header("Combat Colliders")]
-       public BoxCollider backStabBoxCollider;
-       public BackStabCollider backStabCollider;
+       public CriticalDamageCollider backStabCollider;
+       public CriticalDamageCollider riposteCollider;
+
+       [Header("Combat Flags")]
+       public bool canBeRiposted;
     }
 }
