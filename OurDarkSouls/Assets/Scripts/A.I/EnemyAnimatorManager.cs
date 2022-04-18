@@ -6,10 +6,29 @@ namespace SG
     public class EnemyAnimatorManager : AnimatorManager
     {
         EnemyManager enemyManager;
+        EnemyStats enemyStats;
         private void Awake() 
         {
             anim = GetComponent<Animator>();
             enemyManager = GetComponentInParent<EnemyManager>();
+            enemyStats = GetComponentInParent<EnemyStats>();
+        }
+
+        public void AwardSoulsOnDeath()
+        {
+            PlayerStats playerStats = FindObjectOfType<PlayerStats>();
+            SoulCountBar soulCountBar = FindObjectOfType<SoulCountBar>();
+
+            if(playerStats != null)
+            {
+                playerStats.AddSouls(enemyStats.soulsAwardedOnDeath);
+                
+                if(soulCountBar != null)
+                {
+                    soulCountBar.SetSoulCountText(playerStats.soulCount);
+                }
+            }
+
         }
 
         private void OnAnimatorMove() 
@@ -21,5 +40,6 @@ namespace SG
             Vector3 velocity = deltaPosition / delta;
             enemyManager.enemyRigidbody.velocity = velocity;
         }
+
     }
 }
