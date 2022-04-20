@@ -12,7 +12,7 @@ namespace SG
         PlayerStats playerStats;
         PlayerLocomotion playerLocomotion;
         
-        AnimatorManager playerAnimatorManager;
+        PlayerAnimatorManager playerAnimatorManager;
 
         InteractableUI interactableUI;
         public GameObject interactableUIGameObject;
@@ -53,6 +53,7 @@ namespace SG
             isInvulnerable = anim.GetBool("isInvulnerable");   
             anim.SetBool("isInAir", isInAir);    
             anim.SetBool("isDead", playerStats.isDead);
+            playerAnimatorManager.canRotate = anim.GetBool("canRotate");
 
             inputHandler.TickInput(delta);
             playerLocomotion.HandleRollingAndSprinting(delta);
@@ -65,8 +66,10 @@ namespace SG
          private void FixedUpdate() 
         {
             float delta = Time.fixedDeltaTime;
-            playerLocomotion.HandleMovement(delta);
+
             playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
+            playerLocomotion.HandleMovement(delta);
+            playerLocomotion.HandleRotation(delta);
         }
 
         private void LateUpdate() 

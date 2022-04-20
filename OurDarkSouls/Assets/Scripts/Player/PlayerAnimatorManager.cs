@@ -11,7 +11,6 @@ namespace SG
         PlayerLocomotion playerLocomotion;
         int vertical;
         int horizontal;
-        public bool canRotate;
         
         public void  Initialize() 
         {
@@ -90,12 +89,12 @@ namespace SG
 
         public void CanRotate()
         {
-            canRotate = true;
+            anim.SetBool("canRotate", true);
         }
 
         public void StopRotation()
         {
-            canRotate = false;
+            anim.SetBool("canRotate", false);
         }
     
         public void EnableCombo()
