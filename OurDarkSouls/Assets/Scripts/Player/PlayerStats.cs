@@ -83,6 +83,17 @@ namespace SG
             }
         }
 
+        public void TakeDamageNoAnimation(int damage)
+        {
+            currentHealth = currentHealth - damage;
+
+            if(currentHealth <= 0)
+            {
+                currentHealth = 0;
+                isDead = true;
+            }
+        }
+
         public void TakeStaminaDamage(int damage)
         {
             currentStamina = currentStamina - damage;

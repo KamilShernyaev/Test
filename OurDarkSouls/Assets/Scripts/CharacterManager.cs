@@ -11,5 +11,8 @@ namespace SG{
        [Header("Combat Colliders")]
        public BoxCollider backStabBoxCollider;
        public BackStabCollider backStabCollider;
+
+       public int pendingCriticalDamage;
+       
     }
 }
