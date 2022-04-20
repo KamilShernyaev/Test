@@ -11,7 +11,8 @@ namespace SG
         CameraHandler cameraHandler;
         PlayerStats playerStats;
         PlayerLocomotion playerLocomotion;
-        
+
+        CriticalDamageCollider criticalDamageCollider;
         PlayerAnimatorManager playerAnimatorManager;
 
         InteractableUI interactableUI;
@@ -38,7 +39,7 @@ namespace SG
           playerLocomotion = GetComponent<PlayerLocomotion>();
           interactableUI = FindObjectOfType<InteractableUI>();
           cameraHandler = FindObjectOfType<CameraHandler>();
-          backStabCollider = GetComponentInChildren<CriticalDamageCollider>();
+          criticalDamageCollider = GetComponentInChildren<CriticalDamageCollider>();
           playerAnimatorManager = GetComponentInChildren<PlayerAnimatorManager>();
         }
 
