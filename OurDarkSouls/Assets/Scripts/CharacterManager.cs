@@ -15,5 +15,10 @@ namespace SG
 
        [Header("Combat Flags")]
        public bool canBeRiposted;
+       public BoxCollider backStabBoxCollider;
+       public BackStabCollider backStabCollider;
+
+       public int pendingCriticalDamage;
+       
     }
 }
