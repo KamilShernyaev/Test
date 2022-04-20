@@ -77,7 +77,8 @@ namespace SG
         {            
             inputHandler.rollFlag = false;
             inputHandler.rt_input = false;
-            inputHandler.rb_input = false;          
+            inputHandler.rb_input = false;   
+            inputHandler.lt_input = false;
             inputHandler.d_Pad_Up = false;
             inputHandler.d_Pad_Down = false;
             inputHandler.d_Pad_Left = false;

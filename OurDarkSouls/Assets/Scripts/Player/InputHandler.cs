@@ -17,6 +17,7 @@ namespace SG
         public bool y_Input;
         public bool rb_input;
         public bool rt_input;
+        public bool lt_input;
         public bool critical_Attack_Input;
         public bool jump_Input;
         public bool inventory_Input;
@@ -75,6 +76,7 @@ namespace SG
                 inputActions.PlayerQuickSlots.DPadLeft.performed += i => d_Pad_Left = true;
                 inputActions.PlayerActions.RB.performed += i => rb_input = true;
                 inputActions.PlayerActions.RT.performed += i => rt_input = true;
+                inputActions.PlayerActions.LT.performed += i => lt_input = true;
                 inputActions.PlayerActions.A.performed += i => a_Input = true;
                 inputActions.PlayerActions.Roll.performed += i => b_Input = true;
                 inputActions.PlayerActions.Roll.canceled += i => b_Input = false;
@@ -154,8 +156,20 @@ namespace SG
             if(rt_input)
             {
               playerAttacker.HandleHeavyAttack(playerInventory.rightWeapon);
-
             }
+
+            if(lt_input)
+            {
+              if (twoHandFlag)
+              {
+
+              }
+              else
+              {
+                playerAttacker.HandleLTAction();
+              }
+            }
+
           }
 
            private void HandleQuickSlotsInput()

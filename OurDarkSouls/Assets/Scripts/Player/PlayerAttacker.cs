@@ -6,6 +6,7 @@ namespace SG
     public class PlayerAttacker : MonoBehaviour
     {
         PlayerManager playerManager;
+        AnimatorManager animatorHandler;
         PlayerAnimatorManager playerAnimatorManager;
         PlayerStats playerStats;
         PlayerInventory playerInventory;
@@ -97,6 +98,19 @@ namespace SG
                 PerformRBMagicAction(playerInventory.rightWeapon);
             }
         }
+
+        public void HandleLTAction()
+        {
+            if (playerInventory.leftWeapon.isShieldWeapon)
+            {
+                PerformLTWeaponArt(inputHandler.twoHandFlag);
+            }
+            else if (playerInventory.leftWeapon.isMeleeWeapon)
+            {
+
+            }
+        }
+
         #endregion
 
         #region Attack Actions
@@ -139,6 +153,22 @@ namespace SG
                         playerAnimatorManager.PlayTargetAnimation("Shrug", true);
                     }
                 }
+            }
+        }
+
+        private void PerformLTWeaponArt(bool isTwoHanding)
+        {
+            if (playerManager.isInteracting)
+                return;
+
+            if(isTwoHanding)
+            {
+                
+            }
+            else
+            {
+                //Здесь ошибка, почему-то не проигрывается анимация поднятия щита
+                animatorHandler.PlayTargetAnimation(playerInventory.leftWeapon.weapon_art, true);
             }
         }
 

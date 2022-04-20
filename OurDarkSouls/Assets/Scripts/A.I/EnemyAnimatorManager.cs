@@ -20,6 +20,26 @@ namespace SG
             enemyManager.pendingCriticalDamage = 0;
         }
 
+        public void EnableIsParrying()
+        {
+            enemyManager.isParrying = true;
+        }
+
+        public void DisableIsParrying()
+        {
+            enemyManager.isParrying = false;
+        }
+
+        public void EnableCanBePiposted()
+        {
+            enemyManager.canBeRiposted = true;
+        }
+
+        public void DisableCanBePiposted()
+        {
+            enemyManager.canBeRiposted = false;
+        }
+
         public void AwardSoulsOnDeath()
         {
             PlayerStats playerStats = FindObjectOfType<PlayerStats>();
@@ -34,7 +54,6 @@ namespace SG
                     soulCountBar.SetSoulCountText(playerStats.soulCount);
                 }
             }
-
         }
 
         private void OnAnimatorMove() 

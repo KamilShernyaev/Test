@@ -6,6 +6,7 @@ namespace SG
 {
     public class DamageCollider : MonoBehaviour
     {
+        CharacterManager characterManager;
         Collider damageCollider;
         public int currentWeaponDamage = 25;
 
@@ -15,6 +16,8 @@ namespace SG
             damageCollider.gameObject.SetActive(true);
             damageCollider.isTrigger = true;
             damageCollider.enabled = false;
+
+
         }
 
         public void EnableDamageColider()
@@ -32,6 +35,16 @@ namespace SG
             if(collision.tag == "Player")
             {
                 PlayerStats playerStats = collision.GetComponent<PlayerStats>();
+                CharacterManager enemyCharacterManager = collision.GetComponent<CharacterManager>();
+
+                if (enemyCharacterManager != null)
+                {
+                    if(enemyCharacterManager.isParrying)
+                    {
+                        characterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Parried", true);
+                        return;
+                    }
+                }
 
                 if(playerStats != null)
                 {
@@ -42,6 +55,16 @@ namespace SG
             if(collision.tag == "Enemy")
             {
                 EnemyStats enemyStats = collision.GetComponent<EnemyStats>();
+                CharacterManager enemyCharacterManager = collision.GetComponent<CharacterManager>();
+
+                if (enemyCharacterManager != null)
+                {
+                    if(enemyCharacterManager.isParrying)
+                    {
+                        characterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Parried", true);
+                        return;
+                    }
+                }               
 
                 if(enemyStats != null)
                 {

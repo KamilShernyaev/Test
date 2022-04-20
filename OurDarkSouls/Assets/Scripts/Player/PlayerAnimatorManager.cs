@@ -116,6 +116,26 @@ namespace SG
             anim.SetBool("isInvulnerable", false);
         }
 
+        public void EnableIsParrying()
+        {
+            playerManager.isParrying = true;
+        }
+
+        public void DisableIsParrying()
+        {
+            playerManager.isParrying = false;
+        }
+
+        public void EnableCanBePiposted()
+        {
+            playerManager.canBeRiposted = true;
+        }
+
+        public void DisableCanBePiposted()
+        {
+            playerManager.canBeRiposted = false;
+        }
+
         public override void TakeCriticalDamageAnimationEvent()
         {
             playerStats.TakeDamageNoAnimation(playerManager.pendingCriticalDamage);
