@@ -27,8 +27,12 @@ namespace SG
         public float detectionRadius = 20;        
         public float maximumDetectionAngle = 50;
         public float mininumDetectionAngle = -50;
-
         public float currentRecoveryTime = 0;
+
+        [Header("A.I Cobat Settings")]
+        public bool allowAIPerfomConbos;
+        public float comboLikelyHood;
+
         private void Awake() 
         {
             enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();

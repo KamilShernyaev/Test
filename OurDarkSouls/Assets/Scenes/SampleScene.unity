@@ -1238,6 +1238,8 @@ MonoBehaviour:
   maximumDetectionAngle: 50
   mininumDetectionAngle: -50
   currentRecoveryTime: 0
+  allowAIPerfomConbos: 1
+  comboLikelyHood: 100
 --- !u!114 &914934045
 MonoBehaviour:
   m_ObjectHideFlags: 0
