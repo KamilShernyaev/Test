@@ -7,6 +7,8 @@ namespace SG
     public class EnemyStats : CharacterStats
     {
         EnemyAnimatorManager enemyAnimatorManager;
+
+        public UIEnemyHealthBar enemyHealthBar;
         public int soulsAwardedOnDeath = 50;
 
         private void Awake() 
@@ -18,6 +20,7 @@ namespace SG
         {
             maxHelth = SetMaxHealthFromHealthLevel();
             currentHealth = maxHelth;
+            enemyHealthBar.SetMaxHealth(maxHelth);
         }
 
         private int SetMaxHealthFromHealthLevel()
@@ -29,6 +32,7 @@ namespace SG
         public void TakeDamageNoAnimation(int damage)
         {
             currentHealth = currentHealth - damage;
+            enemyHealthBar.SetHealth(currentHealth);
 
             if(currentHealth <= 0)
             {
@@ -43,6 +47,7 @@ namespace SG
                 return;
                 
             currentHealth = currentHealth - damage;
+            enemyHealthBar.SetHealth(currentHealth);
 
             enemyAnimatorManager.PlayTargetAnimation(damageAnimation, true);
 
