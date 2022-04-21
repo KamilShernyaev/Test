@@ -6,7 +6,6 @@ namespace SG
     public class PlayerAttacker : MonoBehaviour
     {
         PlayerManager playerManager;
-        AnimatorManager animatorHandler;
         PlayerAnimatorManager playerAnimatorManager;
         PlayerStats playerStats;
         PlayerInventory playerInventory;
@@ -168,7 +167,7 @@ namespace SG
             else
             {
                 //Здесь ошибка, почему-то не проигрывается анимация поднятия щита
-                animatorHandler.PlayTargetAnimation(playerInventory.leftWeapon.weapon_art, true);
+                playerAnimatorManager.PlayTargetAnimation(playerInventory.leftWeapon.weapon_art, true);
             }
         }
 

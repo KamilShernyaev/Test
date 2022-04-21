@@ -16,6 +16,8 @@ MonoBehaviour:
   itemName: Hammer
   modelPrefab: {fileID: 6664022221881477782, guid: ff4abace9fbb034488d74e776358cb6b, type: 3}
   isUnarmed: 0
+  baseDamage: 1
+  criticalDamageMultiplier: 4
   right_hand_idle: Right_Arm_Idle_01
   left_hand_idle: Left_Arm_Idle_01
   th_idle: TH_Idle_01
@@ -25,6 +27,7 @@ MonoBehaviour:
   TH_light_attack_01: TH_Sword_Attack_01
   TH_light_attack_02: TH_Sword_Attack_02
   TH_Heavy_attack_01: TH_Sword_Attack_03
+  weapon_art: 
   baseStamina: 0
   lightAttackMultiplier: 0
   heavyAttackMultiplier: 0
@@ -32,3 +35,4 @@ MonoBehaviour:
   isFaithCaster: 1
   isPyroCaster: 0
   isMeleeWeapon: 0
+  isShieldWeapon: 0

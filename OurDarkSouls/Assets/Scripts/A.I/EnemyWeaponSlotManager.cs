@@ -9,8 +9,6 @@ namespace SG
         public WeaponItem rightHandWeapon;
         public WeaponItem leftHandWeapon;
 
-        CharacterManager characterManager;
-
         WeaponHolderSlot rightHandSlot;
         WeaponHolderSlot leftHandSlot;
 
@@ -74,14 +72,14 @@ namespace SG
                 leftHandDamageCollider = leftHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
                 //Если убрать leftHandDamageCollider, то ошибка пропадает, так как я в этом скрипте обозначаю characterManager, хотя это лишнее 
                 //Нужно поставить leftHandDamageCollider.
-                characterManager = GetComponentInParent<CharacterManager>();
+                leftHandDamageCollider.characterManager = GetComponentInParent<CharacterManager>();
             }
             else
             {
                 rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
                 //Если убрать rightHandDamageCollider, то ошибка пропадает, так как я в этом скрипте обозначаю characterManager, хотя это лишнее
                 //Нужно поставить rightHandDamageCollider.
-                characterManager = GetComponentInParent<CharacterManager>();
+                rightHandDamageCollider.characterManager = GetComponentInParent<CharacterManager>();
             }
         }
 
