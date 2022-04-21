@@ -7,6 +7,7 @@ namespace SG
     {
         PlayerManager playerManager;
         PlayerAnimatorManager playerAnimatorManager;
+        PlayerEquipmentManager playerEquipmentManager;
         PlayerStats playerStats;
         PlayerInventory playerInventory;
         InputHandler inputHandler;
@@ -19,6 +20,7 @@ namespace SG
         private void Awake() 
         {
             playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
+            playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
             playerManager = GetComponentInParent<PlayerManager>();
             playerStats = GetComponentInParent<PlayerStats>();
             playerInventory = GetComponentInParent<PlayerInventory>();
@@ -193,6 +195,7 @@ namespace SG
                 return;
 
             playerAnimatorManager.PlayTargetAnimation("Block_Start", false, true);
+            playerEquipmentManager.OpenBlockindCollider();
             playerManager.isBlocking = true;
         }
         #endregion

@@ -37,14 +37,14 @@ namespace SG
             }
         }
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(int damage, string damageAnimation = "TakeDamage")
         {
             if(isDead)
                 return;
                 
             currentHealth = currentHealth - damage;
 
-            enemyAnimatorManager.PlayTargetAnimation("TakeDamage", true);
+            enemyAnimatorManager.PlayTargetAnimation(damageAnimation, true);
 
             if(currentHealth <= 0)
             {

@@ -61,7 +61,7 @@ namespace SG
             return maxFocusPoints;
         }
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(int damage, string damageAnimation = "TakeDamage")
         {
             if (isDead)
                 return;
@@ -73,7 +73,7 @@ namespace SG
             currentHealth = currentHealth - damage;
             healthBar.SetCurrentHealth(currentHealth);
 
-            playerAnimatorManager.PlayTargetAnimation("TakeDamage", true);
+            playerAnimatorManager.PlayTargetAnimation(damageAnimation, true);
 
             if(currentHealth <= 0)
             {
