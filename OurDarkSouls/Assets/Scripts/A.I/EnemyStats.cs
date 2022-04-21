@@ -44,7 +44,7 @@ namespace SG
                 
             currentHealth = currentHealth - damage;
 
-            enemyAnimatorManager.PlayTargetAnimation("Damage_01", true);
+            enemyAnimatorManager.PlayTargetAnimation("TakeDamage", true);
 
             if(currentHealth <= 0)
             {
