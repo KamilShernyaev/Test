@@ -17,6 +17,7 @@ namespace SG
         public bool y_Input;
         public bool rb_input;
         public bool rt_input;
+        public bool lb_input;
         public bool lt_input;
         public bool critical_Attack_Input;
         public bool jump_Input;
@@ -77,6 +78,8 @@ namespace SG
                 inputActions.PlayerActions.RB.performed += i => rb_input = true;
                 inputActions.PlayerActions.RT.performed += i => rt_input = true;
                 inputActions.PlayerActions.LT.performed += i => lt_input = true;
+                inputActions.PlayerActions.LB.performed += i => lb_input = true;
+                inputActions.PlayerActions.LB.canceled += i => lb_input = false;
                 inputActions.PlayerActions.A.performed += i => a_Input = true;
                 inputActions.PlayerActions.Roll.performed += i => b_Input = true;
                 inputActions.PlayerActions.Roll.canceled += i => b_Input = false;
@@ -98,7 +101,7 @@ namespace SG
           {
               HandleMoveInput(delta);
               HandleRollInput(delta);
-              HandleAttackInput(delta);
+              HandleCombatInput(delta);
               HandleQuickSlotsInput();
               HandleInventoryInput();
               HandleLockOnInput();
@@ -145,7 +148,7 @@ namespace SG
             }
           }
 
-          private void HandleAttackInput(float delta) 
+          private void HandleCombatInput(float delta) 
           {
 
             if(rb_input)
@@ -169,6 +172,16 @@ namespace SG
                 playerAttacker.HandleLTAction();
               }
             }
+
+            if(lb_input)
+            {
+              playerAttacker.HandleLBAction();
+            }
+            else
+            {
+              playerManager.isBlocking = false;
+            }
+
 
           }
 

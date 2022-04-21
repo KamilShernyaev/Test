@@ -98,6 +98,11 @@ namespace SG
             }
         }
 
+        public void HandleLBAction()
+        {
+            PerformLBBlockingAction();
+        }
+
         public void HandleLTAction()
         {
             if (playerInventory.leftWeapon.isShieldWeapon)
@@ -176,6 +181,20 @@ namespace SG
             playerInventory.currentSpell.SuccessfullyCastSpell(playerAnimatorManager, playerStats);
         }        
 
+        #endregion
+        
+        #region Defense Actions
+        private void PerformLBBlockingAction()
+        {
+            if(playerManager.isInteracting)
+                return;
+
+            if(playerManager.isBlocking)
+                return;
+
+            playerAnimatorManager.PlayTargetAnimation("Block_Start", false, true);
+            playerManager.isBlocking = true;
+        }
         #endregion
         public void AttemptBackStabOrRiposte()
         {
