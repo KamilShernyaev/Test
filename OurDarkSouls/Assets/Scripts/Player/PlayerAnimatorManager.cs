@@ -126,12 +126,12 @@ namespace SG
             playerManager.isParrying = false;
         }
 
-        public void EnableCanBePiposted()
+        public void EnableCanBeRiposted()
         {
             playerManager.canBeRiposted = true;
         }
 
-        public void DisableCanBePiposted()
+        public void DisableCanBeRiposted()
         {
             playerManager.canBeRiposted = false;
         }
