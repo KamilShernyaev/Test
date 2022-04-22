@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657892, g: 0.4964128, b: 0.5748173, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1813,6 +1813,7 @@ MonoBehaviour:
   mouseY: 0
   a_Input: 0
   b_Input: 0
+  x_Input: 0
   y_Input: 0
   rb_input: 0
   rt_input: 0
@@ -1939,7 +1940,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentSpell: {fileID: 11400000, guid: 333949925e15abe4e80384d8e46ef551, type: 2}
   rightWeapon: {fileID: 11400000, guid: bf88f266bca7d5f44bb6b2226abd44dc, type: 2}
-  leftWeapon: {fileID: 0}
+  leftWeapon: {fileID: 11400000, guid: 15ec4a1678263fd47b77550103fec42e, type: 2}
+  currentConsumble: {fileID: 11400000, guid: c2428dac798406942ae433d7366a2efc, type: 2}
   unarmedWeapon: {fileID: 11400000, guid: 4c55f3c1fba57aa4f8c83e6d90a00365, type: 2}
   weaponsInRightHandSlots:
   - {fileID: 11400000, guid: 4c55f3c1fba57aa4f8c83e6d90a00365, type: 2}
@@ -2768,7 +2770,7 @@ Transform:
   m_Children:
   - {fileID: 1096408646}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 42.702, y: 0, z: 0}
 --- !u!1 &1792374949
 GameObject:
@@ -10010,6 +10012,7 @@ GameObject:
   - component: {fileID: 919132148651350924}
   - component: {fileID: 919132148651350925}
   - component: {fileID: 919132148651350926}
+  - component: {fileID: 919132148651350927}
   m_Layer: 9
   m_Name: paladin_prop_j_nordstrom@Idle
   m_TagString: Untagged
@@ -10030,6 +10033,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingWeapon: {fileID: 0}
+  rightHandSlot: {fileID: 0}
   leftHandDamageCollider: {fileID: 0}
   rightHandDamageCollider: {fileID: 0}
 --- !u!114 &919132148651350925
@@ -10058,6 +10062,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockingCollider: {fileID: 56474782}
+--- !u!114 &919132148651350927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148651350923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f22197147acbf40b0fc46fbe88988f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentParticleFX: {fileID: 0}
+  instantiatedFXModel: {fileID: 0}
+  amountToBeHealed: 0
 --- !u!4 &936440892968766901
 Transform:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ namespace SG
         public WeaponItem attackingWeapon;
 
         WeaponHolderSlot leftHandSlot;
-        WeaponHolderSlot rightHandSlot;
+        public WeaponHolderSlot rightHandSlot;
         WeaponHolderSlot backSlot;
         public DamageCollider leftHandDamageCollider;
         public DamageCollider rightHandDamageCollider;
@@ -47,6 +47,12 @@ namespace SG
                     backSlot = weaponSlot;
                 }
             }
+        }
+
+        public void LoadBothWeaponOnSlots()
+        {
+            LoadWeaponOnSlot(playerInventory.rightWeapon, false);
+            LoadWeaponOnSlot(playerInventory.leftWeapon, true);
         }
 
         public void LoadWeaponOnSlot(WeaponItem weaponItem, bool isLeft)
