@@ -22,7 +22,7 @@ namespace SG
 		[TextArea]
 		public string spellDescription;
 
-		public virtual void AttemptToCastSpell(PlayerAnimatorManager playerAnimatorManager, PlayerStats playerStats)
+		public virtual void AttemptToCastSpell(PlayerAnimatorManager playerAnimatorManager, PlayerStats playerStats, WeaponSlotManager weaponSlotManager)
 		{
 			Debug.Log("You attempt to cast a spell!");
 		}

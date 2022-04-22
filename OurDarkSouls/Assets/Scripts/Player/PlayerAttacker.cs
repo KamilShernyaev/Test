@@ -152,13 +152,28 @@ namespace SG
                 {
                     if (playerStats.currentFocusPoints >= playerInventory.currentSpell.focusPointCost)
                     {
-                        playerInventory.currentSpell.AttemptToCastSpell(playerAnimatorManager, playerStats);
+                        playerInventory.currentSpell.AttemptToCastSpell(playerAnimatorManager, playerStats,weaponSlotManager);
                     }
                     else
                     {
                         playerAnimatorManager.PlayTargetAnimation("Shrug", true);
                     }
                 }
+            }
+            else if(weapon.isPyroCaster)
+            {
+                if(playerInventory.currentSpell != null && playerInventory.currentSpell.isPyroSpell)
+                {
+                    if (playerStats.currentFocusPoints >= playerInventory.currentSpell.focusPointCost)
+                    {
+                        playerInventory.currentSpell.AttemptToCastSpell(playerAnimatorManager, playerStats,weaponSlotManager);
+                    }
+                    else
+                    {
+                        playerAnimatorManager.PlayTargetAnimation("Shrug", true);
+                    }
+                }
+
             }
         }
 
