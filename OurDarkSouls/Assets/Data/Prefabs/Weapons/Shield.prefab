@@ -73,8 +73,8 @@ GameObject:
   - component: {fileID: 4774560548189036439}
   - component: {fileID: 6806469910736967249}
   - component: {fileID: 120665219727202066}
-  - component: {fileID: 5649740511775555223}
-  - component: {fileID: 1379627827287713878}
+  - component: {fileID: 5168565431926882204}
+  - component: {fileID: 2826586798817720018}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Untagged
@@ -145,7 +145,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5649740511775555223
+--- !u!64 &5168565431926882204
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,7 +159,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -1942376176107530577, guid: a2ab932325d49df4285ce0c45814891c, type: 3}
---- !u!114 &1379627827287713878
+--- !u!114 &2826586798817720018
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -29,10 +29,11 @@ namespace SG
 
         private void Update() 
         {
+            transform.rotation = Camera.main.transform.rotation;
             timeUntilBarIsHidden = timeUntilBarIsHidden - Time.deltaTime;
 
-            // if (slider != null)
-            // {
+            if (slider != null)
+            {
                 if (timeUntilBarIsHidden <= 0)
                 {
                     timeUntilBarIsHidden = 0;
@@ -50,7 +51,7 @@ namespace SG
                 {
                     Destroy(slider.gameObject);
                 }
-            // }
+            }
         }
     }
 }
