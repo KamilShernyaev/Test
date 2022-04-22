@@ -31,23 +31,26 @@ namespace SG
         {
             timeUntilBarIsHidden = timeUntilBarIsHidden - Time.deltaTime;
 
-            if (timeUntilBarIsHidden <= 0)
-            {
-                timeUntilBarIsHidden = 0;
-                slider.gameObject.SetActive(false);
-            }
-            else
-            {
-                if (!slider.gameObject.activeInHierarchy)
+            // if (slider != null)
+            // {
+                if (timeUntilBarIsHidden <= 0)
                 {
-                    slider.gameObject.SetActive(true);
+                    timeUntilBarIsHidden = 0;
+                    slider.gameObject.SetActive(false);
                 }
-            }
+                else
+                {
+                    if (!slider.gameObject.activeInHierarchy)
+                    {
+                        slider.gameObject.SetActive(true);
+                    }
+                }
 
-            if (slider.value <= 0)
-            {
-                Destroy(slider.gameObject);
-            }
+                if (slider.value <= 0)
+                {
+                    Destroy(slider.gameObject);
+                }
+            // }
         }
     }
 }
