@@ -61,7 +61,7 @@ namespace SG
             return maxFocusPoints;
         }
 
-        public void TakeDamage(int damage, string damageAnimation = "TakeDamage")
+        public override void TakeDamage(int damage, string damageAnimation = "TakeDamage")
         {
             if (isDead)
                 return;
