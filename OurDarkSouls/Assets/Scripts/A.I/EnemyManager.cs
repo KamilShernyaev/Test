@@ -33,6 +33,11 @@ namespace SG
         public bool allowAIPerfomConbos;
         public float comboLikelyHood;
 
+
+        
+        
+
+
         private void Awake() 
         {
             enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();

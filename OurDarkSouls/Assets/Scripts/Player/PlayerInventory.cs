@@ -10,6 +10,7 @@ namespace SG
         public SpellItem currentSpell;
         public WeaponItem rightWeapon;
         public WeaponItem leftWeapon;
+        public ConsumableItem currentConsumble;
         
         public WeaponItem unarmedWeapon;
 
