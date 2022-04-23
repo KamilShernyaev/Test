@@ -11,6 +11,14 @@ namespace SG
         public UIEnemyHealthBar enemyHealthBar;
         public int soulsAwardedOnDeath = 50;
 
+
+
+        public delegate void EnemyKilled();
+        public static event EnemyKilled OnEnemyKilled;
+
+
+
+
         private void Awake() 
         {
             enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
@@ -62,6 +70,16 @@ namespace SG
             currentHealth = 0;
             enemyAnimatorManager.PlayTargetAnimation("Death", true);
             isDead = true;
+
+            if (isDead == true)
+            {
+                Destroy(gameObject);
+            }
+
+            if (OnEnemyKilled != null)
+            {
+                OnEnemyKilled();
+            }
         }
     }
 }

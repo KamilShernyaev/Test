@@ -55,8 +55,8 @@ namespace SG
         UIManager uIManager;
 
         Vector2 movementInput;
-        Vector2 cameraInput;
-      
+        Vector2 cameraInput;       
+
         private void Awake() 
           {
             playerAttacker = GetComponentInChildren<PlayerAttacker>();
@@ -70,6 +70,7 @@ namespace SG
             blockingCollider = GetComponentInChildren<BlockingCollider>();
             playerAnimatorManager = GetComponentInChildren<PlayerAnimatorManager>();
           }
+
         public void OnEnable() 
           {
             if(inputActions == null)
@@ -305,10 +306,17 @@ namespace SG
           {
             if (x_Input)
             {
-              x_Input = false;
-              playerInventory.currentConsumble.AttemptToConsumeItem(playerAnimatorManager, weaponSlotManager, playerEffectsManager);
+              GameObject[] _tempFlask = GameObject.FindGameObjectsWithTag("Flask");
+              int FlasksCount = _tempFlask.Length;
+              if(FlasksCount <=0)
+              {
+                x_Input = false;
+                playerInventory.currentConsumble.AttemptToConsumeItem(playerAnimatorManager, weaponSlotManager, playerEffectsManager);
+              }
+              else
+              return;
             }
-          }
+          }          
     }
 }
 

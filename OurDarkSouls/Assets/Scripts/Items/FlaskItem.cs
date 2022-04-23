@@ -17,16 +17,16 @@ namespace SG
 
         [Header("Recovery FX")]
         public GameObject recoveryFX;
-
+        
         public override void AttemptToConsumeItem(PlayerAnimatorManager playerAnimatorManager, WeaponSlotManager weaponSlotManager, PlayerEffectsManager playerEffectsManager)
-        {            
+        {      
             base.AttemptToConsumeItem(playerAnimatorManager, weaponSlotManager, playerEffectsManager);
             GameObject flask = Instantiate(itemModel, weaponSlotManager.rightHandSlot.transform);
             playerEffectsManager.currentParticleFX = recoveryFX;
             playerEffectsManager.amountToBeHealed = healthRecoverAmount;
             playerEffectsManager.instantiatedFXModel = flask;
             weaponSlotManager.rightHandSlot.UnloadWeapon();
-            return;                
+            Destroy(flask.gameObject, 4f);                 
         }
     }
 }

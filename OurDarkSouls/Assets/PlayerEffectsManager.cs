@@ -20,10 +20,10 @@ namespace SG
         }
 
         public void HealPlayerFromEffect()
-        {
+        {            
             playerStats.HealPlayer(amountToBeHealed);
             GameObject healParticles = Instantiate(currentParticleFX, playerStats.transform);
-            Destroy(instantiatedFXModel.gameObject);
+            Destroy(healParticles.gameObject, 2f);
             weaponSlotManager.LoadBothWeaponOnSlots();
         }
     }
