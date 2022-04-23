@@ -924,7 +924,7 @@ MonoBehaviour:
   rotationSpeed: 15
   maximumAttackRange: 1.5
   canDoCombo: 0
-  detectionRadius: 50
+  detectionRadius: 20
   maximumDetectionAngle: 50
   mininumDetectionAngle: -50
   currentRecoveryTime: 0

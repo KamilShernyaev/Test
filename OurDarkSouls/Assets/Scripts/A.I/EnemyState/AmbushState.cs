@@ -23,7 +23,7 @@ namespace SG
 
 			#region  Handle Target Detection:
 
-			Collider[] colliders = Physics.OverlapSphere(enemyManager.transform.position, detectionRadius, detectionLayer);
+			Collider[] colliders = Physics.OverlapSphere(transform.transform.position, enemyManager.detectionRadius, detectionLayer);
 
 			for (int i = 0; i < colliders.Length; i++)
 			{

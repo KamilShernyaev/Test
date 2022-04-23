@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterManager: {fileID: 0}
+  enabledDamageColliderOnStartUp: 0
   currentWeaponDamage: 100
 --- !u!1 &5436648662399978531
 GameObject:

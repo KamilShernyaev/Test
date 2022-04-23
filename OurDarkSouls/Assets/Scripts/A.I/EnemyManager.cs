@@ -24,7 +24,7 @@ namespace SG
         public bool canDoCombo;
 
         [Header ("A.I. Settings")]
-        public float detectionRadius = 20;        
+        public float detectionRadius = 200;        
         public float maximumDetectionAngle = 50;
         public float mininumDetectionAngle = -50;
         public float currentRecoveryTime = 0;
