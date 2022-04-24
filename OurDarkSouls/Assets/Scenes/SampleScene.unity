@@ -3326,8 +3326,8 @@ MonoBehaviour:
   rightWeapon: {fileID: 11400000, guid: bf88f266bca7d5f44bb6b2226abd44dc, type: 2}
   leftWeapon: {fileID: 11400000, guid: 15ec4a1678263fd47b77550103fec42e, type: 2}
   currentConsumble: {fileID: 11400000, guid: c2428dac798406942ae433d7366a2efc, type: 2}
-  currentHelmetEquipment: {fileID: 11400000, guid: f49d1d56caf78d341bd401e95063e8f4, type: 2}
-  currentTorsoEquipment: {fileID: 11400000, guid: 53064b5975125ca46a7691bd06baaaa4, type: 2}
+  currentHelmetEquipment: {fileID: 11400000, guid: 2ca6e5f69a634354dbbb8c876de83e6f, type: 2}
+  currentTorsoEquipment: {fileID: 11400000, guid: ed0c40361c92c704b871f641c03df63f, type: 2}
   currentLegEquipment: {fileID: 11400000, guid: 0c3c8ba0a9e8f26429460f17efd1329b, type: 2}
   unarmedWeapon: {fileID: 11400000, guid: 4c55f3c1fba57aa4f8c83e6d90a00365, type: 2}
   weaponsInRightHandSlots:
@@ -3362,6 +3362,10 @@ MonoBehaviour:
   currentFocusPoints: 0
   soulCount: 0
   isDead: 0
+  physicalDamageAbsoptionHead: 0
+  physicalDamageAbsoptionBody: 0
+  physicalDamageAbsoptionLegs: 0
+  physicalDamageAbsoptionHand: 0
   staminaRegenerationAmount: 30
   staminaRegenTimer: 0
 --- !u!4 &1016407297 stripped

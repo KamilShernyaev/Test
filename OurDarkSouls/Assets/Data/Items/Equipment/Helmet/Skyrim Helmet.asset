@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
   itemName: Skyrim
-  physicalDefense: 0
+  physicalDefense: 3
   helmetModelName: Skyrim Helmet

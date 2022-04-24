@@ -63,14 +63,8 @@ namespace SG
 
         public override void TakeDamage(int damage, string damageAnimation = "TakeDamage")
         {
-            if (isDead)
-                return;
-
-            currentHealth = currentHealth - damage;
             if(playerManager.isInvulnerable)
                 return;
-
-            currentHealth = currentHealth - damage;
             healthBar.SetCurrentHealth(currentHealth);
 
             playerAnimatorManager.PlayTargetAnimation(damageAnimation, true);
@@ -78,8 +72,8 @@ namespace SG
             if(currentHealth <= 0)
             {
                 currentHealth = 0;
-                playerAnimatorManager.PlayTargetAnimation("Death", true);
                 isDead = true;
+                playerAnimatorManager.PlayTargetAnimation("Death", true);
             }
         }
 

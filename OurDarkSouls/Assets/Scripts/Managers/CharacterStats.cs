@@ -21,9 +21,37 @@ namespace SG
         public int soulCount = 0;
         public bool isDead;
 
-        public virtual void TakeDamage(int damage, string damageAnimation = "TakeDamage")
-        {
+        [Header("Armor Absorptions")]
+        public float physicalDamageAbsoptionHead;
+        public float physicalDamageAbsoptionBody;
+        public float physicalDamageAbsoptionLegs;
+        public float physicalDamageAbsoptionHand;
 
+
+        public virtual void TakeDamage(int physicalDamage, string damageAnimation = "TakeDamage")
+        {
+            if(isDead)
+                return;
+                float totalPhysicalDamageAbsorption = 1 - 
+                (1 - physicalDamageAbsoptionHead / 100) * 
+                (1 - physicalDamageAbsoptionBody / 100) * 
+                (1 - physicalDamageAbsoptionLegs / 100) * 
+                (1 - physicalDamageAbsoptionHand / 100);
+
+                physicalDamage = Mathf.RoundToInt(physicalDamage - (physicalDamage * totalPhysicalDamageAbsorption));
+
+                Debug.Log("Total Damage Absorption is" + totalPhysicalDamageAbsorption + "%");
+
+                float finalDamage = physicalDamage;
+                currentHealth = Mathf.RoundToInt(currentHealth - finalDamage);
+
+                Debug.Log("Total Damage Deal is" + finalDamage);
+
+                if(currentHealth <= 0)
+                {
+                    currentHealth = 0;
+                    isDead = true;
+                }
         }
     }
 }
