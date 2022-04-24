@@ -6,20 +6,31 @@ namespace SG
 {
     public class CharacterStats : MonoBehaviour
     {
-        public int healthLevel = 10;
+        
         public int maxHelth;
         public int currentHealth;
 
-        public int staminaLevel = 10;
+        
         public float maxStamina;
         public float currentStamina;
 
-        public int focusLevel = 10;
+       
         public float maxFocusPoints;
         public float currentFocusPoints;
 
         public int soulCount = 0;
         public bool isDead;
+
+        [Header("Levels")]
+        public int healthLevel = 10;
+        public int staminaLevel = 10;
+        public int focusLevel = 10;
+        public int poiseLevel = 10;
+        public int strengthLevel = 10;
+        public int dexeterityLevel = 10;
+        public int intelligenceLevel = 10;
+        public int faithLevel = 10;
+
 
         [Header("Armor Absorptions")]
         public float physicalDamageAbsoptionHead;
