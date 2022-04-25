@@ -24,12 +24,6 @@ namespace SG
             enemyHealthBar.SetMaxHealth(maxHelth);
         }
 
-        private int SetMaxHealthFromHealthLevel()
-        {
-            maxHelth = healthLevel * 10;
-            return maxHelth;
-        }
-
         public override void TakeDamageNoAnimation(int damage)
         {
             base.TakeDamageNoAnimation(damage);

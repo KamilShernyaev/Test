@@ -7,12 +7,11 @@ namespace SG
 {
     public class UIManager : MonoBehaviour
     {
-        public PlayerInventoryManager playerInventoryManager;
         PlayerManager playerManager;
         public EquipmentWindowUI equipmentWindowUI;
 
         [Header("HUD")]
-        public Text soulCount;
+        public Text currentSoulCount;
 
         [Header("UI Windows")]
         public GameObject hudWindow;
@@ -40,8 +39,8 @@ namespace SG
         private void Start() 
         {
             weaponInventorySlots = weaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>(); 
-            equipmentWindowUI.LoadWeaponOnEquipmentScreen(playerManager.playerInventory);
-            soulCount.text = playerManager.playerStats.currentSoulCount.ToString();
+            equipmentWindowUI.LoadWeaponOnEquipmentScreen(playerManager.playerInventoryManager);
+            currentSoulCount.text = playerManager.playerStatsManager.currentSoulCount.ToString();
         }
 
         public void UpdateUI()
@@ -49,14 +48,14 @@ namespace SG
             #region Weapon Inventory Slots;
             for (int i = 0; i < weaponInventorySlots.Length; i++)
             {
-                if (i < playerManager.playerInventory.weaponsInventory.Count)
+                if (i < playerManager.playerInventoryManager.weaponsInventory.Count)
                 {
-                    if (weaponInventorySlots.Length < playerManager.playerInventory.weaponsInventory.Count)
+                    if (weaponInventorySlots.Length < playerManager.playerInventoryManager.weaponsInventory.Count)
                     {
                         Instantiate(weaponInventorySlotPrefab, weaponInventorySlotsParent);
                         weaponInventorySlots = weaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
                     }
-                    weaponInventorySlots[i].AddItem(playerManager.playerInventory.weaponsInventory[i]);
+                    weaponInventorySlots[i].AddItem(playerManager.playerInventoryManager.weaponsInventory[i]);
                 }
                 else
                 {

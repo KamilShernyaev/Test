@@ -12,7 +12,8 @@ namespace SG
         public Animator animator;
         public UIManager uIManager;
         public CameraHandler cameraHandler;
-        public PlayerStatsManager playerStatsManagerManager;
+        public PlayerStatsManager playerStatsManager;
+        public PlayerInventoryManager playerInventoryManager;
         public PlayerLocomotionManager playerLocomotionManager;
 
         public CriticalDamageCollider criticalDamageCollider;
@@ -27,7 +28,7 @@ namespace SG
           uIManager = FindObjectOfType<UIManager>();
           inputHandler = GetComponent<InputHandler>();
           animator = GetComponent<Animator>();
-          playerStatsManagerManager = GetComponent<PlayerStatsManager>();
+          playerStatsManager = GetComponent<PlayerStatsManager>();
           playerLocomotionManager = GetComponent<PlayerLocomotionManager>();
           interactableUI = FindObjectOfType<InteractableUI>();
           cameraHandler = FindObjectOfType<CameraHandler>();
@@ -46,13 +47,13 @@ namespace SG
             isInvulnerable = animator.GetBool("isInvulnerable");   
             animator.SetBool("isBlocking",isBlocking);
             animator.SetBool("isInAir", isInAir);    
-            animator.SetBool("isDead", playerStatsManagerManager.isDead);
+            animator.SetBool("isDead", playerStatsManager.isDead);
             playerAnimatorManager.canRotate = animator.GetBool("canRotate");
 
             inputHandler.TickInput(delta);
             playerLocomotionManager.HandleRollingAndSprinting(delta);
             playerLocomotionManager.HandleJumping();
-            playerStatsManagerManager.RegenerateStamina();
+            playerStatsManager.RegenerateStamina();
 
             CheckForInteractableObject();
         }

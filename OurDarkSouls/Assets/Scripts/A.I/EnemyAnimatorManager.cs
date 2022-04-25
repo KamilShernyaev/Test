@@ -24,7 +24,7 @@ namespace SG
                 
                 if(soulCountBar != null)
                 {
-                    soulCountBar.SetSoulCountText(playerStatsManager.soulCount);
+                    soulCountBar.SetSoulCountText(playerStatsManager.currentSoulCount);
                 }
             }
         }

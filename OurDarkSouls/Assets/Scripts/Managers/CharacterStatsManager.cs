@@ -18,9 +18,12 @@ namespace SG
         public float maxFocusPoints;
         public float currentFocusPoints;
 
-        public int soulCount = 0;
+        public int currentSoulCount = 0;
         public int soulsAwardedOnDeath = 50;
         public bool isDead;
+        
+        [Header("Character Level")]
+        public int playerLevel = 1;
 
         [Header("Levels")]
         public int healthLevel = 10;
@@ -76,7 +79,24 @@ namespace SG
                 currentHealth = 0;
                 isDead = true;
             }
+        }
+        
+        public int SetMaxHealthFromHealthLevel()
+        {
+            maxHelth = healthLevel * 10;
+            return maxHelth;
+        }
 
+        public float SetMaxStaminaFromStaminaLevel()
+        {
+            maxStamina = staminaLevel * 10;
+            return maxStamina;
+        }
+
+        public float SetMaxFocusPointsFromFocusLevel()
+        {
+            maxFocusPoints = focusLevel * 10;
+            return maxFocusPoints;
         }
     }
 }

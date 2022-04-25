@@ -9,9 +9,9 @@ namespace SG
     {
         public Text soulCountText;
     
-        public void SetSoulCountText(int soulCount)
+        public void SetSoulCountText(int currentSoulCount)
         {
-            soulCountText.text = soulCount.ToString();
+            soulCountText.text = currentSoulCount.ToString();
         }
     }
 }
