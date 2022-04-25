@@ -43,24 +43,6 @@ namespace SG
 
         }
 
-        private int SetMaxHealthFromHealthLevel()
-        {
-            maxHelth = healthLevel * 10;
-            return maxHelth;
-        }
-
-        private float SetMaxStaminaFromStaminaLevel()
-        {
-            maxStamina = staminaLevel * 10;
-            return maxStamina;
-        }
-
-        private float SetMaxFocusPointsFromFocusLevel()
-        {
-            maxFocusPoints = focusLevel * 10;
-            return maxFocusPoints;
-        }
-
         public override void TakeDamage(int damage, string damageAnimation = "TakeDamage")
         {
             if (isDead)
@@ -143,7 +125,7 @@ namespace SG
     
         public void AddSouls(int souls)
         {
-            soulCount = soulCount + souls;
+            currentSoulCount = currentSoulCount + souls;
         }
     }
 }
