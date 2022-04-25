@@ -39,10 +39,11 @@ namespace SG
         public float physicalDamageAbsoptionHand;
 
 
-        public virtual void TakeDamage(int physicalDamage, string damageAnimation = "TakeDamage")
+        public virtual void TakeDamage(int physicalDamage, string damageAnimation = "Damage_01")
         {
             if(isDead)
                 return;
+                
                 float totalPhysicalDamageAbsorption = 1 - 
                 (1 - physicalDamageAbsoptionHead / 100) * 
                 (1 - physicalDamageAbsoptionBody / 100) * 

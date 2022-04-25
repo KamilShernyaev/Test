@@ -52,9 +52,7 @@ namespace SG
         public override void TakeDamage(int damage, string damageAnimation = "Damage_01")
         {
             base.TakeDamage(damage, damageAnimation = "Damage_01");
-
             enemyHealthBar.SetHealth(currentHealth);
-
             enemyAnimatorManager.PlayTargetAnimation(damageAnimation, true);
 
             if(currentHealth <= 0)

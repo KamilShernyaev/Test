@@ -65,8 +65,9 @@ namespace SG
         {
             if(playerManager.isInvulnerable)
                 return;
-            healthBar.SetCurrentHealth(currentHealth);
 
+            base.TakeDamage(damage, damageAnimation = "TakeDamage");
+            healthBar.SetCurrentHealth(currentHealth);
             playerAnimatorManager.PlayTargetAnimation(damageAnimation, true);
 
             if(currentHealth <= 0)
