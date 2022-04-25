@@ -24,20 +24,20 @@ namespace SG
 
 		public virtual void AttemptToCastSpell(
 			PlayerAnimatorManager playerAnimatorManager, 
-			PlayerStats playerStats, 
-			WeaponSlotManager weaponSlotManager)
+			PlayerStatsManager playerStatsManager, 
+			PlayerWeaponSlotManager playerWeaponSlotManager)
 		{
 			Debug.Log("You attempt to cast a spell!");
 		}
 
 		public virtual void SuccessfullyCastSpell(
 			PlayerAnimatorManager playerAnimatorManager, 
-			PlayerStats playerStats, 
+			PlayerStatsManager playerStatsManager, 
 			CameraHandler cameraHandler, 
-			WeaponSlotManager weaponSlotManager)
+			PlayerWeaponSlotManager playerWeaponSlotManager)
 		{
 			Debug.Log("You successfully cast a spell");
-			playerStats.DeductFocusPoints(focusPointCost);
+			playerStatsManager.DeductFocusPoints(focusPointCost);
 		}
 	}
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7361019564062458801}
   - component: {fileID: 6496600106064011906}
   m_Layer: 0
-  m_Name: Unarmed2
+  m_Name: Damage Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b1df01a776c32c4099dc4dd0f041719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterManager: {fileID: 0}
+  enabledDamageColliderOnStartUp: 0
   currentWeaponDamage: 25
 --- !u!65 &6496600106064011906
 BoxCollider:

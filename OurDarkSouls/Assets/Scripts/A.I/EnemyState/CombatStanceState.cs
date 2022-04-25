@@ -9,7 +9,7 @@ namespace SG
         public AttackState attackState;
         public PursueTargetState pursueTargetState;
         
-        public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
+        public override State Tick(EnemyManager enemyManager, EnemyStatsManager enemyStatsManager, EnemyAnimatorManager enemyAnimatorManager)
         {
             if (enemyManager.isInteracting)
                 return this;
@@ -20,7 +20,7 @@ namespace SG
 
             if (enemyManager.isPreformingAction)
             {
-                enemyAnimatorManager.anim.SetFloat("Vertical", 0, 0.01f, Time.deltaTime);
+                enemyAnimatorManager.animator.SetFloat("Vertical", 0, 0.01f, Time.deltaTime);
             }
 
             if (enemyManager.currentRecoveryTime <= 0 && distanceFromTarget <= enemyManager.maximumAttackRange)

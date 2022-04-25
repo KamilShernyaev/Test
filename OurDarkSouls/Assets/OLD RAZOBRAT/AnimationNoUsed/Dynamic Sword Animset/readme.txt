@@ -2,20 +2,20 @@ Dynamic Sword Animset Ver.1.0
 
 ========================================================
 
-This is an animation package created based on the Unity Humanoid Mecanim animation system structure. 
-Based on the basic movements of a character equipped with a sword and shield, it contains animations for a variety of different types of battle motions including attack, damage, roll, and dash. This animation package is designed to make your game more dynamic and stylish. 
-This animation package contains animations for a total of 156 different motions, which are classified into Inplace and RootMotion.
+This is an animatoration package created based on the Unity Humanoid Mecanimator animatoration system structure. 
+Based on the basic movements of a character equipped with a sword and shield, it contains animatorations for a variety of different types of battle motions including attack, damage, roll, and dash. This animatoration package is designed to make your game more dynamic and stylish. 
+This animatoration package contains animatorations for a total of 156 different motions, which are classified into Inplace and RootMotion.
 
 
 Http://www.blue-island.kr
 
-contact us : animation@blue-island.kr
+contact us : animatoration@blue-island.kr
 
 ========================================================
 
 Blueisland Animset Viewer
 https://play.google.com/store/apps/details?id=com.blueisland.BiAViewer
-https://itunes.apple.com/app/blueisland-animset-viewer/id1018645275?mt=8
+https://itunes.apple.com/app/blueisland-animatorset-viewer/id1018645275?mt=8
 
 ========================================================
 

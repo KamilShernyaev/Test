@@ -11,7 +11,7 @@ using System.Collections;
         public Vector3 impactNormal; //Used to rotate impactparticle.
     
         private bool hasCollided = false;
-        CharacterStats spellTarget;
+        CharacterStatsManager spellTarget;
 
         void Start()
         {
@@ -28,7 +28,7 @@ using System.Collections;
         {
             if (!hasCollided)
             {
-                spellTarget = other.transform.GetComponent<CharacterStats>();
+                spellTarget = other.transform.GetComponent<CharacterStatsManager>();
                 
                 if(spellTarget != null)
                     {

@@ -4,31 +4,14 @@ using UnityEngine;
 
 namespace SG
 {
-    public class EnemyWeaponSlotManager : MonoBehaviour
+    public class EnemyWeaponSlotManager : CharacterWeaponSlotManager
     {
         public WeaponItem rightHandWeapon;
         public WeaponItem leftHandWeapon;
 
-        WeaponHolderSlot rightHandSlot;
-        WeaponHolderSlot leftHandSlot;
-
-        DamageCollider leftHandDamageCollider;
-        DamageCollider rightHandDamageCollider;
-
         private void Awake() 
         {
-            WeaponHolderSlot[] weaponHolderSlots = GetComponentsInChildren<WeaponHolderSlot>();
-            foreach (WeaponHolderSlot weaponSlot in weaponHolderSlots)
-            {
-                if(weaponSlot.isLeftHandSlot)
-                {
-                    leftHandSlot = weaponSlot;
-                }
-                else if(weaponSlot.isRightHandSlot)
-                {
-                    rightHandSlot = weaponSlot;
-                }
-            }
+            LoadWeaponHolderSlots();
         }
 
         private void Start() 
@@ -36,7 +19,7 @@ namespace SG
             LoadWeaponsOnBothHands();
         }
 
-        public void LoadWeaponOnSlot(WeaponItem weapon, bool isLeft)
+        private void LoadWeaponOnSlot(WeaponItem weapon, bool isLeft)
         {
             if (isLeft)
             {
@@ -49,6 +32,22 @@ namespace SG
                rightHandSlot.currentWeapon = weapon;
                rightHandSlot.LoadWeaponModel(weapon);
                 LoadWeaponDamageCollider(false);
+            }
+        }
+
+        private void LoadWeaponHolderSlots()
+        {
+            WeaponHolderSlot[] weaponHolderSlots = GetComponentsInChildren<WeaponHolderSlot>();
+            foreach (WeaponHolderSlot weaponSlot in weaponHolderSlots)
+            {
+                if(weaponSlot.isLeftHandSlot)
+                {
+                    leftHandSlot = weaponSlot;
+                }
+                else if(weaponSlot.isRightHandSlot)
+                {
+                    rightHandSlot = weaponSlot;
+                }
             }
         }
 
@@ -105,11 +104,11 @@ namespace SG
 
         public void EnableCombo()
         {
-            // anim.SetBool("canDoCombo", true);
+            // animator.SetBool("canDoCombo", true);
         }
         public void DisableCombo()
         {
-            // anim.SetBool("canDoCombo", false);
+            // animator.SetBool("canDoCombo", false);
         }
     }
 }

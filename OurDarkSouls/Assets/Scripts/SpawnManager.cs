@@ -16,7 +16,7 @@ namespace SG
 
         private void OnEnable() 
         {
-            EnemyStats.OnEnemyKilled += SpwanNewEnemy;
+            EnemyStatsManager.OnEnemyKilled += SpwanNewEnemy;
         }
 
         private void SpwanNewEnemy()

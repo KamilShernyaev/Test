@@ -4,24 +4,17 @@ using UnityEngine;
 
 namespace SG
 {
-    public class EnemyStats : CharacterStats
+    public class EnemyStatsManager : CharacterStatsManager
     {
         EnemyAnimatorManager enemyAnimatorManager;
-
         public UIEnemyHealthBar enemyHealthBar;
-        public int soulsAwardedOnDeath = 50;
-
-
 
         public delegate void EnemyKilled();
         public static event EnemyKilled OnEnemyKilled;
 
-
-
-
         private void Awake() 
         {
-            enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
+            enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
         }
 
         void Start()
@@ -37,16 +30,10 @@ namespace SG
             return maxHelth;
         }
 
-        public void TakeDamageNoAnimation(int damage)
+        public override void TakeDamageNoAnimation(int damage)
         {
-            currentHealth = currentHealth - damage;
+            base.TakeDamageNoAnimation(damage);
             enemyHealthBar.SetHealth(currentHealth);
-
-            if(currentHealth <= 0)
-            {
-                currentHealth = 0;
-                isDead = true;
-            }
         }
 
         public override void TakeDamage(int damage, string damageAnimation = "Damage_01")

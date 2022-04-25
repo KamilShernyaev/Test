@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace SG 
 {
-    public class PlayerAttacker : MonoBehaviour
+    public class PlayerCombatManager : MonoBehaviour
     {
         CameraHandler cameraHandler;
         PlayerManager playerManager;
         PlayerAnimatorManager playerAnimatorManager;
         PlayerEquipmentManager playerEquipmentManager;
-        PlayerStats playerStats;
-        PlayerInventory playerInventory;
+        PlayerStatsManager playerStatsManager;
+        PlayerInventoryManager playerInventoryManager;
         InputHandler inputHandler;
-        WeaponSlotManager weaponSlotManager;
+        PlayerWeaponSlotManager playerWeaponSlotManager;
         public string lastAttack;
 
         LayerMask backStabLayer = 1 << 12;
@@ -23,21 +23,21 @@ namespace SG
             cameraHandler = FindObjectOfType<CameraHandler>();
             playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
             playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
-            playerManager = GetComponentInParent<PlayerManager>();
-            playerStats = GetComponentInParent<PlayerStats>();
-            playerInventory = GetComponentInParent<PlayerInventory>();
-            weaponSlotManager = GetComponent<WeaponSlotManager>();
-            inputHandler = GetComponentInParent<InputHandler>();
+            playerManager = GetComponent<PlayerManager>();
+            playerStatsManager = GetComponent<PlayerStatsManager>();
+            playerInventoryManager = GetComponent<PlayerInventoryManager>();
+            playerWeaponSlotManager = GetComponent<PlayerWeaponSlotManager>();
+            inputHandler = GetComponent<InputHandler>();
         }
 
         public void HandleWeaponCombo(WeaponItem weapon)
         {
-            if(playerStats.currentStamina <= 0)
+            if(playerStatsManager.currentStamina <= 0)
                 return;
 
             if(inputHandler.comboFlag)
             {
-                playerAnimatorManager.anim.SetBool("canDoCombo", false);
+                playerAnimatorManager.animator.SetBool("canDoCombo", false);
 
                 if(lastAttack == weapon.OH_Light_Attack_1)
                 {
@@ -53,10 +53,10 @@ namespace SG
         
         public void HandleLightAttack(WeaponItem weapon)
         {
-            if(playerStats.currentStamina <= 0)
+            if(playerStatsManager.currentStamina <= 0)
                 return;
 
-            weaponSlotManager.attackingWeapon = weapon;
+            playerWeaponSlotManager.attackingWeapon = weapon;
 
             if(inputHandler.twoHandFlag)
             {
@@ -72,10 +72,10 @@ namespace SG
 
         public void HandleHeavyAttack(WeaponItem weapon)
         {
-            if(playerStats.currentStamina <= 0)
+            if(playerStatsManager.currentStamina <= 0)
                 return;
 
-            weaponSlotManager.attackingWeapon = weapon;
+            playerWeaponSlotManager.attackingWeapon = weapon;
 
             if(inputHandler.twoHandFlag)
             {
@@ -92,13 +92,13 @@ namespace SG
         #region Input Actions 
         public void HandleRBAction()
         {
-            if(playerInventory.rightWeapon.isMeleeWeapon)
+            if(playerInventoryManager.rightWeapon.isMeleeWeapon)
             {
                 PerformRBMeleeAction();
             }
-            else if(playerInventory.rightWeapon.isSpellCaster || playerInventory.rightWeapon.isFaithCaster || playerInventory.rightWeapon.isPyroCaster)
+            else if(playerInventoryManager.rightWeapon.isSpellCaster || playerInventoryManager.rightWeapon.isFaithCaster || playerInventoryManager.rightWeapon.isPyroCaster)
             {
-                PerformRBMagicAction(playerInventory.rightWeapon);
+                PerformRBMagicAction(playerInventoryManager.rightWeapon);
             }
         }
 
@@ -109,11 +109,11 @@ namespace SG
 
         public void HandleLTAction()
         {
-            if (playerInventory.leftWeapon.isShieldWeapon)
+            if (playerInventoryManager.leftWeapon.isShieldWeapon)
             {
                 PerformLTWeaponArt(inputHandler.twoHandFlag);
             }
-            else if (playerInventory.leftWeapon.isMeleeWeapon)
+            else if (playerInventoryManager.leftWeapon.isMeleeWeapon)
             {
 
             }
@@ -127,7 +127,7 @@ namespace SG
             if(playerManager.canDoCombo)
             {
                 inputHandler.comboFlag = true;
-                HandleWeaponCombo(playerInventory.rightWeapon);
+                HandleWeaponCombo(playerInventoryManager.rightWeapon);
                 inputHandler.comboFlag = false;
             }
             else 
@@ -138,8 +138,8 @@ namespace SG
                 if(playerManager.canDoCombo)
                     return;
 
-                playerAnimatorManager.anim.SetBool("isUsingRightHand", true);
-                HandleLightAttack(playerInventory.rightWeapon);
+                playerAnimatorManager.animator.SetBool("isUsingRightHand", true);
+                HandleLightAttack(playerInventoryManager.rightWeapon);
             }
         }
         
@@ -150,11 +150,11 @@ namespace SG
                 
             if(weapon.isFaithCaster)
             {
-                if(playerInventory.currentSpell != null && playerInventory.currentSpell.isFaithSpell)
+                if(playerInventoryManager.currentSpell != null && playerInventoryManager.currentSpell.isFaithSpell)
                 {
-                    if (playerStats.currentFocusPoints >= playerInventory.currentSpell.focusPointCost)
+                    if (playerStatsManager.currentFocusPoints >= playerInventoryManager.currentSpell.focusPointCost)
                     {
-                        playerInventory.currentSpell.AttemptToCastSpell(playerAnimatorManager, playerStats,weaponSlotManager);
+                        playerInventoryManager.currentSpell.AttemptToCastSpell(playerAnimatorManager, playerStatsManager,playerWeaponSlotManager);
                     }
                     else
                     {
@@ -164,11 +164,11 @@ namespace SG
             }
             else if(weapon.isPyroCaster)
             {
-                if(playerInventory.currentSpell != null && playerInventory.currentSpell.isPyroSpell)
+                if(playerInventoryManager.currentSpell != null && playerInventoryManager.currentSpell.isPyroSpell)
                 {
-                    if (playerStats.currentFocusPoints >= playerInventory.currentSpell.focusPointCost)
+                    if (playerStatsManager.currentFocusPoints >= playerInventoryManager.currentSpell.focusPointCost)
                     {
-                        playerInventory.currentSpell.AttemptToCastSpell(playerAnimatorManager, playerStats,weaponSlotManager);
+                        playerInventoryManager.currentSpell.AttemptToCastSpell(playerAnimatorManager, playerStatsManager,playerWeaponSlotManager);
                     }
                     else
                     {
@@ -191,14 +191,14 @@ namespace SG
             else
             {
                 //Здесь ошибка, почему-то не проигрывается анимация поднятия щита
-                playerAnimatorManager.PlayTargetAnimation(playerInventory.leftWeapon.weapon_art, true);
+                playerAnimatorManager.PlayTargetAnimation(playerInventoryManager.leftWeapon.weapon_art, true);
             }
         }
 
         private void SuccessfullyCastSpell()
         {
-            playerInventory.currentSpell.SuccessfullyCastSpell(playerAnimatorManager, playerStats, cameraHandler, weaponSlotManager);
-            playerAnimatorManager.anim.SetBool("isFiringSpell", true);
+            playerInventoryManager.currentSpell.SuccessfullyCastSpell(playerAnimatorManager, playerStatsManager, cameraHandler, playerWeaponSlotManager);
+            playerAnimatorManager.animator.SetBool("isFiringSpell", true);
         }        
 
         #endregion
@@ -225,7 +225,7 @@ namespace SG
             transform.TransformDirection(Vector3.forward), out hit, 0.5f, backStabLayer))
             {
                 CharacterManager enemyCharacterManager = hit.transform.gameObject.GetComponentInParent<CharacterManager>();
-                DamageCollider rightWeapon = weaponSlotManager.rightHandDamageCollider;
+                DamageCollider rightWeapon = playerWeaponSlotManager.rightHandDamageCollider;
 
                 if (enemyCharacterManager != null)
                 {
@@ -239,7 +239,7 @@ namespace SG
                     Quaternion targetRotation = Quaternion.Slerp(playerManager.transform.rotation, tr, 500 * Time.deltaTime);
                     playerManager.transform.rotation = targetRotation;
 
-                    int criticalDamage = playerInventory.rightWeapon.criticalDamageMultiplier * rightWeapon.currentWeaponDamage;
+                    int criticalDamage = playerInventoryManager.rightWeapon.criticalDamageMultiplier * rightWeapon.currentWeaponDamage;
                     enemyCharacterManager.pendingCriticalDamage = criticalDamage;
 
                     playerAnimatorManager.PlayTargetAnimation("Back_Stab", true);

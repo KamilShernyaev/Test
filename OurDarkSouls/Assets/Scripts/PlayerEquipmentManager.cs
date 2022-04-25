@@ -7,12 +7,15 @@ namespace SG
     public class PlayerEquipmentManager : MonoBehaviour
     {
         InputHandler inputHandler;
-        PlayerInventory playerInventory;
-        PlayerStats playerStats;
+        PlayerInventoryManager playerInventoryManager;
+        PlayerStatsManager playerStatsManager;
 
         [Header("Equipment Model Changers")]
+        //Head Equipment
         HelmetModelChanger helmetModelChanger;
+        //Torso Equipment
         TorsoModelChanger torsoModelChanger;
+        //Leg Equipment
         HipModelChanger hipModelChanger;
         LeftLegModelChanger leftLegModelChanger;
         RightLegModelChanger rightLegModelChanger;
@@ -28,9 +31,9 @@ namespace SG
 
         private void Awake() 
         {
-            inputHandler = GetComponentInParent<InputHandler>();
-            playerInventory = GetComponentInParent<PlayerInventory>();   
-            playerStats = GetComponentInParent<PlayerStats>();
+            inputHandler = GetComponent<InputHandler>();
+            playerInventoryManager = GetComponent<PlayerInventoryManager>();   
+            playerStatsManager = GetComponent<PlayerStatsManager>();
 
             helmetModelChanger = GetComponentInChildren<HelmetModelChanger>();
             torsoModelChanger = GetComponentInChildren<TorsoModelChanger>();
@@ -48,51 +51,51 @@ namespace SG
         {
              //HELMET EQUIPMENT
             helmetModelChanger.UnEquipAllHelmetModels();
-            if(playerInventory.currentHelmetEquipment != null)
+            if(playerInventoryManager.currentHelmetEquipment != null)
             {
                 nakedHeadModel.SetActive(false);
-                helmetModelChanger.EquipHelmetModelByName(playerInventory.currentHelmetEquipment.helmetModelName);
-                playerStats.physicalDamageAbsoptionHead = playerInventory.currentHelmetEquipment.physicalDefense;
-                Debug.Log("Head Absorption is" + playerStats.physicalDamageAbsoptionHead + "%");
+                helmetModelChanger.EquipHelmetModelByName(playerInventoryManager.currentHelmetEquipment.helmetModelName);
+                playerStatsManager.physicalDamageAbsoptionHead = playerInventoryManager.currentHelmetEquipment.physicalDefense;
+                Debug.Log("Head Absorption is" + playerStatsManager.physicalDamageAbsoptionHead + "%");
             }
             else
             {
                 nakedHeadModel.SetActive(true);
-                playerStats.physicalDamageAbsoptionHead = 0;
+                playerStatsManager.physicalDamageAbsoptionHead = 0;
             }
 
              //TORSO EQUIPMENT
             torsoModelChanger.UnEquipAllTorsoModels();
-            if(playerInventory.currentTorsoEquipment != null)
+            if(playerInventoryManager.currentTorsoEquipment != null)
             {
-                torsoModelChanger.EquipTorsoModelByName(playerInventory.currentTorsoEquipment.torsoModelName);
-                playerStats.physicalDamageAbsoptionBody = playerInventory.currentTorsoEquipment.physicalDefense;
-                Debug.Log("Torso Absorption is" + playerStats.physicalDamageAbsoptionBody + "%");
+                torsoModelChanger.EquipTorsoModelByName(playerInventoryManager.currentTorsoEquipment.torsoModelName);
+                playerStatsManager.physicalDamageAbsoptionBody = playerInventoryManager.currentTorsoEquipment.physicalDefense;
+                Debug.Log("Torso Absorption is" + playerStatsManager.physicalDamageAbsoptionBody + "%");
             }
             else
             {
                 torsoModelChanger.EquipTorsoModelByName(nakedTorsoModel);
-                playerStats.physicalDamageAbsoptionBody = 0;
+                playerStatsManager.physicalDamageAbsoptionBody = 0;
             }
 
              //LEG EQUIPMENT
             hipModelChanger.UnEquipAllHipModels();
             leftLegModelChanger.UnEquipAllLegModels();
             rightLegModelChanger.UnEquipAllLegModels();
-            if(playerInventory.currentLegEquipment != null)
+            if(playerInventoryManager.currentLegEquipment != null)
             {
-                hipModelChanger.EquipHipModelByName(playerInventory.currentLegEquipment.hipModelName);
-                leftLegModelChanger.EquipLegModelByName(playerInventory.currentLegEquipment.leftLegName);
-                rightLegModelChanger.EquipLegModelByName(playerInventory.currentLegEquipment.rightLegName);
-                playerStats.physicalDamageAbsoptionLegs = playerInventory.currentLegEquipment.physicalDefense;
-                Debug.Log("Hip Absorption is" + playerStats.physicalDamageAbsoptionLegs + "%");
+                hipModelChanger.EquipHipModelByName(playerInventoryManager.currentLegEquipment.hipModelName);
+                leftLegModelChanger.EquipLegModelByName(playerInventoryManager.currentLegEquipment.leftLegName);
+                rightLegModelChanger.EquipLegModelByName(playerInventoryManager.currentLegEquipment.rightLegName);
+                playerStatsManager.physicalDamageAbsoptionLegs = playerInventoryManager.currentLegEquipment.physicalDefense;
+                Debug.Log("Hip Absorption is" + playerStatsManager.physicalDamageAbsoptionLegs + "%");
             } 
             else
             {
                 hipModelChanger.EquipHipModelByName(nakedHipModel);
                 leftLegModelChanger.EquipLegModelByName(nakedLeftLeg);
                 rightLegModelChanger.EquipLegModelByName(nakedRightLeg);
-                playerStats.physicalDamageAbsoptionLegs = 0;
+                playerStatsManager.physicalDamageAbsoptionLegs = 0;
             }
             //HAND EQUIPMENT
 
@@ -102,11 +105,11 @@ namespace SG
         {
             if (inputHandler.twoHandFlag)
             {
-                blockingCollider.SetColliderDamageAbsorption(playerInventory.rightWeapon);
+                blockingCollider.SetColliderDamageAbsorption(playerInventoryManager.rightWeapon);
             }
             else
             {
-                blockingCollider.SetColliderDamageAbsorption(playerInventory.leftWeapon);
+                blockingCollider.SetColliderDamageAbsorption(playerInventoryManager.leftWeapon);
 
             }
 

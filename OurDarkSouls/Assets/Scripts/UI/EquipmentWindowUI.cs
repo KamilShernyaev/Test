@@ -17,25 +17,25 @@ namespace SG
             handEquipmentSlotUI = GetComponentsInChildren<HandEquipmentSlotUI>();
         }
 
-        public void LoadWeaponOnEquipmentScreen(PlayerInventory playerInventory)
+        public void LoadWeaponOnEquipmentScreen(PlayerInventoryManager playerInventoryManager)
         {
             for( int i = 0; i < handEquipmentSlotUI.Length; i++)
             {
                 if(handEquipmentSlotUI[i].rightHandSLot01)
                 {
-                    handEquipmentSlotUI[i].AddItem(playerInventory.weaponsInRightHandSlots[0]);
+                    handEquipmentSlotUI[i].AddItem(playerInventoryManager.weaponsInRightHandSlots[0]);
                 }
                 else if (handEquipmentSlotUI[i].rightHandSLot02)
                 {
-                    handEquipmentSlotUI[i].AddItem(playerInventory.weaponsInRightHandSlots[1]);
+                    handEquipmentSlotUI[i].AddItem(playerInventoryManager.weaponsInRightHandSlots[1]);
                 }
                 else if(handEquipmentSlotUI[i].leftHandSLot01)
                 {
-                    handEquipmentSlotUI[i].AddItem(playerInventory.weaponsInLeftHandSlots[0]);
+                    handEquipmentSlotUI[i].AddItem(playerInventoryManager.weaponsInLeftHandSlots[0]);
                 }
                 else
                 {
-                    handEquipmentSlotUI[i].AddItem(playerInventory.weaponsInLeftHandSlots[1]);
+                    handEquipmentSlotUI[i].AddItem(playerInventoryManager.weaponsInLeftHandSlots[1]);
                 }
             }
         }

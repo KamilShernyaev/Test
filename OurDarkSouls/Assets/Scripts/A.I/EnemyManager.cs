@@ -8,20 +8,16 @@ namespace SG
     {
         EnemyLocomotionManager enemyLocomotionManager;
         EnemyAnimatorManager enemyAnimationManager;
-        EnemyStats enemyStats;
+        EnemyStatsManager enemyStatsManager;
 
         public State currentState;   //Новое
-        public CharacterStats currentTarget; //Новое
+        public CharacterStatsManager currentTarget; //Новое
         public NavMeshAgent navMeshAgent;
         public Rigidbody enemyRigidbody;
 
         public bool isPreformingAction; 
-        public bool isInteracting;
         public float rotationSpeed = 15;
         public float maximumAttackRange = 1.5f;
-
-        [Header("Combat Flags")]
-        public bool canDoCombo;
 
         [Header ("A.I. Settings")]
         public float detectionRadius = 200;        
@@ -41,9 +37,9 @@ namespace SG
         private void Awake() 
         {
             enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
-            enemyStats = GetComponent<EnemyStats>();
+            enemyStatsManager = GetComponent<EnemyStatsManager>();
             enemyRigidbody = GetComponent<Rigidbody>();
-            enemyAnimationManager = GetComponentInChildren<EnemyAnimatorManager>();
+            enemyAnimationManager = GetComponent<EnemyAnimatorManager>();
             navMeshAgent = GetComponentInChildren<NavMeshAgent>();
             navMeshAgent.enabled = false;
         }
@@ -58,9 +54,9 @@ namespace SG
             HandleRecoveryTimer();
             HandleStateMachine();
 
-            isInteracting = enemyAnimationManager.anim.GetBool("isInteracting");
-            canDoCombo = enemyAnimationManager.anim.GetBool("canDoCombo");
-            enemyAnimationManager.anim.SetBool("isDead", enemyStats.isDead);
+            isInteracting = enemyAnimationManager.animator.GetBool("isInteracting");
+            canDoCombo = enemyAnimationManager.animator.GetBool("canDoCombo");
+            enemyAnimationManager.animator.SetBool("isDead", enemyStatsManager.isDead);
         }
 
         private void LateUpdate()
@@ -73,7 +69,7 @@ namespace SG
         { 
             if(currentState != null)
             {
-                State nextState = currentState.Tick(this, enemyStats, enemyAnimationManager);
+                State nextState = currentState.Tick(this, enemyStatsManager, enemyAnimationManager);
             
                 if(nextState != null)
                 {

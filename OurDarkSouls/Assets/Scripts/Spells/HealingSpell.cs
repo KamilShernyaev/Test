@@ -11,24 +11,24 @@ namespace SG
 
 		public override void AttemptToCastSpell(
 			PlayerAnimatorManager playerAnimatorManager, 
-			PlayerStats playerStats, 
-			WeaponSlotManager weaponSlotManager)
+			PlayerStatsManager playerStatsManager, 
+			PlayerWeaponSlotManager playerWeaponSlotManager)
 		{
-			base.AttemptToCastSpell(playerAnimatorManager, playerStats, weaponSlotManager);
+			base.AttemptToCastSpell(playerAnimatorManager, playerStatsManager, playerWeaponSlotManager);
 			GameObject instantiatedWarmUpSpellFX = Instantiate(spellWarmUpFX, playerAnimatorManager.transform);
 			playerAnimatorManager.PlayTargetAnimation(spellAnimation, true);
 			Debug.Log("Attempting to cast spell...");
 		}
 
 		public override void SuccessfullyCastSpell(
-			PlayerAnimatorManager animatorHandler, 
-			PlayerStats playerStats, 
+			PlayerAnimatorManager playerAnimatorManager, 
+			PlayerStatsManager playerStatsManager, 
 			CameraHandler cameraHandler, 
-			WeaponSlotManager weaponSlotManager)
+			PlayerWeaponSlotManager playerWeaponSlotManager)
 		{
-			base.SuccessfullyCastSpell(animatorHandler, playerStats, cameraHandler, weaponSlotManager);
-			GameObject instantiatedSpellFX = Instantiate(spellCastFX, animatorHandler.transform);
-			playerStats.HealPlayer(healAmount);
+			base.SuccessfullyCastSpell(playerAnimatorManager, playerStatsManager, cameraHandler, playerWeaponSlotManager);
+			GameObject instantiatedSpellFX = Instantiate(spellCastFX, playerAnimatorManager.transform);
+			playerStatsManager.HealPlayer(healAmount);
 			Debug.Log("Spell cast successful");			
 		}
 	}

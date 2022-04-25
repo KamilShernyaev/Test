@@ -7,16 +7,16 @@ namespace SG
 {
     public class WeaponInventorySlot : MonoBehaviour
     {
-        PlayerInventory playerInventory;
-        WeaponSlotManager weaponSlotManager;
+        PlayerInventoryManager playerInventoryManager;
+        PlayerWeaponSlotManager playerWeaponSlotManager;
         UIManager uIManager;
         public Image icon;
         WeaponItem item;
 
         public void Awake()
         {
-            playerInventory = FindObjectOfType<PlayerInventory>();
-            weaponSlotManager = FindObjectOfType<WeaponSlotManager>();
+            playerInventoryManager = FindObjectOfType<PlayerInventoryManager>();
+            playerWeaponSlotManager = FindObjectOfType<PlayerWeaponSlotManager>();
             uIManager = FindObjectOfType<UIManager>();
         }
 
@@ -43,40 +43,40 @@ namespace SG
         {
             if(uIManager.rightHandSlot01Selected)
             {
-                playerInventory.weaponsInventory.Add(playerInventory.weaponsInRightHandSlots[0]);
-                playerInventory.weaponsInRightHandSlots[0] = item;
-                playerInventory.weaponsInventory.Remove(item);
+                playerInventoryManager.weaponsInventory.Add(playerInventoryManager.weaponsInRightHandSlots[0]);
+                playerInventoryManager.weaponsInRightHandSlots[0] = item;
+                playerInventoryManager.weaponsInventory.Remove(item);
             }
             else if(uIManager.rightHandSlot02Selected)
             {
-                playerInventory.weaponsInventory.Add(playerInventory.weaponsInRightHandSlots[1]);
-                playerInventory.weaponsInRightHandSlots[1] = item;
-                playerInventory.weaponsInventory.Remove(item);
+                playerInventoryManager.weaponsInventory.Add(playerInventoryManager.weaponsInRightHandSlots[1]);
+                playerInventoryManager.weaponsInRightHandSlots[1] = item;
+                playerInventoryManager.weaponsInventory.Remove(item);
             }
             else if(uIManager.leftHandSlot01Selected)
             {
-                playerInventory.weaponsInventory.Add(playerInventory.weaponsInLeftHandSlots[0]);
-                playerInventory.weaponsInLeftHandSlots[0] = item;
-                playerInventory.weaponsInventory.Remove(item);
+                playerInventoryManager.weaponsInventory.Add(playerInventoryManager.weaponsInLeftHandSlots[0]);
+                playerInventoryManager.weaponsInLeftHandSlots[0] = item;
+                playerInventoryManager.weaponsInventory.Remove(item);
             }
             else if(uIManager.leftHandSlot02Selected)
             {
-                playerInventory.weaponsInventory.Add(playerInventory.weaponsInLeftHandSlots[1]);
-                playerInventory.weaponsInLeftHandSlots[1] = item;
-                playerInventory.weaponsInventory.Remove(item);
+                playerInventoryManager.weaponsInventory.Add(playerInventoryManager.weaponsInLeftHandSlots[1]);
+                playerInventoryManager.weaponsInLeftHandSlots[1] = item;
+                playerInventoryManager.weaponsInventory.Remove(item);
             }
             else
             {
                 return;
             }
 
-            playerInventory.rightWeapon = playerInventory.weaponsInRightHandSlots[playerInventory.currentRightWeaponIndex];
-            playerInventory.leftWeapon = playerInventory.weaponsInLeftHandSlots[playerInventory.currentLeftWeaponIndex];
+            playerInventoryManager.rightWeapon = playerInventoryManager.weaponsInRightHandSlots[playerInventoryManager.currentRightWeaponIndex];
+            playerInventoryManager.leftWeapon = playerInventoryManager.weaponsInLeftHandSlots[playerInventoryManager.currentLeftWeaponIndex];
 
-            weaponSlotManager.LoadWeaponOnSlot(playerInventory.rightWeapon,false);
-            weaponSlotManager.LoadWeaponOnSlot(playerInventory.leftWeapon,true);  
+            playerWeaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.rightWeapon,false);
+            playerWeaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.leftWeapon,true);  
 
-            uIManager.equipmentWindowUI.LoadWeaponOnEquipmentScreen(playerInventory);       
+            uIManager.equipmentWindowUI.LoadWeaponOnEquipmentScreen(playerInventoryManager);       
             uIManager.ResetAllSelectedSlot();
         }
     }

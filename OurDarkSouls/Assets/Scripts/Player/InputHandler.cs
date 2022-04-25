@@ -43,13 +43,13 @@ namespace SG
         public Transform criticalAttackRayCastStartPoint;
         
         PlayesControls inputActions;
-        PlayerAttacker playerAttacker;
-        PlayerInventory playerInventory;
+        PlayerCombatManager playerCombatManager;
+        PlayerInventoryManager playerInventoryManagerManager;
         PlayerManager playerManager;
         PlayerEffectsManager playerEffectsManager;
-        PlayerStats playerStats;
+        PlayerStatsManager playerStatsManagerManager;
         BlockingCollider blockingCollider;
-        WeaponSlotManager weaponSlotManager;
+        PlayerWeaponSlotManager playerWeaponSlotManager;
         CameraHandler cameraManager;
         PlayerAnimatorManager playerAnimatorManager;
         UIManager uIManager;
@@ -59,16 +59,16 @@ namespace SG
 
         private void Awake() 
           {
-            playerAttacker = GetComponentInChildren<PlayerAttacker>();
-            playerInventory = GetComponent<PlayerInventory>();
+            playerCombatManager = GetComponent<PlayerCombatManager>();
+            playerInventoryManagerManager = GetComponent<PlayerInventoryManager>();
             playerManager = GetComponent<PlayerManager>();
-            playerStats = GetComponent<PlayerStats>();
-            playerEffectsManager = GetComponentInChildren<PlayerEffectsManager>();
+            playerStatsManagerManager = GetComponent<PlayerStatsManager>();
+            playerEffectsManager = GetComponent<PlayerEffectsManager>();
             uIManager = FindObjectOfType<UIManager>();
             cameraManager = FindObjectOfType<CameraHandler>();
-            weaponSlotManager = GetComponentInChildren<WeaponSlotManager>();
+            playerWeaponSlotManager = GetComponent<PlayerWeaponSlotManager>();
             blockingCollider = GetComponentInChildren<BlockingCollider>();
-            playerAnimatorManager = GetComponentInChildren<PlayerAnimatorManager>();
+            playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
           }
 
         public void OnEnable() 
@@ -132,13 +132,13 @@ namespace SG
             {
               rollInputTimer += delta;
 
-              if(playerStats.currentStamina <= 0)
+              if(playerStatsManagerManager.currentStamina <= 0)
               {
                 b_Input = false;
                 sprintFlag = false;
               }
 
-              if(moveAmount >0.5f && playerStats.currentStamina > 0)
+              if(moveAmount >0.5f && playerStatsManagerManager.currentStamina > 0)
               {
                 sprintFlag = true;
               }
@@ -161,12 +161,12 @@ namespace SG
 
             if(rb_input)
             {
-                playerAttacker.HandleRBAction();
+                playerCombatManager.HandleRBAction();
             }
 
             if(rt_input)
             {
-              playerAttacker.HandleHeavyAttack(playerInventory.rightWeapon);
+              playerCombatManager.HandleHeavyAttack(playerInventoryManagerManager.rightWeapon);
             }
 
             if(lt_input)
@@ -177,13 +177,13 @@ namespace SG
               }
               else
               {
-                playerAttacker.HandleLTAction();
+                playerCombatManager.HandleLTAction();
               }
             }
 
             if(lb_input)
             {
-              playerAttacker.HandleLBAction();
+              playerCombatManager.HandleLBAction();
             }
             else
             {
@@ -201,11 +201,11 @@ namespace SG
           {
             if(d_Pad_Right)
             {
-              playerInventory.ChangeRightWeapon();
+              playerInventoryManagerManager.ChangeRightWeapon();
             }
             else if(d_Pad_Left)
             {
-              playerInventory.ChangeLeftWeapon();
+              playerInventoryManagerManager.ChangeLeftWeapon();
             }
           }
 
@@ -283,12 +283,12 @@ namespace SG
 
               if(twoHandFlag)
               {
-                weaponSlotManager.LoadWeaponOnSlot(playerInventory.rightWeapon, false);
+                playerWeaponSlotManager.LoadWeaponOnSlot(playerInventoryManagerManager.rightWeapon, false);
               }
               else
               {
-                weaponSlotManager.LoadWeaponOnSlot(playerInventory.rightWeapon, false);
-                weaponSlotManager.LoadWeaponOnSlot(playerInventory.leftWeapon, true);
+                playerWeaponSlotManager.LoadWeaponOnSlot(playerInventoryManagerManager.rightWeapon, false);
+                playerWeaponSlotManager.LoadWeaponOnSlot(playerInventoryManagerManager.leftWeapon, true);
               }
             }
           }
@@ -298,7 +298,7 @@ namespace SG
             if (critical_Attack_Input)
             {
               critical_Attack_Input = false;
-              playerAttacker.AttemptBackStabOrRiposte();
+              playerCombatManager.AttemptBackStabOrRiposte();
             }
           }
 
@@ -311,7 +311,7 @@ namespace SG
               if(FlasksCount <=0)
               {
                 x_Input = false;
-                playerInventory.currentConsumble.AttemptToConsumeItem(playerAnimatorManager, weaponSlotManager, playerEffectsManager);
+                playerInventoryManagerManager.currentConsumble.AttemptToConsumeItem(playerAnimatorManager, playerWeaponSlotManager, playerEffectsManager);
               }
               else
               return;

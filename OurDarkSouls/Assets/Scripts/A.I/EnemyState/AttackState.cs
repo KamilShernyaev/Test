@@ -12,7 +12,7 @@ namespace SG
 
         bool willDoComboOnNextAttack = false;
 
-        public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
+        public override State Tick(EnemyManager enemyManager, EnemyStatsManager enemyStatsManager, EnemyAnimatorManager enemyAnimatorManager)
         {
             if (enemyManager.isInteracting && enemyManager.canDoCombo == false)
             {
@@ -51,8 +51,8 @@ namespace SG
                     {
                         if (enemyManager.currentRecoveryTime <= 0 && enemyManager.isPreformingAction == false)
                         {
-                            enemyAnimatorManager.anim.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
-                            enemyAnimatorManager.anim.SetFloat("Horizontal", 0, 0.1f, Time.deltaTime);
+                            enemyAnimatorManager.animator.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
+                            enemyAnimatorManager.animator.SetFloat("Horizontal", 0, 0.1f, Time.deltaTime);
                             enemyAnimatorManager.PlayTargetAnimation(currentAttack.actionAnimation, true);
                             enemyManager.isPreformingAction = true;
                             RollForComboChance(enemyManager);

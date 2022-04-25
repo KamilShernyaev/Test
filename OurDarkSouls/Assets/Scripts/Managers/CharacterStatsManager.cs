@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SG
 {
-    public class CharacterStats : MonoBehaviour
+    public class CharacterStatsManager : MonoBehaviour
     {
         
         public int maxHelth;
@@ -19,6 +19,7 @@ namespace SG
         public float currentFocusPoints;
 
         public int soulCount = 0;
+        public int soulsAwardedOnDeath = 50;
         public bool isDead;
 
         [Header("Levels")]
@@ -64,6 +65,18 @@ namespace SG
                     currentHealth = 0;
                     isDead = true;
                 }
+        }
+    
+        public virtual void TakeDamageNoAnimation(int damage)
+        {
+            currentHealth = currentHealth - damage;
+            
+            if(currentHealth <= 0)
+            {
+                currentHealth = 0;
+                isDead = true;
+            }
+
         }
     }
 }

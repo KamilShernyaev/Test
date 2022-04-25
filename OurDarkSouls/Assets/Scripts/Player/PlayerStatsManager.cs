@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SG
 {
-    public class PlayerStats : CharacterStats
+    public class PlayerStatsManager : CharacterStatsManager
     {
         PlayerManager playerManager;
         HealthBar healthBar;
@@ -78,15 +78,10 @@ namespace SG
             }
         }
 
-        public void TakeDamageNoAnimation(int damage)
+        public override void TakeDamageNoAnimation(int damage)
         {
-            currentHealth = currentHealth - damage;
-
-            if(currentHealth <= 0)
-            {
-                currentHealth = 0;
-                isDead = true;
-            }
+            base.TakeDamageNoAnimation(damage);
+            healthBar.SetCurrentHealth(currentHealth);
         }
 
         public void TakeStaminaDamage(int damage)

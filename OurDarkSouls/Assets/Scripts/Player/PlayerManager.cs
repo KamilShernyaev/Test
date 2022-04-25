@@ -9,10 +9,10 @@ namespace SG
     public class PlayerManager : CharacterManager
     {
         InputHandler inputHandler;
-        Animator anim;
+        Animator animator;
         CameraHandler cameraHandler;
-        PlayerStats playerStats;
-        PlayerLocomotion playerLocomotion;
+        PlayerStatsManager playerStatsManagerManager;
+        PlayerLocomotionManager playerLocomotionManager;
 
         CriticalDamageCollider criticalDamageCollider;
         PlayerAnimatorManager playerAnimatorManager;
@@ -21,47 +21,36 @@ namespace SG
         public GameObject interactableUIGameObject;
         public GameObject itemInteractableGameObject;
 
-        public bool isInteracting;
-
-        [Header("Player Flags")]
-        public bool isSprinting;
-        public bool isInAir;
-        public bool isGrounded;
-        public bool canDoCombo;
-        public bool isUsingRightHand;
-        public bool isUsingLeftHand;
-        public bool isInvulnerable;
-
         private void Awake() 
         {
           inputHandler = GetComponent<InputHandler>();
-          anim = GetComponentInChildren<Animator>();
-          playerStats = GetComponent<PlayerStats>();
-          playerLocomotion = GetComponent<PlayerLocomotion>();
+          animator = GetComponent<Animator>();
+          playerStatsManagerManager = GetComponent<PlayerStatsManager>();
+          playerLocomotionManager = GetComponent<PlayerLocomotionManager>();
           interactableUI = FindObjectOfType<InteractableUI>();
           cameraHandler = FindObjectOfType<CameraHandler>();
           criticalDamageCollider = GetComponentInChildren<CriticalDamageCollider>();
-          playerAnimatorManager = GetComponentInChildren<PlayerAnimatorManager>();
+          playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
         }
 
         void Update() 
         {
             float delta = Time.deltaTime;
             
-            isInteracting = anim.GetBool("isInteracting");
-            canDoCombo = anim.GetBool("canDoCombo");            
-            isUsingRightHand = anim.GetBool("isUsingRightHand");
-            isUsingLeftHand = anim.GetBool("isUsingLeftHand");
-            isInvulnerable = anim.GetBool("isInvulnerable");   
-            anim.SetBool("isBlocking",isBlocking);
-            anim.SetBool("isInAir", isInAir);    
-            anim.SetBool("isDead", playerStats.isDead);
-            playerAnimatorManager.canRotate = anim.GetBool("canRotate");
+            isInteracting = animator.GetBool("isInteracting");
+            canDoCombo = animator.GetBool("canDoCombo");            
+            isUsingRightHand = animator.GetBool("isUsingRightHand");
+            isUsingLeftHand = animator.GetBool("isUsingLeftHand");
+            isInvulnerable = animator.GetBool("isInvulnerable");   
+            animator.SetBool("isBlocking",isBlocking);
+            animator.SetBool("isInAir", isInAir);    
+            animator.SetBool("isDead", playerStatsManagerManager.isDead);
+            playerAnimatorManager.canRotate = animator.GetBool("canRotate");
 
             inputHandler.TickInput(delta);
-            playerLocomotion.HandleRollingAndSprinting(delta);
-            playerLocomotion.HandleJumping();
-            playerStats.RegenerateStamina();
+            playerLocomotionManager.HandleRollingAndSprinting(delta);
+            playerLocomotionManager.HandleJumping();
+            playerStatsManagerManager.RegenerateStamina();
 
             CheckForInteractableObject();
         }
@@ -70,9 +59,9 @@ namespace SG
         {
             float delta = Time.fixedDeltaTime;
 
-            playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
-            playerLocomotion.HandleMovement(delta);
-            playerLocomotion.HandleRotation(delta);
+            playerLocomotionManager.HandleFalling(delta, playerLocomotionManager.moveDirection);
+            playerLocomotionManager.HandleMovement(delta);
+            playerLocomotionManager.HandleRotation(delta);
         }
 
         private void LateUpdate() 
@@ -99,7 +88,7 @@ namespace SG
 
             if (isInAir)
             {
-                playerLocomotion.isAirTimer = playerLocomotion.isAirTimer + Time.deltaTime;
+                playerLocomotionManager.isAirTimer = playerLocomotionManager.isAirTimer + Time.deltaTime;
             }
         }
 
@@ -146,7 +135,7 @@ namespace SG
         
         public void OpenChestInteraction(Transform playerStandHereWhenOpeningChest)
         {
-            playerLocomotion.rigidbody.velocity = Vector3.zero;
+            playerLocomotionManager.rigidbody.velocity = Vector3.zero;
             transform.position = playerStandHereWhenOpeningChest.transform.position;
             Debug.Log("PlayerManager");
            

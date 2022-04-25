@@ -7,7 +7,7 @@ namespace SG
     public class PursueTargetState : State
     {
         public CombatStanceState combatStanceState;
-        public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
+        public override State Tick(EnemyManager enemyManager, EnemyStatsManager enemyStatsManager, EnemyAnimatorManager enemyAnimatorManager)
         {
             if (enemyManager.isInteracting)
                 return this;
@@ -15,7 +15,7 @@ namespace SG
 
             if (enemyManager.isPreformingAction)
             {
-                enemyAnimatorManager.anim.SetFloat("Vertical", 0, 0.01f, Time.deltaTime);
+                enemyAnimatorManager.animator.SetFloat("Vertical", 0, 0.01f, Time.deltaTime);
                 return this;
             }
 
@@ -25,7 +25,7 @@ namespace SG
 
             if(distanceFromTarget > enemyManager.maximumAttackRange)
             {
-                enemyAnimatorManager.anim.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
+                enemyAnimatorManager.animator.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
             }
 
             HandleRotateTowardsTarget(enemyManager);

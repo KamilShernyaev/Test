@@ -18,14 +18,14 @@ namespace SG
         [Header("Recovery FX")]
         public GameObject recoveryFX;
         
-        public override void AttemptToConsumeItem(PlayerAnimatorManager playerAnimatorManager, WeaponSlotManager weaponSlotManager, PlayerEffectsManager playerEffectsManager)
+        public override void AttemptToConsumeItem(PlayerAnimatorManager playerAnimatorManager, PlayerWeaponSlotManager playerWeaponSlotManager, PlayerEffectsManager playerEffectsManager)
         {      
-            base.AttemptToConsumeItem(playerAnimatorManager, weaponSlotManager, playerEffectsManager);
-            GameObject flask = Instantiate(itemModel, weaponSlotManager.rightHandSlot.transform);
+            base.AttemptToConsumeItem(playerAnimatorManager, playerWeaponSlotManager, playerEffectsManager);
+            GameObject flask = Instantiate(itemModel, playerWeaponSlotManager.rightHandSlot.transform);
             playerEffectsManager.currentParticleFX = recoveryFX;
             playerEffectsManager.amountToBeHealed = healthRecoverAmount;
             playerEffectsManager.instantiatedFXModel = flask;
-            weaponSlotManager.rightHandSlot.UnloadWeapon();
+            playerWeaponSlotManager.rightHandSlot.UnloadWeapon();
             Destroy(flask.gameObject, 4f);                 
         }
     }

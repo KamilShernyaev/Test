@@ -18,11 +18,11 @@ namespace SG
 
         public override void AttemptToCastSpell(
             PlayerAnimatorManager playerAnimatorManager, 
-            PlayerStats playerStats, 
-            WeaponSlotManager weaponSlotManager)
+            PlayerStatsManager playerStatsManager, 
+            PlayerWeaponSlotManager playerWeaponSlotManager)
         {
-            base.AttemptToCastSpell(playerAnimatorManager, playerStats, weaponSlotManager);
-            GameObject instantiatedWarmUpSpellFX = Instantiate(spellWarmUpFX, weaponSlotManager.rightHandSlot.transform);
+            base.AttemptToCastSpell(playerAnimatorManager, playerStatsManager, playerWeaponSlotManager);
+            GameObject instantiatedWarmUpSpellFX = Instantiate(spellWarmUpFX, playerWeaponSlotManager.rightHandSlot.transform);
             instantiatedWarmUpSpellFX.gameObject.transform.localScale = new Vector3(0.3f,0.3f,0.3f);
             playerAnimatorManager.PlayTargetAnimation(spellAnimation,true);
             Destroy(instantiatedWarmUpSpellFX, 1f);
@@ -30,12 +30,12 @@ namespace SG
 
         public override void SuccessfullyCastSpell(
             PlayerAnimatorManager playerAnimatorManager,
-            PlayerStats playerStats, 
+            PlayerStatsManager playerStatsManager, 
             CameraHandler cameraHandler, 
-            WeaponSlotManager weaponSlotManager)
+            PlayerWeaponSlotManager playerWeaponSlotManager)
         {
-            base.SuccessfullyCastSpell(playerAnimatorManager, playerStats, cameraHandler, weaponSlotManager);
-            GameObject instantiedSpellFX = Instantiate(spellCastFX, weaponSlotManager.rightHandSlot.transform.position, cameraHandler.cameraPivotTransform.rotation);
+            base.SuccessfullyCastSpell(playerAnimatorManager, playerStatsManager, cameraHandler, playerWeaponSlotManager);
+            GameObject instantiedSpellFX = Instantiate(spellCastFX, playerWeaponSlotManager.rightHandSlot.transform.position, cameraHandler.cameraPivotTransform.rotation);
             rigidBody = instantiedSpellFX.GetComponent<Rigidbody>();
             // spellDamageCollider = instantiedSpellFX.GetComponent<SpellDamageCollider>();
 
@@ -45,7 +45,7 @@ namespace SG
             }
             else
             {
-                instantiedSpellFX.transform.rotation = Quaternion.Euler(cameraHandler.cameraPivotTransform.eulerAngles.x, playerStats.transform.eulerAngles.y, 0);
+                instantiedSpellFX.transform.rotation = Quaternion.Euler(cameraHandler.cameraPivotTransform.eulerAngles.x, playerStatsManager.transform.eulerAngles.y, 0);
             }
             rigidBody.AddForce(instantiedSpellFX.transform.forward * projectileForwardVelocity);
             rigidBody.AddForce(instantiedSpellFX.transform.up * projectileUpwardVelocity);
