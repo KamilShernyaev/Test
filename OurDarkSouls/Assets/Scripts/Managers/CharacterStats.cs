@@ -22,8 +22,11 @@ namespace SG
         public bool isDead;
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         public virtual void TakeDamage(int damage, string damageAnimation = "TakeDamage")
 =======
+=======
+>>>>>>> Stashed changes
         [Header("Character Level")]
         public int playerLevel = 1;
 
@@ -49,6 +52,24 @@ namespace SG
 >>>>>>> Stashed changes
         {
 
+        }
+
+        public int SetMaxHealthFromHealthLevel()
+        {
+            maxHelth = healthLevel * 10;
+            return maxHelth;
+        }
+
+        public float SetMaxStaminaFromStaminaLevel()
+        {
+            maxStamina = staminaLevel * 10;
+            return maxStamina;
+        }
+
+        public float SetMaxFocusPointsFromFocusLevel()
+        {
+            maxFocusPoints = focusLevel * 10;
+            return maxFocusPoints;
         }
 
         public int SetMaxHealthFromHealthLevel()
