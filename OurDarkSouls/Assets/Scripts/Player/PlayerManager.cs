@@ -8,21 +8,23 @@ namespace SG
     
     public class PlayerManager : CharacterManager
     {
-        InputHandler inputHandler;
-        Animator animator;
-        CameraHandler cameraHandler;
-        PlayerStatsManager playerStatsManagerManager;
-        PlayerLocomotionManager playerLocomotionManager;
+        public InputHandler inputHandler;
+        public Animator animator;
+        public UIManager uIManager;
+        public CameraHandler cameraHandler;
+        public PlayerStatsManager playerStatsManagerManager;
+        public PlayerLocomotionManager playerLocomotionManager;
 
-        CriticalDamageCollider criticalDamageCollider;
-        PlayerAnimatorManager playerAnimatorManager;
+        public CriticalDamageCollider criticalDamageCollider;
+        public PlayerAnimatorManager playerAnimatorManager;
 
-        InteractableUI interactableUI;
+        public InteractableUI interactableUI;
         public GameObject interactableUIGameObject;
         public GameObject itemInteractableGameObject;
 
         private void Awake() 
         {
+          uIManager = FindObjectOfType<UIManager>();
           inputHandler = GetComponent<InputHandler>();
           animator = GetComponent<Animator>();
           playerStatsManagerManager = GetComponent<PlayerStatsManager>();
