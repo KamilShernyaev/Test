@@ -70,9 +70,6 @@ namespace SG
                 return;
             }
 
-            playerInventoryManager.rightWeapon = playerInventoryManager.weaponsInRightHandSlots[playerInventoryManager.currentRightWeaponIndex];
-            playerInventoryManager.leftWeapon = playerInventoryManager.weaponsInLeftHandSlots[playerInventoryManager.currentLeftWeaponIndex];
-
             playerWeaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.rightWeapon,false);
             playerWeaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.leftWeapon,true);  
 

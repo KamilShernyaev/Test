@@ -34,7 +34,6 @@ namespace SG
             weapon = null;
             icon.sprite = null;
             icon.enabled = false;
-            this.gameObject.SetActive(false);
         }
     
         public void SelectThisSlot()
