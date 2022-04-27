@@ -45,7 +45,7 @@ namespace SG
         PlayesControls inputActions;
         PlayerCombatManager playerCombatManager;
         PlayerInventoryManager playerInventoryManagerManager;
-        PlayerManager playerManager;
+        PlayerManager player;
         PlayerEffectsManager playerEffectsManager;
         PlayerStatsManager playerStatsManagerManager;
         BlockingCollider blockingCollider;
@@ -61,7 +61,7 @@ namespace SG
           {
             playerCombatManager = GetComponent<PlayerCombatManager>();
             playerInventoryManagerManager = GetComponent<PlayerInventoryManager>();
-            playerManager = GetComponent<PlayerManager>();
+            player = GetComponent<PlayerManager>();
             playerStatsManagerManager = GetComponent<PlayerStatsManager>();
             playerEffectsManager = GetComponent<PlayerEffectsManager>();
             uIManager = FindObjectOfType<UIManager>();
@@ -106,6 +106,9 @@ namespace SG
           }
           public void TickInput(float delta) 
           {
+            if (player.isDead)
+              return;
+
               HandleMoveInput(delta);
               HandleRollInput(delta);
               HandleCombatInput(delta);
@@ -187,7 +190,7 @@ namespace SG
             }
             else
             {
-              playerManager.isBlocking = false;
+              player.isBlocking = false;
 
               if (blockingCollider.blockingCollider.enabled)
               {

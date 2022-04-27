@@ -6,6 +6,8 @@ namespace SG
 {
     public class PlayerStatsManager : CharacterStatsManager
     {
+        CharacterManager character;
+
         PlayerManager playerManager;
         HealthBar healthBar;
         StaminaBar staminaBar;
@@ -17,6 +19,7 @@ namespace SG
 
         private void Awake() 
         {
+            character = FindObjectOfType<CharacterManager>();
             playerManager = GetComponent<PlayerManager>();
             healthBar = FindObjectOfType<HealthBar>();
             staminaBar = FindObjectOfType<StaminaBar>();
@@ -55,7 +58,7 @@ namespace SG
             if(currentHealth <= 0)
             {
                 currentHealth = 0;
-                isDead = true;
+                character.isDead = true;
                 playerAnimatorManager.PlayTargetAnimation("Death", true);
             }
         }

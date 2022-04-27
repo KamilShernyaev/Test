@@ -6,7 +6,8 @@ namespace SG
 {
     public class CharacterStatsManager : MonoBehaviour
     {
-        
+        CharacterManager character;
+
         public int maxHelth;
         public int currentHealth;
 
@@ -20,7 +21,7 @@ namespace SG
 
         public int currentSoulCount = 0;
         public int soulsAwardedOnDeath = 50;
-        public bool isDead;
+
         
         [Header("Character Level")]
         public int playerLevel = 1;
@@ -42,10 +43,14 @@ namespace SG
         public float physicalDamageAbsoptionLegs;
         public float physicalDamageAbsoptionHand;
 
+        private void Awake() 
+        {
+            character = GetComponent<CharacterManager>();
+        }
 
         public virtual void TakeDamage(int physicalDamage, string damageAnimation = "Damage_01")
         {
-            if(isDead)
+            if(character.isDead)
                 return;
                 
                 float totalPhysicalDamageAbsorption = 1 - 
@@ -66,7 +71,7 @@ namespace SG
                 if(currentHealth <= 0)
                 {
                     currentHealth = 0;
-                    isDead = true;
+                    character.isDead = true;
                 }
         }
     
@@ -77,7 +82,7 @@ namespace SG
             if(currentHealth <= 0)
             {
                 currentHealth = 0;
-                isDead = true;
+                character.isDead = true;
             }
         }
         

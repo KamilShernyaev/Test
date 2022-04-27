@@ -6,7 +6,7 @@ namespace SG
 {
     public class EnemyStatsManager : CharacterStatsManager
     {
-        EnemyAnimatorManager enemyAnimatorManager;
+        public EnemyManager enemy;
         public UIEnemyHealthBar enemyHealthBar;
 
         public delegate void EnemyKilled();
@@ -14,7 +14,8 @@ namespace SG
 
         private void Awake() 
         {
-            enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
+            enemy = GetComponent<EnemyManager>();
+            enemy.enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
         }
 
         void Start()
@@ -34,7 +35,7 @@ namespace SG
         {
             base.TakeDamage(damage, damageAnimation = "Damage_01");
             enemyHealthBar.SetHealth(currentHealth);
-            enemyAnimatorManager.PlayTargetAnimation(damageAnimation, true);
+            enemy.enemyAnimatorManager.PlayTargetAnimation(damageAnimation, true);
 
             if(currentHealth <= 0)
             {
@@ -45,10 +46,10 @@ namespace SG
         private void HandleDeath()
         {
             currentHealth = 0;
-            enemyAnimatorManager.PlayTargetAnimation("Death", true);
-            isDead = true;
+            enemy.enemyAnimatorManager.PlayTargetAnimation("Death", true);
+            enemy.isDead = true;
 
-            if (isDead == true)
+            if (enemy.isDead == true)
             {
                 Destroy(gameObject);
             }

@@ -47,7 +47,7 @@ namespace SG
             isInvulnerable = animator.GetBool("isInvulnerable");   
             animator.SetBool("isBlocking",isBlocking);
             animator.SetBool("isInAir", isInAir);    
-            animator.SetBool("isDead", playerStatsManager.isDead);
+            animator.SetBool("isDead", isDead);
             playerAnimatorManager.canRotate = animator.GetBool("canRotate");
 
             inputHandler.TickInput(delta);

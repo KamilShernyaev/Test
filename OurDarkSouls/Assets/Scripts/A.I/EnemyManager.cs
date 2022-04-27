@@ -6,9 +6,11 @@ namespace SG
 {
     public class EnemyManager : CharacterManager
     {
-        EnemyLocomotionManager enemyLocomotionManager;
-        EnemyAnimatorManager enemyAnimationManager;
-        EnemyStatsManager enemyStatsManager;
+        public EnemyLocomotionManager enemyLocomotionManager;
+        public EnemyAnimatorManager enemyAnimatorManager;
+        public EnemyStatsManager enemyStatsManager;
+        
+
 
         public State currentState;   //Новое
         public CharacterStatsManager currentTarget; //Новое
@@ -39,7 +41,7 @@ namespace SG
             enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
             enemyStatsManager = GetComponent<EnemyStatsManager>();
             enemyRigidbody = GetComponent<Rigidbody>();
-            enemyAnimationManager = GetComponent<EnemyAnimatorManager>();
+            enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
             navMeshAgent = GetComponentInChildren<NavMeshAgent>();
             navMeshAgent.enabled = false;
         }
@@ -54,9 +56,9 @@ namespace SG
             HandleRecoveryTimer();
             HandleStateMachine();
 
-            isInteracting = enemyAnimationManager.animator.GetBool("isInteracting");
-            canDoCombo = enemyAnimationManager.animator.GetBool("canDoCombo");
-            enemyAnimationManager.animator.SetBool("isDead", enemyStatsManager.isDead);
+            isInteracting = enemyAnimatorManager.animator.GetBool("isInteracting");
+            canDoCombo = enemyAnimatorManager.animator.GetBool("canDoCombo");
+            enemyAnimatorManager.animator.SetBool("isDead", isDead);
         }
 
         private void LateUpdate()
@@ -69,7 +71,7 @@ namespace SG
         { 
             if(currentState != null)
             {
-                State nextState = currentState.Tick(this, enemyStatsManager, enemyAnimationManager);
+                State nextState = currentState.Tick(this, enemyStatsManager, enemyAnimatorManager);
             
                 if(nextState != null)
                 {

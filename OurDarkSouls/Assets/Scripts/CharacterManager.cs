@@ -6,8 +6,13 @@ namespace SG
 {
     public class CharacterManager : MonoBehaviour
     {
+        public CharacterStatsManager characterStatsManager;
+
        [Header("Lock On Transform")]
        public Transform lockOnTransform;
+
+       [Header("Status")]
+        public bool isDead;
 
        [Header("Combat Colliders")]
        public CriticalDamageCollider backStabCollider;
@@ -32,5 +37,9 @@ namespace SG
         public bool isGrounded;
         public bool isInvulnerable;
        
+       private void Awake() 
+       {
+           characterStatsManager = GetComponent<CharacterStatsManager>();
+       }
     }
 }
