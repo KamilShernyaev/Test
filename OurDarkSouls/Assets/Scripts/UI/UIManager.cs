@@ -7,7 +7,7 @@ namespace SG
 {
     public class UIManager : MonoBehaviour
     {
-        PlayerManager playerManager;
+        public PlayerManager playerManager;
         public EquipmentWindowUI equipmentWindowUI;
 
         [Header("HUD")]

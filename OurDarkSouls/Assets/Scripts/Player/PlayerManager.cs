@@ -27,6 +27,7 @@ namespace SG
         {
           uIManager = FindObjectOfType<UIManager>();
           inputHandler = GetComponent<InputHandler>();
+          playerInventoryManager = GetComponent<PlayerInventoryManager>();
           animator = GetComponent<Animator>();
           playerStatsManager = GetComponent<PlayerStatsManager>();
           playerLocomotionManager = GetComponent<PlayerLocomotionManager>();
