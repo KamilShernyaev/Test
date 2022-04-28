@@ -29,7 +29,8 @@ namespace SG
         private void Awake() 
         {
           uIManager = FindObjectOfType<UIManager>();
-          playerWeaponSlotManager = FindObjectOfType<PlayerWeaponSlotManager>();
+          playerWeaponSlotManager = GetComponent<PlayerWeaponSlotManager>();
+          playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
           inputHandler = GetComponent<InputHandler>();
           playerInventoryManager = GetComponent<PlayerInventoryManager>();
           animator = GetComponent<Animator>();
