@@ -16,8 +16,9 @@ MonoBehaviour:
   itemName: Hammer
   modelPrefab: {fileID: 6664022221881477782, guid: ff4abace9fbb034488d74e776358cb6b, type: 3}
   isUnarmed: 0
-  baseDamage: 1
+  physicalDamage: 50
   criticalDamageMultiplier: 4
+  physicalDamageAbsorption: 0
   right_hand_idle: Right_Arm_Idle_01
   left_hand_idle: Left_Arm_Idle_01
   th_idle: TH_Idle_01

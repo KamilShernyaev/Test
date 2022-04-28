@@ -12,7 +12,7 @@ namespace SG
 
 
         [Header("Damage")]
-        public int baseDamage = 25;
+        public int physicalDamage = 25;
         public int criticalDamageMultiplier = 4;
 
         [Header("Absorprion")]

@@ -116,13 +116,13 @@ namespace SG
         {
                                     //rightHandSlot использовать для обхода ошибки при ударе по противнику
             leftHandDamageCollider = leftHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
-            leftHandDamageCollider.currentWeaponDamage = playerInventoryManager.leftWeapon.baseDamage;
+            leftHandDamageCollider.currentWeaponDamage = playerInventoryManager.leftWeapon.physicalDamage;
         }
 
         private void LoadRightWeaponDamageCollider()
         {
             rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
-            rightHandDamageCollider.currentWeaponDamage = playerInventoryManager.rightWeapon.baseDamage;
+            rightHandDamageCollider.currentWeaponDamage = playerInventoryManager.rightWeapon.physicalDamage;
 
         }
     

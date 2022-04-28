@@ -9,6 +9,15 @@ namespace SG
     {
         public Text itemNameText;
         public Image itemIconImage;
+        [Header("Equipment Stats Window")]
+        public GameObject weaponStats;
+
+        [Header("Weapon Stats")]
+
+        public Text physicalDamageText;
+        public Text magicDamageText;
+        public Text physicalAbsorptionText;
+        public Text magicAbsorptionText;
 
         public void UpdateWeaponItemStats(WeaponItem weapon)
         {
@@ -35,12 +44,17 @@ namespace SG
                     itemIconImage.enabled = false;
                     itemIconImage.sprite = null;
                 }
+
+                physicalDamageText.text = weapon.physicalDamage.ToString();
+                physicalAbsorptionText.text = weapon.physicalDamageAbsorption.ToString();
+                weaponStats.SetActive(true);
             }
             else
             {
                 itemNameText.text = "";
                 itemIconImage.gameObject.SetActive(false);
                 itemIconImage.sprite = null;
+                weaponStats.SetActive(false);
             }
         }
     }
