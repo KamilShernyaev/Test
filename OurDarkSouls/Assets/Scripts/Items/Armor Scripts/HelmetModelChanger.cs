@@ -30,7 +30,7 @@ namespace SG
             }
         }
 
-        public void EquipHelmetModelByName(string helmetName)
+        public void EquipModelByName(string helmetName)
         {
             for(int i = 0; i < helmetModels.Count; i++)
             {

@@ -7,7 +7,6 @@ namespace SG
     public class PlayerStatsManager : CharacterStatsManager
     {
         CharacterManager character;
-
         PlayerManager playerManager;
         HealthBar healthBar;
         StaminaBar staminaBar;

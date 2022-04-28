@@ -26,6 +26,9 @@ namespace SG
         public bool leftHandSlot01Selected;
         public bool leftHandSlot02Selected;
         public bool headEquipmentSlotSelected;
+        public bool bodyEquipmentSlotSelected;
+        public bool legEquipmentSlotSelected;
+        public bool handEquipmentSlotSelected;
 
         [Header("Weapon Inventory")]
         public GameObject weaponInventorySlotPrefab;

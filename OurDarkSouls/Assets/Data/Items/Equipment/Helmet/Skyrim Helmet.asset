@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1670a5a98fdbcfc498eaf9eb635f225e, type: 3}
   m_Name: Skyrim Helmet
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 735eef1ff6cbb3c4da0054db0d6db83d, type: 3}
   itemName: Skyrim
   physicalDefense: 3
   helmetModelName: Skyrim Helmet

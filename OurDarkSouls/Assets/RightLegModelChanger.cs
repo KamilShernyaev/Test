@@ -30,7 +30,7 @@ namespace SG
             }
         }
 
-        public void EquipLegModelByName(string legName)
+        public void EquipModelByName(string legName)
         {
             for(int i = 0; i < legModels.Count; i++)
             {

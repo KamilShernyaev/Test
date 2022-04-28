@@ -9,7 +9,7 @@ namespace SG
     {
         UIManager uIManager;
         public Image icon;
-        HelmetEquipment hemletItem;
+        HelmetEquipment item;
 
         private void Awake() 
         {
@@ -19,8 +19,8 @@ namespace SG
         {
             if (hemletItem != null)
             {
-                this.hemletItem = hemletItem;
-                icon.sprite = this.hemletItem.itemIcon;
+                this.item = hemletItem;
+                icon.sprite = this.item.itemIcon;
                 icon.enabled = true;
                 this.gameObject.SetActive(true);
             }
@@ -32,7 +32,7 @@ namespace SG
 
         public void ClearItem()
         {
-            hemletItem = null;
+            item = null;
             icon.sprite = null;
             icon.enabled = false;
         }

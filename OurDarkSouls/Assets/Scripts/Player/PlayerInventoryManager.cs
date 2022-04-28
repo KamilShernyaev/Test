@@ -13,12 +13,11 @@ namespace SG
         public WeaponItem leftWeapon;
         public ConsumableItem currentConsumble;
         
-
         [Header("Current Equipment")]
         public HelmetEquipment currentHelmetEquipment;
-        public TorsoEquipment currentTorsoEquipment;
+        public BodyEquipment currentBodyEquipment;
         public LegEquipment currentLegEquipment;
-
+        public HandEquipment currentHandEquipment;
 
         public WeaponItem[] weaponsInRightHandSlots = new WeaponItem[1];
         public WeaponItem[] weaponsInLeftHandSlots = new WeaponItem[1];

@@ -13,16 +13,34 @@ namespace SG
         [Header("Equipment Model Changers")]
         //Head Equipment
         HelmetModelChanger helmetModelChanger;
-        //Torso Equipment
-        TorsoModelChanger torsoModelChanger;
+
+        //Body Equipment
+        BodyModelChanger bodyModelChanger;
+
+        UpperLeftArmModelChanger upperLeftArmModelChanger;
+        UpperRightArmModelChanger upperRightArmModelChanger;
+
         //Leg Equipment
         HipModelChanger hipModelChanger;
         LeftLegModelChanger leftLegModelChanger;
         RightLegModelChanger rightLegModelChanger;
 
+        //Hand Equipment
+        LowerLeftArmModelChanger lowerLeftArmModelChanger;
+        LowerRightArmModelChanger lowerRightArmModelChanger;
+        LeftHandModelChanger leftHandModelChanger;
+        RightHandModelChanger rightHandModelChanger;
+
+
         [Header("Defalt Naked Models")]
         public GameObject nakedHeadModel;
-        public string nakedTorsoModel;
+        public string nakedBodyModel;
+        public string nakedUpperLeftArm;
+        public string nakedUpperRightArm;
+        public string nakedLowerLeftArm;
+        public string nakedLowerRightArm;
+        public string nakedLeftHand;
+        public string nakedRightHand;
         public string nakedHipModel;
         public string nakedLeftLeg;
         public string nakedRightLeg;
@@ -36,10 +54,16 @@ namespace SG
             playerStatsManager = GetComponent<PlayerStatsManager>();
 
             helmetModelChanger = GetComponentInChildren<HelmetModelChanger>();
-            torsoModelChanger = GetComponentInChildren<TorsoModelChanger>();
+            bodyModelChanger = GetComponentInChildren<BodyModelChanger>();
             hipModelChanger = GetComponentInChildren<HipModelChanger>();
             leftLegModelChanger = GetComponentInChildren<LeftLegModelChanger>();
             rightLegModelChanger = GetComponentInChildren<RightLegModelChanger>();
+            lowerLeftArmModelChanger = GetComponentInChildren<LowerLeftArmModelChanger>();
+            lowerRightArmModelChanger = GetComponentInChildren<LowerRightArmModelChanger>();
+            upperLeftArmModelChanger = GetComponentInChildren<UpperLeftArmModelChanger>();
+            upperRightArmModelChanger = GetComponentInChildren<UpperRightArmModelChanger>();
+            rightHandModelChanger = GetComponentInChildren<RightHandModelChanger>();
+            leftHandModelChanger = GetComponentInChildren<LeftHandModelChanger>();
         }
 
         private void Start() 
@@ -51,10 +75,11 @@ namespace SG
         {
              //HELMET EQUIPMENT
             helmetModelChanger.UnEquipAllHelmetModels();
+
             if(playerInventoryManager.currentHelmetEquipment != null)
             {
                 nakedHeadModel.SetActive(false);
-                helmetModelChanger.EquipHelmetModelByName(playerInventoryManager.currentHelmetEquipment.helmetModelName);
+                helmetModelChanger.EquipModelByName(playerInventoryManager.currentHelmetEquipment.helmetModelName);
                 playerStatsManager.physicalDamageAbsoptionHead = playerInventoryManager.currentHelmetEquipment.physicalDefense;
                 Debug.Log("Head Absorption is" + playerStatsManager.physicalDamageAbsoptionHead + "%");
             }
@@ -64,17 +89,24 @@ namespace SG
                 playerStatsManager.physicalDamageAbsoptionHead = 0;
             }
 
-             //TORSO EQUIPMENT
-            torsoModelChanger.UnEquipAllTorsoModels();
-            if(playerInventoryManager.currentTorsoEquipment != null)
+             //BODY EQUIPMENT
+            bodyModelChanger.UnEquipAllBodyModels();
+            upperLeftArmModelChanger.UnEquipAllModels();
+            upperRightArmModelChanger.UnEquipAllModels();
+
+            if(playerInventoryManager.currentBodyEquipment != null)
             {
-                torsoModelChanger.EquipTorsoModelByName(playerInventoryManager.currentTorsoEquipment.torsoModelName);
-                playerStatsManager.physicalDamageAbsoptionBody = playerInventoryManager.currentTorsoEquipment.physicalDefense;
-                Debug.Log("Torso Absorption is" + playerStatsManager.physicalDamageAbsoptionBody + "%");
+                bodyModelChanger.EquipModelByName(playerInventoryManager.currentBodyEquipment.bodyModelName);
+                upperLeftArmModelChanger.EquipModelByName(playerInventoryManager.currentBodyEquipment.upperLeftArmModelName);
+                upperRightArmModelChanger.EquipModelByName(playerInventoryManager.currentBodyEquipment.upperRightArmModelName);
+                playerStatsManager.physicalDamageAbsoptionBody = playerInventoryManager.currentBodyEquipment.physicalDefense;
+                Debug.Log("Body Absorption is" + playerStatsManager.physicalDamageAbsoptionBody + "%");
             }
             else
             {
-                torsoModelChanger.EquipTorsoModelByName(nakedTorsoModel);
+                bodyModelChanger.EquipModelByName(nakedBodyModel);
+                upperLeftArmModelChanger.EquipModelByName(nakedUpperLeftArm);
+                upperRightArmModelChanger.EquipModelByName(nakedUpperRightArm);
                 playerStatsManager.physicalDamageAbsoptionBody = 0;
             }
 
@@ -82,23 +114,44 @@ namespace SG
             hipModelChanger.UnEquipAllHipModels();
             leftLegModelChanger.UnEquipAllLegModels();
             rightLegModelChanger.UnEquipAllLegModels();
+
             if(playerInventoryManager.currentLegEquipment != null)
             {
                 hipModelChanger.EquipHipModelByName(playerInventoryManager.currentLegEquipment.hipModelName);
-                leftLegModelChanger.EquipLegModelByName(playerInventoryManager.currentLegEquipment.leftLegName);
-                rightLegModelChanger.EquipLegModelByName(playerInventoryManager.currentLegEquipment.rightLegName);
+                leftLegModelChanger.EquipModelByName(playerInventoryManager.currentLegEquipment.leftLegName);
+                rightLegModelChanger.EquipModelByName(playerInventoryManager.currentLegEquipment.rightLegName);
                 playerStatsManager.physicalDamageAbsoptionLegs = playerInventoryManager.currentLegEquipment.physicalDefense;
                 Debug.Log("Hip Absorption is" + playerStatsManager.physicalDamageAbsoptionLegs + "%");
             } 
             else
             {
                 hipModelChanger.EquipHipModelByName(nakedHipModel);
-                leftLegModelChanger.EquipLegModelByName(nakedLeftLeg);
-                rightLegModelChanger.EquipLegModelByName(nakedRightLeg);
+                leftLegModelChanger.EquipModelByName(nakedLeftLeg);
+                rightLegModelChanger.EquipModelByName(nakedRightLeg);
                 playerStatsManager.physicalDamageAbsoptionLegs = 0;
             }
-            //HAND EQUIPMENT
 
+            //HAND EQUIPMENT
+            lowerLeftArmModelChanger.UnEquipAllModels();
+            lowerRightArmModelChanger.UnEquipAllModels();
+            leftHandModelChanger.UnEquipAllModels();
+            rightHandModelChanger.UnEquipAllModels();
+
+            if(playerInventoryManager.currentHandEquipment != null)
+            {
+                lowerLeftArmModelChanger.EquipModelByName(playerInventoryManager.currentHandEquipment.lowerLeftArmModelName);
+                lowerRightArmModelChanger.EquipModelByName(playerInventoryManager.currentHandEquipment.lowerRightArmModelName);
+                leftHandModelChanger.EquipModelByName(playerInventoryManager.currentHandEquipment.leftHandModelName);
+                rightHandModelChanger.EquipModelByName(playerInventoryManager.currentHandEquipment.rightHandModelName);
+                Debug.Log("Hand Absorption is" + playerStatsManager.physicalDamageAbsoptionLegs + "%");
+            } 
+            else
+            {
+                lowerLeftArmModelChanger.EquipModelByName(nakedLowerLeftArm);
+                lowerRightArmModelChanger.EquipModelByName(nakedLowerRightArm);
+                leftHandModelChanger.EquipModelByName(nakedLeftHand);
+                rightHandModelChanger.EquipModelByName(nakedRightHand);
+            }
         }
 
         public void OpenBlockindCollider()
