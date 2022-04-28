@@ -12,8 +12,36 @@ namespace SG
 
         public void UpdateWeaponItemStats(WeaponItem weapon)
         {
-            itemNameText.text = weapon.itemName;
-            itemIconImage.sprite = weapon.itemIcon;
+            if(weapon != null)
+            {
+                if(weapon.itemName != null)
+                {
+                    itemNameText.text = weapon.itemName;
+                }
+                else
+                {
+                    itemNameText.text = "";
+                }
+
+                if(weapon.itemIcon != null)
+                {
+                    itemIconImage.gameObject.SetActive(true);
+                    itemIconImage.enabled = true;
+                    itemIconImage.sprite = weapon.itemIcon;
+                }
+                else
+                {
+                    itemIconImage.gameObject.SetActive(false);
+                    itemIconImage.enabled = false;
+                    itemIconImage.sprite = null;
+                }
+            }
+            else
+            {
+                itemNameText.text = "";
+                itemIconImage.gameObject.SetActive(false);
+                itemIconImage.sprite = null;
+            }
         }
     }
 }

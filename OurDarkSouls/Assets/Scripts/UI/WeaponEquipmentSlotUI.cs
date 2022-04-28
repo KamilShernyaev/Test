@@ -45,6 +45,8 @@ namespace SG
     
         public void SelectThisSlot()
         {
+            uIManager.ResetAllSelectedSlot();
+            
             if(rightHandSLot01)
             {
                 uIManager.rightHandSlot01Selected = true;
