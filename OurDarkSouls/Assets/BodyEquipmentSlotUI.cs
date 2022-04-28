@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace SG
-{   
+{
     public class BodyEquipmentSlotUI : MonoBehaviour
     {
         UIManager uIManager;
         public Image icon;
-        BodyEquipment item;
+        BodyEquipment Item;
 
         private void Awake() 
         {
@@ -19,10 +19,10 @@ namespace SG
         {
             if (bodyEquipment != null)
             {
-                this.item = bodyEquipment;
-                icon.sprite = this.item.itemIcon;
+                Item = bodyEquipment;
+                icon.sprite = Item.itemIcon;
                 icon.enabled = true;
-                this.gameObject.SetActive(true);
+                gameObject.SetActive(true);
             }
             else
             {
@@ -32,7 +32,7 @@ namespace SG
 
         public void ClearItem()
         {
-            item = null;
+            Item = null;
             icon.sprite = null;
             icon.enabled = false;
         }

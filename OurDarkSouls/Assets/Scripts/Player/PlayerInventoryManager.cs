@@ -27,6 +27,9 @@ namespace SG
 
         public List<WeaponItem> weaponsInventory; 
         public List<HelmetEquipment> helmetEquipmentInventory;
+        public List<BodyEquipmet> bodyEquipmetInventory;
+        public List<LegEquipment> legEquipmentInventory;
+        public List<HandEquipment> handEquipmentInventory;
 
 
         private void Awake()

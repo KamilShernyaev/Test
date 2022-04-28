@@ -7,6 +7,9 @@ namespace SG
     {
         public WeaponEquipmentSlotUI[] weaponEquipmentSlotUI;
         public HeadEquipmentSlot headEquipmentSlotUI;
+        public BodyEquipmentInventorySlot bodyEquipmentInventorySlot;
+        public LegEquipmentInventorySlot legEquipmentInventorySlot;
+        public HandEquipmentInventorySlot handEquipmentInventorySlot;
 
         public void LoadWeaponOnEquipmentScreen(PlayerInventoryManager playerInventoryManager)
         {
@@ -40,6 +43,33 @@ namespace SG
             else
             {
                 headEquipmentSlotUI.ClearItem();
+            }
+
+            if (playerInventory.currentBodyEquipment != null)
+            {
+                bodyEquipmentSlotUI.AddItem(playerInventory.currentBodyEquipment);
+            }
+            else
+            {
+                bodyEquipmentSlotUI.ClearItem();
+            }   
+
+            if (playerInventory.currentLegEquipment != null)
+            {
+                legEquipmentSlotUI.AddItem(playerInventory.currentLegEquipment);
+            }
+            else
+            {
+                legEquipmentSlotUI.ClearItem();
+            }
+
+            if (playerInventory.currentHandEquipment != null)
+            {
+                handEquipmentSlotUI.AddItem(playerInventory.currentHandEquipment);
+            }
+            else
+            {
+                handEquipmentSlotUI.ClearItem();
             }
         }
     }
