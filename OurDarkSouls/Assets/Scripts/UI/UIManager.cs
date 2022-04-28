@@ -8,6 +8,7 @@ namespace SG
     public class UIManager : MonoBehaviour
     {
         public PlayerManager player;
+        public ItemStatsWindowUI itemStatsWindowUI;
         public EquipmentWindowUI equipmentWindowUI;
 
         [Header("HUD")]
@@ -18,6 +19,7 @@ namespace SG
         public GameObject selectWindow;
         public GameObject equipmentScreenWindow;
         public GameObject weaponInventoryWindow;
+        public GameObject itemStatsWindow;
         public GameObject levelUpWindow;
 
         [Header("Equipment Window Slot Selected")]
@@ -62,6 +64,7 @@ namespace SG
         private void Awake()
         {
             player = FindObjectOfType<PlayerManager>();
+            itemStatsWindowUI = GetComponentInChildren<ItemStatsWindowUI>();
             weaponInventorySlots = weaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
             headEquipmentInventorySlots = headEquipmentInventorySlotParent.GetComponentsInChildren<HeadEquipmentInventorySlot>();
             bodyEquipmentInventorySlots = bodyEquipmentInventorySlotParent.GetComponentsInChildren<BodyEquipmentInventorySlot>();
@@ -184,6 +187,7 @@ namespace SG
             ResetAllSelectedSlot();
             weaponInventoryWindow.SetActive(false);
             equipmentScreenWindow.SetActive(false);
+            itemStatsWindow.SetActive(false);
         }
 
         public void ResetAllSelectedSlot()

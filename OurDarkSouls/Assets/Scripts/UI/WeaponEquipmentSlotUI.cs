@@ -61,6 +61,8 @@ namespace SG
             {
                 uIManager.leftHandSlot02Selected = true;
             }
+            
+            uIManager.itemStatsWindowUI.UpdateWeaponItemStats(weapon);
         }
     }
 }
