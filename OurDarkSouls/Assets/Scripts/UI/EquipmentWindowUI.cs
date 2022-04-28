@@ -7,9 +7,9 @@ namespace SG
     {
         public WeaponEquipmentSlotUI[] weaponEquipmentSlotUI;
         public HeadEquipmentSlot headEquipmentSlotUI;
-        public BodyEquipmentInventorySlot bodyEquipmentInventorySlot;
-        public LegEquipmentInventorySlot legEquipmentInventorySlot;
-        public HandEquipmentInventorySlot handEquipmentInventorySlot;
+        public BodyEquipmentSlotUI bodyEquipmentSlotUI;
+        public LegEquipmentSlotUI legEquipmentSlotUI;
+        public HandEquipmentSlotUI handEquipmentSlotUI;
 
         public void LoadWeaponOnEquipmentScreen(PlayerInventoryManager playerInventoryManager)
         {

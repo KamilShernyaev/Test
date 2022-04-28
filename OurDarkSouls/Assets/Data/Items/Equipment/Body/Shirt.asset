@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a22dbef1bbbc5c45b1ed15d86686b01, type: 3}
-  m_Name: ArmorShirt
+  m_Name: Shirt
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
-  itemName: Shirt
-  physicalDefense: 8
-  bodyModelName: Peasant_Jacket
-  upperLeftArmModelName: Upper_left_blue
-  upperRightArmModelName: Upper_right_blue
+  itemIcon: {fileID: 21300000, guid: a89b87919aade4c498f4e0df342ab278, type: 3}
+  itemName: 
+  physicalDefense: 12.9
+  bodyModelName: Peasant_Shirt
+  upperLeftArmModelName: arm bones and muscles
+  upperRightArmModelName: model
