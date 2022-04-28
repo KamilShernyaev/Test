@@ -47212,8 +47212,8 @@ MonoBehaviour:
   weaponStats: {fileID: 1749829704}
   physicalDamageText: {fileID: 1345268816}
   magicDamageText: {fileID: 1878591687}
-  physicalAbsorptionText: {fileID: 0}
-  magicAbsorptionText: {fileID: 0}
+  physicalAbsorptionText: {fileID: 625052029}
+  magicAbsorptionText: {fileID: 2067053342}
 --- !u!4 &1405794357 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 458024, guid: d2522dcf0fb8d6b4aa4ddd10c405746a, type: 3}

@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Shield
   modelPrefab: {fileID: 2449920508647380901, guid: fcb83939c572b4f4d81fed209ddcda98, type: 3}
   isUnarmed: 0
-  baseDamage: 25
+  physicalDamage: 25
   criticalDamageMultiplier: 4
   physicalDamageAbsorption: 50
   right_hand_idle: Right_Arm_Idle_01
