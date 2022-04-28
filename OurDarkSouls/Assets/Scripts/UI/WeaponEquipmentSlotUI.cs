@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace SG
 {
-    public class HandEquipmentSlotUI : MonoBehaviour
+    public class WeaponEquipmentSlotUI : MonoBehaviour
     {
         UIManager uIManager;
 
@@ -23,10 +23,17 @@ namespace SG
         }
         public void AddItem(WeaponItem newWeapon)
         {
-            weapon = newWeapon;
-            icon.sprite = weapon.itemIcon;
-            icon.enabled = true;
-            this.gameObject.SetActive(true);
+            if (newWeapon != null)
+            {
+                weapon = newWeapon;
+                icon.sprite = weapon.itemIcon;
+                icon.enabled = true;
+                this.gameObject.SetActive(true);
+            }
+            else
+            {
+                ClearItem();
+            }
         }
 
         public void ClearItem()

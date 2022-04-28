@@ -7,7 +7,7 @@ namespace SG
 {
     public class UIManager : MonoBehaviour
     {
-        public PlayerManager playerManager;
+        public PlayerManager player;
         public EquipmentWindowUI equipmentWindowUI;
 
         [Header("HUD")]
@@ -25,37 +25,45 @@ namespace SG
         public bool rightHandSlot02Selected;
         public bool leftHandSlot01Selected;
         public bool leftHandSlot02Selected;
+        public bool headEquipmentSlotSelected;
 
         [Header("Weapon Inventory")]
         public GameObject weaponInventorySlotPrefab;
         public Transform weaponInventorySlotsParent;
         WeaponInventorySlot[] weaponInventorySlots;
 
-        private void Awake() 
+
+        [Header("Head Equipment Inventory")]
+        public GameObject headEquipmentInventorySlotPrefab;
+        public Transform headEquipmentInventorySlotParent;
+        HeadEquipmentInventorySlot[] headEquipmentInventorySlots;
+
+        private void Awake()
         {
-            playerManager = FindObjectOfType<PlayerManager>();
+            player = FindObjectOfType<PlayerManager>();
+            weaponInventorySlots = weaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
+            headEquipmentInventorySlots = headEquipmentInventorySlotParent.GetComponentsInChildren<HeadEquipmentInventorySlot>();
+
         }
 
-        private void Start() 
+        private void Start()
         {
-            weaponInventorySlots = weaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>(); 
-            equipmentWindowUI.LoadWeaponOnEquipmentScreen(playerManager.playerInventoryManager);
-            currentSoulCount.text = playerManager.playerStatsManager.currentSoulCount.ToString();
+            equipmentWindowUI.LoadWeaponOnEquipmentScreen(player.playerInventoryManager);
+            currentSoulCount.text = player.playerStatsManager.currentSoulCount.ToString();
         }
 
         public void UpdateUI()
         {
-            #region Weapon Inventory Slots;
             for (int i = 0; i < weaponInventorySlots.Length; i++)
             {
-                if (i < playerManager.playerInventoryManager.weaponsInventory.Count)
+                if (i < player.playerInventoryManager.weaponsInventory.Count)
                 {
-                    if (weaponInventorySlots.Length < playerManager.playerInventoryManager.weaponsInventory.Count)
+                    if (weaponInventorySlots.Length < player.playerInventoryManager.weaponsInventory.Count)
                     {
                         Instantiate(weaponInventorySlotPrefab, weaponInventorySlotsParent);
                         weaponInventorySlots = weaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
                     }
-                    weaponInventorySlots[i].AddItem(playerManager.playerInventoryManager.weaponsInventory[i]);
+                    weaponInventorySlots[i].AddItem(player.playerInventoryManager.weaponsInventory[i]);
                 }
                 else
                 {
@@ -63,7 +71,22 @@ namespace SG
                 }
             }
 
-            #endregion
+            for (int i = 0; i < headEquipmentInventorySlots.Length; i++)
+            {
+                if (i < player.playerInventoryManager.helmetEquipmentInventory.Count)
+                {
+                    if (headEquipmentInventorySlots.Length < player.playerInventoryManager.helmetEquipmentInventory.Count)
+                    {
+                        Instantiate(headEquipmentInventorySlotParent, headEquipmentInventorySlotParent);
+                        headEquipmentInventorySlots = headEquipmentInventorySlotParent.GetComponentsInChildren<HeadEquipmentInventorySlot>();
+                    }
+                    headEquipmentInventorySlots[i].AddItem(player.playerInventoryManager.helmetEquipmentInventory[i]);
+                }
+                else
+                {
+                    headEquipmentInventorySlots[i].ClearInventorySlot();
+                }
+            }
         }
 
         public void OpenSelectWindow()
@@ -77,11 +100,11 @@ namespace SG
         }
 
         public void CloseAllInventoryWindow()
-            {
-                ResetAllSelectedSlot();
-                weaponInventoryWindow.SetActive(false);
-                equipmentScreenWindow.SetActive(false);
-            }
+        {
+            ResetAllSelectedSlot();
+            weaponInventoryWindow.SetActive(false);
+            equipmentScreenWindow.SetActive(false);
+        }
 
         public void ResetAllSelectedSlot()
         {
@@ -89,6 +112,8 @@ namespace SG
             rightHandSlot02Selected = false;
             leftHandSlot01Selected = false;
             leftHandSlot02Selected = false;
+
+            headEquipmentSlotSelected = false;
         }
     }
 }

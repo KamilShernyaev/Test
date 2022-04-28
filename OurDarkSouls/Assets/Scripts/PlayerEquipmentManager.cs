@@ -47,7 +47,7 @@ namespace SG
             EquipAllEquipmentModelsOnStart();
         }
 
-        private void EquipAllEquipmentModelsOnStart()
+        public void EquipAllEquipmentModelsOnStart()
         {
              //HELMET EQUIPMENT
             helmetModelChanger.UnEquipAllHelmetModels();

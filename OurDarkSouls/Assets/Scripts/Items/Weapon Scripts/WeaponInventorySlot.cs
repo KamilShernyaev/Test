@@ -7,17 +7,13 @@ namespace SG
 {
     public class WeaponInventorySlot : MonoBehaviour
     {
-        PlayerInventoryManager playerInventoryManager;
-        PlayerWeaponSlotManager playerWeaponSlotManager;
         UIManager uIManager;
         public Image icon;
         WeaponItem item;
 
         public void Awake()
         {
-            playerInventoryManager = FindObjectOfType<PlayerInventoryManager>();
-            playerWeaponSlotManager = FindObjectOfType<PlayerWeaponSlotManager>();
-            uIManager = FindObjectOfType<UIManager>();
+            uIManager = GetComponentInParent<UIManager>();
         }
 
         public void AddItem(WeaponItem newItem)
@@ -43,37 +39,37 @@ namespace SG
         {
             if(uIManager.rightHandSlot01Selected)
             {
-                playerInventoryManager.weaponsInventory.Add(playerInventoryManager.weaponsInRightHandSlots[0]);
-                playerInventoryManager.weaponsInRightHandSlots[0] = item;
-                playerInventoryManager.weaponsInventory.Remove(item);
+                uIManager.player.playerInventoryManager.weaponsInventory.Add(uIManager.player.playerInventoryManager.weaponsInRightHandSlots[0]);
+                uIManager.player.playerInventoryManager.weaponsInRightHandSlots[0] = item;
+                uIManager.player. playerInventoryManager.weaponsInventory.Remove(item);
             }
             else if(uIManager.rightHandSlot02Selected)
             {
-                playerInventoryManager.weaponsInventory.Add(playerInventoryManager.weaponsInRightHandSlots[1]);
-                playerInventoryManager.weaponsInRightHandSlots[1] = item;
-                playerInventoryManager.weaponsInventory.Remove(item);
+                uIManager.player.playerInventoryManager.weaponsInventory.Add(uIManager.player.playerInventoryManager.weaponsInRightHandSlots[1]);
+                uIManager.player.playerInventoryManager.weaponsInRightHandSlots[1] = item;
+                uIManager.player.playerInventoryManager.weaponsInventory.Remove(item);
             }
             else if(uIManager.leftHandSlot01Selected)
             {
-                playerInventoryManager.weaponsInventory.Add(playerInventoryManager.weaponsInLeftHandSlots[0]);
-                playerInventoryManager.weaponsInLeftHandSlots[0] = item;
-                playerInventoryManager.weaponsInventory.Remove(item);
+                uIManager.player.playerInventoryManager.weaponsInventory.Add(uIManager.player.playerInventoryManager.weaponsInLeftHandSlots[0]);
+                uIManager.player.playerInventoryManager.weaponsInLeftHandSlots[0] = item;
+                uIManager.player.playerInventoryManager.weaponsInventory.Remove(item);
             }
             else if(uIManager.leftHandSlot02Selected)
             {
-                playerInventoryManager.weaponsInventory.Add(playerInventoryManager.weaponsInLeftHandSlots[1]);
-                playerInventoryManager.weaponsInLeftHandSlots[1] = item;
-                playerInventoryManager.weaponsInventory.Remove(item);
+                uIManager.player.playerInventoryManager.weaponsInventory.Add(uIManager.player.playerInventoryManager.weaponsInLeftHandSlots[1]);
+                uIManager.player.playerInventoryManager.weaponsInLeftHandSlots[1] = item;
+                uIManager.player.playerInventoryManager.weaponsInventory.Remove(item);
             }
             else
             {
                 return;
             }
 
-            playerWeaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.rightWeapon,false);
-            playerWeaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.leftWeapon,true);  
+            uIManager.player.playerWeaponSlotManager.LoadWeaponOnSlot(uIManager.player.playerInventoryManager.rightWeapon,false);
+            uIManager.player.playerWeaponSlotManager.LoadWeaponOnSlot(uIManager.player.playerInventoryManager.leftWeapon,true);  
 
-            uIManager.equipmentWindowUI.LoadWeaponOnEquipmentScreen(playerInventoryManager);       
+            uIManager.equipmentWindowUI.LoadWeaponOnEquipmentScreen(uIManager.player.playerInventoryManager);       
             uIManager.ResetAllSelectedSlot();
         }
     }

@@ -5,59 +5,42 @@ namespace SG
 {
     public class EquipmentWindowUI : MonoBehaviour
     {
-        public bool rightHandSlot01Selected;
-        public bool rightHandSlot02Selected;
-        public bool leftHandSlot01Selected;
-        public bool leftHandSlot02Selected;
-
-        public HandEquipmentSlotUI[] handEquipmentSlotUI;
-
-        private void Start() 
-        {
-            handEquipmentSlotUI = GetComponentsInChildren<HandEquipmentSlotUI>();
-        }
+        public WeaponEquipmentSlotUI[] weaponEquipmentSlotUI;
+        public HeadEquipmentSlot headEquipmentSlotUI;
 
         public void LoadWeaponOnEquipmentScreen(PlayerInventoryManager playerInventoryManager)
         {
-            for( int i = 0; i < handEquipmentSlotUI.Length; i++)
+            for( int i = 0; i < weaponEquipmentSlotUI.Length; i++)
             {
-                if(handEquipmentSlotUI[i].rightHandSLot01)
+                if(weaponEquipmentSlotUI[i].rightHandSLot01)
                 {
-                    handEquipmentSlotUI[i].AddItem(playerInventoryManager.weaponsInRightHandSlots[0]);
+                    weaponEquipmentSlotUI[i].AddItem(playerInventoryManager.weaponsInRightHandSlots[0]);
                 }
-                else if (handEquipmentSlotUI[i].rightHandSLot02)
+                else if (weaponEquipmentSlotUI[i].rightHandSLot02)
                 {
-                    handEquipmentSlotUI[i].AddItem(playerInventoryManager.weaponsInRightHandSlots[1]);
+                    weaponEquipmentSlotUI[i].AddItem(playerInventoryManager.weaponsInRightHandSlots[1]);
                 }
-                else if(handEquipmentSlotUI[i].leftHandSLot01)
+                else if(weaponEquipmentSlotUI[i].leftHandSLot01)
                 {
-                    handEquipmentSlotUI[i].AddItem(playerInventoryManager.weaponsInLeftHandSlots[0]);
+                    weaponEquipmentSlotUI[i].AddItem(playerInventoryManager.weaponsInLeftHandSlots[0]);
                 }
                 else
                 {
-                    handEquipmentSlotUI[i].AddItem(playerInventoryManager.weaponsInLeftHandSlots[1]);
+                    weaponEquipmentSlotUI[i].AddItem(playerInventoryManager.weaponsInLeftHandSlots[1]);
                 }
             }
-        }
-
-        public void SelectRightHandSlot01()
+        }    
+        
+        public void LoadArmorOnEquipmentScreen(PlayerInventoryManager playerInventory)
         {
-            rightHandSlot01Selected = true;
-        }
-
-        public void SelectRightHandSlot02()
-        {
-            rightHandSlot02Selected = true;
-        }
-
-        public void SelectLeftHandSlot01()
-        {
-            leftHandSlot01Selected = true;
-        }
-
-        public void SelectLeftHandSlot02()
-        {
-            leftHandSlot02Selected = true;
+            if (playerInventory.currentHelmetEquipment != null)
+            {
+                headEquipmentSlotUI.AddItem(playerInventory.currentHelmetEquipment);
+            }
+            else
+            {
+                headEquipmentSlotUI.ClearItem();
+            }
         }
     }
 }

@@ -9,12 +9,15 @@ namespace SG
     public class PlayerManager : CharacterManager
     {
         public InputHandler inputHandler;
+        
         public Animator animator;
         public UIManager uIManager;
         public CameraHandler cameraHandler;
         public PlayerStatsManager playerStatsManager;
-        public PlayerInventoryManager playerInventoryManager;
+        public PlayerInventoryManager playerInventoryManager;        
+        public PlayerEquipmentManager playerEquipmentManager;
         public PlayerLocomotionManager playerLocomotionManager;
+        public PlayerWeaponSlotManager playerWeaponSlotManager;
 
         public CriticalDamageCollider criticalDamageCollider;
         public PlayerAnimatorManager playerAnimatorManager;
@@ -26,6 +29,7 @@ namespace SG
         private void Awake() 
         {
           uIManager = FindObjectOfType<UIManager>();
+          playerWeaponSlotManager = FindObjectOfType<PlayerWeaponSlotManager>();
           inputHandler = GetComponent<InputHandler>();
           playerInventoryManager = GetComponent<PlayerInventoryManager>();
           animator = GetComponent<Animator>();

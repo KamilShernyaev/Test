@@ -27,6 +27,7 @@ namespace SG
         public int currentLeftWeaponIndex = 0; // здесь стоял 0, как и в предыдущей строчке
 
         public List<WeaponItem> weaponsInventory; 
+        public List<HelmetEquipment> helmetEquipmentInventory;
 
 
         private void Awake()
