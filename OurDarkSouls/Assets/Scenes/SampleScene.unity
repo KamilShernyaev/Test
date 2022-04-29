@@ -72851,7 +72851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dcd850434b60f147942ee2b0e7b6bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterStatsManager: {fileID: 0}
+  characterStatsManager: {fileID: 6665753287151880091}
   lockOnTransform: {fileID: 1189867043}
   isDead: 0
   backStabCollider: {fileID: 1566575844}

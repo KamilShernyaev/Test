@@ -2264,7 +2264,6 @@ MonoBehaviour:
   currentFocusPoints: 0
   currentSoulCount: 0
   soulsAwardedOnDeath: 50
-  isDead: 0
   playerLevel: 1
   healthLevel: 10
   staminaLevel: 10
@@ -2278,6 +2277,7 @@ MonoBehaviour:
   physicalDamageAbsoptionBody: 0
   physicalDamageAbsoptionLegs: 0
   physicalDamageAbsoptionHand: 0
+  enemy: {fileID: 0}
   enemyHealthBar: {fileID: 6015636609335640681}
 --- !u!114 &6015636610011774044
 MonoBehaviour:
@@ -2291,7 +2291,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afceaf9b3d6ab8f4f8150a10d8fa685c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterStatsManager: {fileID: 8452465137113805627}
   lockOnTransform: {fileID: 6015636609218786756}
+  isDead: 0
   backStabCollider: {fileID: 6015636609912796473}
   riposteCollider: {fileID: 6015636610283593474}
   isInteracting: 0
@@ -2307,6 +2309,9 @@ MonoBehaviour:
   isInAir: 0
   isGrounded: 0
   isInvulnerable: 0
+  enemyLocomotionManager: {fileID: 0}
+  enemyAnimatorManager: {fileID: 0}
+  enemyStatsManager: {fileID: 0}
   currentState: {fileID: 6015636609726037878}
   currentTarget: {fileID: 0}
   navMeshAgent: {fileID: 0}

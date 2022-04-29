@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace SG
 {
     public class HealthBar : MonoBehaviour
-        {
+    {
         public Slider slider;
 
         private void Start() 
