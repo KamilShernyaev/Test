@@ -39,12 +39,10 @@ namespace SG
                 enemyHealthBar.SetHealth(currentHealth);
                 enemy.enemyAnimatorManager.PlayTargetAnimation(damageAnimation, true);
                 if(currentHealth <= 0)
-                    {
-                    HandleDeath();
-                    }
+                {
+                HandleDeath();
+                }
             }       
-            
-
         }
     
         private void HandleDeath()
