@@ -47,7 +47,7 @@ namespace SG
         PlayerInventoryManager playerInventoryManagerManager;
         PlayerManager player;
         PlayerEffectsManager playerEffectsManager;
-        PlayerStatsManager playerStatsManagerManager;
+        PlayerStatsManager playerStatsManager;
         BlockingCollider blockingCollider;
         PlayerWeaponSlotManager playerWeaponSlotManager;
         CameraHandler cameraManager;
@@ -62,7 +62,7 @@ namespace SG
             playerCombatManager = GetComponent<PlayerCombatManager>();
             playerInventoryManagerManager = GetComponent<PlayerInventoryManager>();
             player = GetComponent<PlayerManager>();
-            playerStatsManagerManager = GetComponent<PlayerStatsManager>();
+            playerStatsManager = GetComponent<PlayerStatsManager>();
             playerEffectsManager = GetComponent<PlayerEffectsManager>();
             uIManager = FindObjectOfType<UIManager>();
             cameraManager = FindObjectOfType<CameraHandler>();
@@ -106,7 +106,7 @@ namespace SG
           }
           public void TickInput(float delta) 
           {
-            if (player.isDead)
+            if (playerStatsManager.isDead)
               return;
 
               HandleMoveInput(delta);
@@ -135,13 +135,13 @@ namespace SG
             {
               rollInputTimer += delta;
 
-              if(playerStatsManagerManager.currentStamina <= 0)
+              if(playerStatsManager.currentStamina <= 0)
               {
                 b_Input = false;
                 sprintFlag = false;
               }
 
-              if(moveAmount >0.5f && playerStatsManagerManager.currentStamina > 0)
+              if(moveAmount >0.5f && playerStatsManager.currentStamina > 0)
               {
                 sprintFlag = true;
               }

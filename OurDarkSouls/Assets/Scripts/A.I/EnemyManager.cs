@@ -58,7 +58,7 @@ namespace SG
 
             isInteracting = enemyAnimatorManager.animator.GetBool("isInteracting");
             canDoCombo = enemyAnimatorManager.animator.GetBool("canDoCombo");
-            enemyAnimatorManager.animator.SetBool("isDead", isDead);
+            enemyAnimatorManager.animator.SetBool("isDead", enemyStatsManager.isDead);
         }
 
         private void LateUpdate()

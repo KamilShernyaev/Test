@@ -57,7 +57,7 @@ namespace SG
             if(currentHealth <= 0)
             {
                 currentHealth = 0;
-                character.isDead = true;
+                isDead = true;
                 playerAnimatorManager.PlayTargetAnimation("Death", true);
             }
         }

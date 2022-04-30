@@ -31,9 +31,9 @@ namespace SG
             enemyHealthBar.SetHealth(currentHealth);
         }
 
-        public override void TakeDamage(int damage, string damageAnimation = "Damage_01")
+        public override void TakeDamage(int physicalDamage, string damageAnimation = "TakeDamage")
         {
-            base.TakeDamage(damage, damageAnimation = "Damage_01");
+            base.TakeDamage(physicalDamage, damageAnimation = "TakeDamage");
             enemyHealthBar.SetHealth(currentHealth);
             enemy.enemyAnimatorManager.PlayTargetAnimation(damageAnimation, true);
 
@@ -47,11 +47,11 @@ namespace SG
         {
             currentHealth = 0;
             enemy.enemyAnimatorManager.PlayTargetAnimation("Death", true);
-            enemy.isDead = true;
+            isDead = true;
 
-            if (enemy.isDead == true)
+            if (isDead == true)
             {
-                Destroy(gameObject);
+                Destroy(gameObject, 3f);
             }
 
             if (OnEnemyKilled != null)

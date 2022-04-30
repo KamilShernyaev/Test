@@ -15,7 +15,7 @@ namespace SG
         public float maxStamina;
         public float currentStamina;
 
-       
+       public bool isDead;
         public float maxFocusPoints;
         public float currentFocusPoints;
 
@@ -48,10 +48,8 @@ namespace SG
             character = GetComponent<CharacterManager>();
         }
 
-        public virtual void TakeDamage(int physicalDamage, string damageAnimation = "Damage_01")
+        public virtual void TakeDamage(int physicalDamage, string damageAnimation = "TakeDamage")
         {
-            if(character.isDead)
-                return;
                 
                 float totalPhysicalDamageAbsorption = 1 - 
                 (1 - physicalDamageAbsoptionHead / 100) * 
@@ -71,7 +69,7 @@ namespace SG
                 if(currentHealth <= 0)
                 {
                     currentHealth = 0;
-                    character.isDead = true;
+                    isDead = true;
                 }
         }
     
@@ -82,7 +80,7 @@ namespace SG
             if(currentHealth <= 0)
             {
                 currentHealth = 0;
-                character.isDead = true;
+                isDead = true;
             }
         }
         

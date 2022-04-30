@@ -54,7 +54,7 @@ Block
 - Block_Guard
 - Block_Damage
 Damage
-- Damage_01
+- TakeDamage
 - Damage_02
 - Damage_Left_01
 - Damage_Left_02

@@ -11,9 +11,6 @@ namespace SG
        [Header("Lock On Transform")]
        public Transform lockOnTransform;
 
-       [Header("Status")]
-        public bool isDead;
-
        [Header("Combat Colliders")]
        public CriticalDamageCollider backStabCollider;
        public CriticalDamageCollider riposteCollider;
