@@ -15,6 +15,7 @@ namespace SG
 
         public void AwardSoulsOnDeath()
         {
+            Debug.Log("Трутуту");
             PlayerStatsManager playerStatsManager = FindObjectOfType<PlayerStatsManager>();
             SoulCountBar soulCountBar = FindObjectOfType<SoulCountBar>();
 

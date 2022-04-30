@@ -33,14 +33,18 @@ namespace SG
 
         public override void TakeDamage(int physicalDamage, string damageAnimation = "TakeDamage")
         {
-            base.TakeDamage(physicalDamage, damageAnimation = "TakeDamage");
-            enemyHealthBar.SetHealth(currentHealth);
-            enemy.enemyAnimatorManager.PlayTargetAnimation(damageAnimation, true);
-
-            if(currentHealth <= 0)
+            if(isDead == false)
             {
-                HandleDeath();
-            }
+                base.TakeDamage(physicalDamage, damageAnimation = "TakeDamage");
+                enemyHealthBar.SetHealth(currentHealth);
+                enemy.enemyAnimatorManager.PlayTargetAnimation(damageAnimation, true);
+                if(currentHealth <= 0)
+                    {
+                    HandleDeath();
+                    }
+            }       
+            
+
         }
     
         private void HandleDeath()
