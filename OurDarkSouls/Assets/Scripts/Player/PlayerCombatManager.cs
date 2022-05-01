@@ -18,8 +18,8 @@ namespace SG
         LayerMask backStabLayer = 1 << 12;
         LayerMask riposteLayer = 1 << 13;
 
-        public delegate void EnemyKilledText();
-        public static event EnemyKilledText OnEnemyKilledText;
+        // public delegate void EnemyKilledText();
+        // public static event EnemyKilledText OnEnemyKilledText;
 
         private void Awake() 
         {
@@ -248,10 +248,10 @@ namespace SG
                     playerAnimatorManager.PlayTargetAnimation("Back_Stab", true);
                     enemyCharacterManager.GetComponentInChildren<EnemyAnimatorManager>().PlayTargetAnimation("Back_Stabbed", true);
                     Destroy(enemyCharacterManager.gameObject, 3f);
-                    if (OnEnemyKilledText != null)
-                    {
-                        OnEnemyKilledText();
-                    }
+                    // if (OnEnemyKilledText != null)
+                    // {
+                    //     OnEnemyKilledText();
+                    // }
                 }
             }
             else if (Physics.Raycast(inputHandler.criticalAttackRayCastStartPoint.position, 

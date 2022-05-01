@@ -9,8 +9,8 @@ namespace SG
         public EnemyManager enemy;
         public UIEnemyHealthBar enemyHealthBar;
 
-        public delegate void EnemyKilled();
-        public static event EnemyKilled OnEnemyKilled;
+        // public delegate void EnemyKilled();
+        // public static event EnemyKilled OnEnemyKilled;
 
         private void Awake() 
         {
@@ -56,10 +56,10 @@ namespace SG
                 Destroy(gameObject, 3f);
             }
 
-            if (OnEnemyKilled != null)
-            {
-                OnEnemyKilled();
-            }
+            // if (OnEnemyKilled != null)
+            // {
+            //     OnEnemyKilled();
+            // }
         }
     }
 }
