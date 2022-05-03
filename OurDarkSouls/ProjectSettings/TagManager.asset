@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Interactable
   - Flask
+  - DatabaseAccess
   layers:
   - Default
   - TransparentFX
