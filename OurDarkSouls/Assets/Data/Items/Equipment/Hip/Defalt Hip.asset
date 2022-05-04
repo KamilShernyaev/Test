@@ -16,5 +16,5 @@ MonoBehaviour:
   itemName: Standart Hip
   physicalDefense: 4
   hipModelName: Chr_Hips_Male_00
-  leftLegName: Chr_LegLeft_Male_00
-  rightLegName: Chr_LegRight_Male_00
+  leftLegName: Chr_LegRight_Male_00
+  rightLegName: Chr_LegLeft_Male_00
