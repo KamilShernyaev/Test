@@ -20,6 +20,7 @@ namespace SG
 
         void Start()
         {
+            
             maxHelth = SetMaxHealthFromHealthLevel();
             currentHealth = maxHelth;
             enemyHealthBar.SetMaxHealth(maxHelth);
@@ -40,7 +41,7 @@ namespace SG
                 enemy.enemyAnimatorManager.PlayTargetAnimation(damageAnimation, true);
                 if(currentHealth <= 0)
                 {
-                HandleDeath();
+                    HandleDeath();
                 }
             }       
         }
