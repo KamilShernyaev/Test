@@ -4,16 +4,43 @@ using UnityEngine;
 
 public class RotateObject : MonoBehaviour
 {
-    public float rotSpeed = 2;
+    PlayesControls playerControls;
 
-    void OnMouseDrag()
+    public float rotationAmount = 1;
+    public float rotationSpeed = 5;
+
+    Vector2 cameraInput;
+
+    Vector3 currentRotation;
+    Vector3 targetRotation;
+
+    private void OnEnable() 
     {
-        float rotX = Input.GetAxis("Mouse X") * rotSpeed * Mathf.Deg2Rad;
-        // Enable this if you want to move Y rotation
-        //float rotY = Input.GetAxis("Mouse Y")*rotSpeed*Mathf.Deg2Rad;
+        if(playerControls == null)
+        {
+            playerControls = new PlayesControls();
+            playerControls.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
+        }
+        playerControls.Enable();
+    }
 
-        transform.Rotate(Vector3.up, -rotX);
-        // Enable this if you want to move Y rotation
-        //transform.RotateAround(Vector3.right, rotY);
+    private void Start() 
+    {
+        currentRotation = transform.eulerAngles;
+        targetRotation = transform.eulerAngles;
+    }
+
+    private void Update() 
+    {
+        if(cameraInput.x > 0)
+        {
+            targetRotation.y = targetRotation.y - rotationAmount;
+        }
+        else if(cameraInput.x < 0)
+        {
+            targetRotation.y = targetRotation.y + rotationAmount;
+        }
+        currentRotation = Vector3.Lerp(currentRotation, targetRotation, rotationSpeed * Time.deltaTime);
+        transform.eulerAngles = currentRotation;
     }
 }
