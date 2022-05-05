@@ -17,9 +17,12 @@ namespace SG
 
         public float staminaRegenerationAmount = 30;
         public float staminaRegenTimer = 0;
+        [SerializeField] private CapsuleCollider playerCapsuleCollider;
+        [SerializeField] private GameObject loseWindow;
 
         private void Awake() 
         {
+
             character = FindObjectOfType<CharacterManager>();
             playerManager = GetComponent<PlayerManager>();
             healthBar = FindObjectOfType<HealthBar>();
@@ -29,7 +32,10 @@ namespace SG
         }
 
         void Start()
-        {
+        {   
+            playerCapsuleCollider.enabled = true;
+            loseWindow.SetActive(false);
+
             maxHelth = SetMaxHealthFromHealthLevel();
             currentHealth = maxHelth;
             healthBar.SetMaxHealth(maxHelth);
@@ -47,6 +53,7 @@ namespace SG
 
         }
 
+
         public override void TakeDamage(int damage, string damageAnimation = "TakeDamage")
         {
             if(playerManager.isInvulnerable)
@@ -61,8 +68,10 @@ namespace SG
                 currentHealth = 0;
                 isDead = true;
                 playerAnimatorManager.PlayTargetAnimation("Death", true);
+                playerCapsuleCollider.enabled = false;               
+                loseWindow.SetActive(true); 
             }
-        }
+        }       
 
         public override void TakeDamageNoAnimation(int damage)
         {
