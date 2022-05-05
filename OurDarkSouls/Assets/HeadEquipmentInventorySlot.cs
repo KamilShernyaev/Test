@@ -45,7 +45,7 @@ namespace SG
                 }
                 uIManager.player.playerInventoryManager.currentHelmetEquipment = item;
                 uIManager.player.playerInventoryManager.helmetEquipmentInventory.Remove(item);
-                uIManager.player.playerEquipmentManager.EquipAllEquipmentModelsOnStart();
+                uIManager.player.playerEquipmentManager.EquipAllEquipmentModels();
             }
             else
             {

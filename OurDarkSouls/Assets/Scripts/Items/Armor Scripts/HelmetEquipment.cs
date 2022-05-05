@@ -8,5 +8,6 @@ namespace SG
     public class HelmetEquipment : EquipmentItem
     {
         public string helmetModelName;
+        public bool hideFacialFeatures;
     }
 }

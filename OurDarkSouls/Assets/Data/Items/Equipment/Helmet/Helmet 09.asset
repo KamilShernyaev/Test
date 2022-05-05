@@ -16,3 +16,4 @@ MonoBehaviour:
   itemName: Plague Doctor Mask
   physicalDefense: 4
   helmetModelName: Chr_Head_No_Elements_Male_09
+  hideFacialFeatures: 1

@@ -6,6 +6,8 @@ namespace SG
 {
     public class PlayerStatsManager : CharacterStatsManager
     {
+        [Header("NAME")]
+        public string playerName = "Nameless";
         CharacterManager character;
         PlayerManager playerManager;
         HealthBar healthBar;

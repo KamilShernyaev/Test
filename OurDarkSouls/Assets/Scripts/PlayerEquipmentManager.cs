@@ -31,6 +31,8 @@ namespace SG
         LeftHandModelChanger leftHandModelChanger;
         RightHandModelChanger rightHandModelChanger;
 
+        [Header("Facial Features")]
+        public GameObject[] facialFeatures;
 
         [Header("Defalt Naked Models")]
         public GameObject nakedHeadModel;
@@ -68,16 +70,23 @@ namespace SG
 
         private void Start() 
         {
-            EquipAllEquipmentModelsOnStart();
+            EquipAllEquipmentModels();
         }
 
-        public void EquipAllEquipmentModelsOnStart()
+        public void EquipAllEquipmentModels()
         {
              //HELMET EQUIPMENT
             helmetModelChanger.UnEquipAllHelmetModels();
 
             if(playerInventoryManager.currentHelmetEquipment != null)
             {
+                if(playerInventoryManager.currentHelmetEquipment.hideFacialFeatures)
+                {
+                    foreach (var feature in facialFeatures)
+                    {
+                        feature.SetActive(false);
+                    }
+                }
                 nakedHeadModel.SetActive(false);
                 helmetModelChanger.EquipModelByName(playerInventoryManager.currentHelmetEquipment.helmetModelName);
                 playerStatsManager.physicalDamageAbsoptionHead = playerInventoryManager.currentHelmetEquipment.physicalDefense;
@@ -87,6 +96,11 @@ namespace SG
             {
                 nakedHeadModel.SetActive(true);
                 playerStatsManager.physicalDamageAbsoptionHead = 0;
+
+                foreach (var feature in facialFeatures)
+                    {
+                        feature.SetActive(true);
+                    }
             }
 
              //BODY EQUIPMENT

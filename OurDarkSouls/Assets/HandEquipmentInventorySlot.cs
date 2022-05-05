@@ -45,7 +45,7 @@ namespace SG
                 }
                 uIManager.player.playerInventoryManager.currentHandEquipment = item;
                 uIManager.player.playerInventoryManager.handEquipmentInventory.Remove(item);
-                uIManager.player.playerEquipmentManager.EquipAllEquipmentModelsOnStart();
+                uIManager.player.playerEquipmentManager.EquipAllEquipmentModels();
             }
             else
             {
