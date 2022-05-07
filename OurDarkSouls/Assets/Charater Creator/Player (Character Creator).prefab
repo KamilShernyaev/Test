@@ -42784,7 +42784,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1607166391471059748}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba69dc6a117e63546aefad119b652563, type: 3}
   m_Name: 
@@ -42836,7 +42836,7 @@ MonoBehaviour:
   rightWeapon: {fileID: 0}
   leftWeapon: {fileID: 0}
   currentConsumble: {fileID: 11400000, guid: c2428dac798406942ae433d7366a2efc, type: 2}
-  currentHelmetEquipment: {fileID: 11400000, guid: f49d1d56caf78d341bd401e95063e8f4, type: 2}
+  currentHelmetEquipment: {fileID: 0}
   currentBodyEquipment: {fileID: 11400000, guid: ed0c40361c92c704b871f641c03df63f, type: 2}
   currentLegEquipment: {fileID: 11400000, guid: 0c3c8ba0a9e8f26429460f17efd1329b, type: 2}
   currentHandEquipment: {fileID: 11400000, guid: f6ef5778849028a4586b41ea3acaba6f, type: 2}
@@ -42966,6 +42966,8 @@ MonoBehaviour:
   playerName: Nameless
   staminaRegenerationAmount: 30
   staminaRegenTimer: 0
+  playerCapsuleCollider: {fileID: 0}
+  loseWindow: {fileID: 0}
 --- !u!114 &3294887399213192795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43024,6 +43026,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b87ed76e2004e864a83dda24b263d43e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  facialFeatures:
+  - {fileID: 1606723189809070182}
+  - {fileID: 1606690839345541078}
+  - {fileID: 1607576649632590286}
   nakedHeadModel: {fileID: 1606736987434490438}
   nakedBodyModel: Chr_Torso_Male_00
   nakedUpperLeftArm: Chr_ArmUpperLeft_Male_00
