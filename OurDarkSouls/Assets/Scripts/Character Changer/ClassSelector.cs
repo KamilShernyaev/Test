@@ -93,5 +93,57 @@ namespace SG
             staminaStat.text =  player.playerStatsManager.staminaLevel.ToString();
             focusStat.text = player.playerStatsManager.focusLevel.ToString();
         }
+
+        public void AssignWizardClass()
+        {
+            AssignClassStats(2);
+            player.playerInventoryManager.currentHelmetEquipment = classGears[2].helmetEquipment;
+            tempPlayerSkin.tempHelmetEquipment = classGears[2].helmetEquipment;
+            player.playerInventoryManager.currentBodyEquipment = classGears[2].bodyEquipment;
+            tempPlayerSkin.tempBodyEquipment = classGears[2].bodyEquipment;
+            player.playerInventoryManager.currentLegEquipment = classGears[2].legEquipment;
+            tempPlayerSkin.tempLegEquipment = classGears[2].legEquipment;
+            player.playerInventoryManager.currentHandEquipment = classGears[2].handEquipment;
+            tempPlayerSkin.tempHandEquipment = classGears[2].handEquipment;
+
+            player.playerInventoryManager.weaponsInRightHandSlots[0] = classGears[2].primaryWeapon;
+            tempPlayerSkin.tempPrimaryWeapon = classGears[2].primaryWeapon;
+            //player.playerInventoryManager.weaponsInRightHandSlots[1] = classGears[0].secondaryWeapon; - Secondary slot
+            player.playerInventoryManager.weaponsInLeftHandSlots[0] = classGears[2].offHandWeapon;
+            tempPlayerSkin.tempOffHandWeapon = classGears[2].offHandWeapon;
+
+            player.playerEquipmentManager.EquipAllEquipmentModels();
+            player.playerWeaponSlotManager.LoadBothWeaponOnSlots();
+            
+            hpStat.text = player.playerStatsManager.healthLevel.ToString();
+            staminaStat.text =  player.playerStatsManager.staminaLevel.ToString();
+            focusStat.text = player.playerStatsManager.focusLevel.ToString();
+        }
+
+        public void AssignBarbarianClass()
+        {
+            AssignClassStats(3);
+            player.playerInventoryManager.currentHelmetEquipment = classGears[3].helmetEquipment;
+            tempPlayerSkin.tempHelmetEquipment = classGears[3].helmetEquipment;
+            player.playerInventoryManager.currentBodyEquipment = classGears[3].bodyEquipment;
+            tempPlayerSkin.tempBodyEquipment = classGears[3].bodyEquipment;
+            player.playerInventoryManager.currentLegEquipment = classGears[3].legEquipment;
+            tempPlayerSkin.tempLegEquipment = classGears[3].legEquipment;
+            player.playerInventoryManager.currentHandEquipment = classGears[3].handEquipment;
+            tempPlayerSkin.tempHandEquipment = classGears[3].handEquipment;
+
+            player.playerInventoryManager.weaponsInRightHandSlots[0] = classGears[3].primaryWeapon;
+            tempPlayerSkin.tempPrimaryWeapon = classGears[3].primaryWeapon;
+            //player.playerInventoryManager.weaponsInRightHandSlots[1] = classGears[0].secondaryWeapon; - Secondary slot
+            player.playerInventoryManager.weaponsInLeftHandSlots[0] = classGears[3].offHandWeapon;
+            tempPlayerSkin.tempOffHandWeapon = classGears[3].offHandWeapon;
+
+            player.playerEquipmentManager.EquipAllEquipmentModels();
+            player.playerWeaponSlotManager.LoadBothWeaponOnSlots();
+            
+            hpStat.text = player.playerStatsManager.healthLevel.ToString();
+            staminaStat.text =  player.playerStatsManager.staminaLevel.ToString();
+            focusStat.text = player.playerStatsManager.focusLevel.ToString();
+        }
     }
 }

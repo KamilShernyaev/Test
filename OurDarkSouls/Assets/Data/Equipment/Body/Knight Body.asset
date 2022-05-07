@@ -9,13 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61e1a1254bd78934f8b452f8d95930e3, type: 3}
-  m_Name: Warrior Arms
+  m_Script: {fileID: 11500000, guid: 1a22dbef1bbbc5c45b1ed15d86686b01, type: 3}
+  m_Name: Knight Body
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
   itemName: 
   physicalDefense: 0
-  leftHandModelName: 
-  rightHandModelName: 
-  lowerLeftArmModelName: 
-  lowerRightArmModelName: 
+  bodyModelName: Chr_Torso_Male_11
+  upperLeftArmModelName: Chr_ArmUpperLeft_Male_17
+  upperRightArmModelName: Chr_ArmUpperRight_Male_04

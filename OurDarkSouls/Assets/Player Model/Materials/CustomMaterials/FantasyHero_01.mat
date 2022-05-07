@@ -110,8 +110,8 @@ Material:
     m_Floats:
     - _BodyArt_Amount: 1
     - _Emission: 0
-    - _Metallic: 0
-    - _Smoothness: 0.2
+    - _Metallic: 0.877
+    - _Smoothness: 0.357
     - _Tattoo_Amount: 1
     - __dirty: 0
     m_Colors:
@@ -129,3 +129,4 @@ Material:
     - _Color_Skin: {r: 1, g: 0.37037057, b: 0, a: 0}
     - _Color_Stubble: {r: 1, g: 0.40909076, b: 0, a: 0}
     - _Color_Tertiary: {r: 0.7352941, g: 0.20004326, b: 0.20004326, a: 1}
+  m_BuildTextureStacks: []
