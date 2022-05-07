@@ -7,15 +7,14 @@ namespace SG
     public class ClassStats
     {
         public string playerClass;
-        public int classLevel;
 
         [TextArea]
         public string classDescription;
 
         [Header("Class Stats")]
 
-        public int strenghtLevel;
-        public int dexterityLevel;
-
+        public int maxHpLevel;
+        public int maxStaminaLevel;
+        public int maxFocusLevel;
     }
 }

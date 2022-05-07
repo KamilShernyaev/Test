@@ -19,11 +19,10 @@ namespace SG
         public LegEquipment currentLegEquipment;
         public HandEquipment currentHandEquipment;
 
-        public WeaponItem[] weaponsInRightHandSlots = new WeaponItem[1];
-        public WeaponItem[] weaponsInLeftHandSlots = new WeaponItem[1];
-
         public int currentRightWeaponIndex = 0;
-        public int currentLeftWeaponIndex = 0; // здесь стоял 0, как и в предыдущей строчке
+        public WeaponItem[] weaponsInRightHandSlots = new WeaponItem[1];
+        public int currentLeftWeaponIndex = 0;
+        public WeaponItem[] weaponsInLeftHandSlots = new WeaponItem[1];
 
         public List<WeaponItem> weaponsInventory; 
         public List<HelmetEquipment> helmetEquipmentInventory;
