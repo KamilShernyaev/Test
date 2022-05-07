@@ -2147,7 +2147,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6015636610011774039}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 35.339897, y: -0.0000004172325, z: 33.179455}
+  m_LocalPosition: {x: -1.37, y: -19.88, z: -5.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6091555345293160324}
@@ -2260,6 +2260,7 @@ MonoBehaviour:
   currentHealth: 0
   maxStamina: 0
   currentStamina: 0
+  isDead: 0
   maxFocusPoints: 0
   currentFocusPoints: 0
   currentSoulCount: 0
@@ -2293,7 +2294,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterStatsManager: {fileID: 8452465137113805627}
   lockOnTransform: {fileID: 6015636609218786756}
-  isDead: 0
   backStabCollider: {fileID: 6015636609912796473}
   riposteCollider: {fileID: 6015636610283593474}
   isInteracting: 0
