@@ -11,8 +11,9 @@ namespace SG
         public TempPlayerSkin tempPlayerSkin;
 
         [Header("Class Info UI")]
-        public Text strenghtStat;
-        public Text dexterityStat;
+        public Text hpStat;
+        public Text staminaStat;
+        public Text focusStat;
         public Text classDescription;
 
 
@@ -30,14 +31,14 @@ namespace SG
 
         private void AssignClassStats(int classChosen)
         {
-            player.playerStatsManager.playerLevel = classStats[classChosen].classLevel;
-            //tempPlayerSkin.tempPlayerStatsManager.playerLevel = classStats[classChosen].classLevel;
+            player.playerStatsManager.healthLevel = classStats[classChosen].maxHpLevel;
+            tempPlayerSkin.healthLevel = classStats[classChosen].maxHpLevel;
 
-            player.playerStatsManager.strengthLevel = classStats[classChosen].strenghtLevel;
-            //tempPlayerSkin.tempPlayerStatsManager.strengthLevel = classStats[classChosen].strenghtLevel;
+            player.playerStatsManager.staminaLevel = classStats[classChosen].maxStaminaLevel;
+            tempPlayerSkin.staminaLevel = classStats[classChosen].maxStaminaLevel;
 
-            player.playerStatsManager.dexeterityLevel = classStats[classChosen].dexterityLevel;
-            //tempPlayerSkin.tempPlayerStatsManager.dexeterityLevel = classStats[classChosen].dexterityLevel;
+            player.playerStatsManager.focusLevel = classStats[classChosen].maxFocusLevel;
+            tempPlayerSkin.focusLevel = classStats[classChosen].maxFocusLevel;
 
             classDescription.text = classStats[classChosen].classDescription;
         }
@@ -63,8 +64,9 @@ namespace SG
             player.playerEquipmentManager.EquipAllEquipmentModels();
             player.playerWeaponSlotManager.LoadBothWeaponOnSlots();
 
-            strenghtStat.text = player.playerStatsManager.strengthLevel.ToString();
-            dexterityStat.text = player.playerStatsManager.dexeterityLevel.ToString();
+            hpStat.text = player.playerStatsManager.healthLevel.ToString();
+            staminaStat.text =  player.playerStatsManager.staminaLevel.ToString();
+            focusStat.text = player.playerStatsManager.focusLevel.ToString();
         }
         public void AssignNakedClass()
         {
@@ -86,8 +88,10 @@ namespace SG
 
             player.playerEquipmentManager.EquipAllEquipmentModels();
             player.playerWeaponSlotManager.LoadBothWeaponOnSlots();
-            strenghtStat.text = player.playerStatsManager.strengthLevel.ToString();
-            dexterityStat.text = player.playerStatsManager.dexeterityLevel.ToString();
+            
+            hpStat.text = player.playerStatsManager.healthLevel.ToString();
+            staminaStat.text =  player.playerStatsManager.staminaLevel.ToString();
+            focusStat.text = player.playerStatsManager.focusLevel.ToString();
         }
     }
 }

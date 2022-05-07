@@ -18,7 +18,9 @@ namespace  SG
         public LegEquipment tempLegEquipment;
         public HandEquipment tempHandEquipment;
 
-        public PlayerStatsManager tempPlayerStatsManager;
+        public int healthLevel;
+        public int staminaLevel;
+        public int focusLevel;
 
         //[Header("Spell Item")]
         //public SpellItem startingSpell;
