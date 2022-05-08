@@ -5,8 +5,11 @@ namespace SG
 {
     public class PlayerInventoryManager : MonoBehaviour
     {
+       
+        public SpellItem fireBall;
+        public SpellItem heal;
 
-        public ScriptableObject hammer;
+        public WeaponItem fireBallItem;
 
         PlayerWeaponSlotManager playerWeaponSlotManager;
 
@@ -46,6 +49,18 @@ namespace SG
             playerWeaponSlotManager.LoadWeaponOnSlot(rightWeapon, false);   
             playerWeaponSlotManager.LoadWeaponOnSlot(leftWeapon, true);   
 
+        }
+
+        private void Update() 
+        {
+            if (rightWeapon == fireBallItem)
+            {
+                currentSpell = fireBall;
+            }
+            else
+            {
+                currentSpell = heal;
+            }
         }
 
          public void ChangeRightWeapon()

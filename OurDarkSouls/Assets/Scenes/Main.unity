@@ -45162,7 +45162,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d21abb6536368574eac08560291567be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hammer: {fileID: 0}
+  fireBall: {fileID: 11400000, guid: 205d93aff91ddd74f8e136354f41b9a7, type: 2}
+  heal: {fileID: 11400000, guid: 333949925e15abe4e80384d8e46ef551, type: 2}
+  fireBallItem: {fileID: 11400000, guid: 7bc3f189cf8b7044fbbd35a2c2e1c50d, type: 2}
   currentSpell: {fileID: 11400000, guid: 333949925e15abe4e80384d8e46ef551, type: 2}
   rightWeapon: {fileID: 0}
   leftWeapon: {fileID: 0}
