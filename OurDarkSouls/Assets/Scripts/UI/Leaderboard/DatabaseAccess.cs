@@ -4,6 +4,7 @@ using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DatabaseAccess : MonoBehaviour
 {
@@ -11,12 +12,14 @@ public class DatabaseAccess : MonoBehaviour
     IMongoDatabase database;
     IMongoCollection<BsonDocument> collection;
 
+    public Text userNameHero;
+
     private void Start() 
     {
         database = client.GetDatabase("HighScoreDB");
         collection = database.GetCollection<BsonDocument>("HighScoreCollection");
-        SaveScoreToDateBase("First", 200);
-        SaveScoreToDateBase("Second", 300);
+        SaveScoreToDateBase(userNameHero.ToString(), 200);
+        // SaveScoreToDateBase("Second", 300);
     }
 
     public async void SaveScoreToDateBase(string userName, int score)
