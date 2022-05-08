@@ -5,6 +5,9 @@ namespace SG
 {
     public class PlayerInventoryManager : MonoBehaviour
     {
+
+        public ScriptableObject hammer;
+
         PlayerWeaponSlotManager playerWeaponSlotManager;
 
         [Header("Quick Slot Items")]

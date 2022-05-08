@@ -1288,7 +1288,7 @@ GameObject:
   - component: {fileID: 649150221}
   - component: {fileID: 649150223}
   - component: {fileID: 649150222}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Sword (1)
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -1526,6 +1526,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1175451625720203364, guid: 1bcc06e24b08e084abfcf47dda33ef7d, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1175453919608066463, guid: 1bcc06e24b08e084abfcf47dda33ef7d, type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1175454074840555927, guid: 1bcc06e24b08e084abfcf47dda33ef7d, type: 3}
@@ -1964,9 +1968,25 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1176014773539786291, guid: 1bcc06e24b08e084abfcf47dda33ef7d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1176014773740729429, guid: 1bcc06e24b08e084abfcf47dda33ef7d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1176054911919016966, guid: 1bcc06e24b08e084abfcf47dda33ef7d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1176075191857627409, guid: 1bcc06e24b08e084abfcf47dda33ef7d, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1176147759418957334, guid: 1bcc06e24b08e084abfcf47dda33ef7d, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1176318085644630349, guid: 1bcc06e24b08e084abfcf47dda33ef7d, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -2147,6 +2167,10 @@ PrefabInstance:
     - target: {fileID: 1176552603271721332, guid: 1bcc06e24b08e084abfcf47dda33ef7d, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1176724135456252773, guid: 1bcc06e24b08e084abfcf47dda33ef7d, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1176752826434389762, guid: 1bcc06e24b08e084abfcf47dda33ef7d, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -4950,19 +4974,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 217374589745988978, guid: fcf0d64dda3501a4494d1bc571144f49, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.99997306
       objectReference: {fileID: 0}
     - target: {fileID: 217374589745988978, guid: fcf0d64dda3501a4494d1bc571144f49, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.000000014901161
       objectReference: {fileID: 0}
     - target: {fileID: 217374589745988978, guid: fcf0d64dda3501a4494d1bc571144f49, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.007343814
       objectReference: {fileID: 0}
     - target: {fileID: 217374589745988978, guid: fcf0d64dda3501a4494d1bc571144f49, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.000000029802322
       objectReference: {fileID: 0}
     - target: {fileID: 217374589745988978, guid: fcf0d64dda3501a4494d1bc571144f49, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4970,15 +4994,55 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 217374589745988978, guid: fcf0d64dda3501a4494d1bc571144f49, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -0.842
       objectReference: {fileID: 0}
     - target: {fileID: 217374589745988978, guid: fcf0d64dda3501a4494d1bc571144f49, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1030068005962820749, guid: fcf0d64dda3501a4494d1bc571144f49, type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2565760213308087566, guid: fcf0d64dda3501a4494d1bc571144f49, type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6664022221881477782, guid: fcf0d64dda3501a4494d1bc571144f49, type: 3}
       propertyPath: m_Name
       value: Pyromancy Spell
+      objectReference: {fileID: 0}
+    - target: {fileID: 6664022221881477782, guid: fcf0d64dda3501a4494d1bc571144f49, type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153470770795291832, guid: fcf0d64dda3501a4494d1bc571144f49, type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153470770795321220, guid: fcf0d64dda3501a4494d1bc571144f49, type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153470770795332836, guid: fcf0d64dda3501a4494d1bc571144f49, type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153470770795339886, guid: fcf0d64dda3501a4494d1bc571144f49, type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153470770795351922, guid: fcf0d64dda3501a4494d1bc571144f49, type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153470770795374864, guid: fcf0d64dda3501a4494d1bc571144f49, type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153470770795379900, guid: fcf0d64dda3501a4494d1bc571144f49, type: 3}
+      propertyPath: m_Layer
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcf0d64dda3501a4494d1bc571144f49, type: 3}
@@ -45098,6 +45162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d21abb6536368574eac08560291567be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hammer: {fileID: 0}
   currentSpell: {fileID: 11400000, guid: 333949925e15abe4e80384d8e46ef551, type: 2}
   rightWeapon: {fileID: 0}
   leftWeapon: {fileID: 0}
