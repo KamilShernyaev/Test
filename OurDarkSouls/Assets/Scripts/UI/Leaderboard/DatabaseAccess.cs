@@ -20,7 +20,7 @@ namespace SG
         {
             database = client.GetDatabase("HighScoreDB");
             collection = database.GetCollection<BsonDocument>("HighScoreCollectionTwo");
-            SaveScoreToDateBase(userNameData.userName.ToString(), userNameData.userScore.ToString());
+            SaveScoreToDateBase(userNameData.userName, userNameData.userScore);
             // SaveScoreToDateBase("Second", 300);
         }
 
