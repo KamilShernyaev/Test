@@ -6,57 +6,60 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DatabaseAccess : MonoBehaviour
+namespace SG
 {
-    MongoClient client = new MongoClient("mongodb+srv://Grouli123:Grouli1234@cluster0.rgyjr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
-    IMongoDatabase database;
-    IMongoCollection<BsonDocument> collection;
-
-    public Text userNameHero;
-
-    private void Start() 
+    public class DatabaseAccess : MonoBehaviour
     {
-        database = client.GetDatabase("HighScoreDB");
-        collection = database.GetCollection<BsonDocument>("HighScoreCollection");
-        SaveScoreToDateBase(userNameHero.ToString(), 200);
-        // SaveScoreToDateBase("Second", 300);
-    }
+        MongoClient client = new MongoClient("mongodb+srv://Grouli123:Grouli1234@cluster0.rgyjr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
+        IMongoDatabase database;
+        IMongoCollection<BsonDocument> collection;
 
-    public async void SaveScoreToDateBase(string userName, int score)
-    {
-        var document = new BsonDocument { { userName, score } };
-        await collection.InsertOneAsync(document);
-    }
+        public UserData userNameData;
 
-    public async Task<List<HighScore>> GetScoresFromDataBase() 
-    {
-        var allScoresTask = collection.FindAsync(new BsonDocument());
-        var scoresAwaited = await allScoresTask;
-
-        List<HighScore> highscores = new List<HighScore>();
-        foreach (var score in scoresAwaited.ToList())
+        private void Start() 
         {
-            highscores.Add(Deserialize(score.ToString()));
+            database = client.GetDatabase("HighScoreDB");
+            collection = database.GetCollection<BsonDocument>("HighScoreCollectionTwo");
+            SaveScoreToDateBase(userNameData.userName.ToString(), userNameData.userScore.ToString());
+            // SaveScoreToDateBase("Second", 300);
         }
 
-        return highscores;
+        public async void SaveScoreToDateBase(string userName, string score)
+        {
+            var document = new BsonDocument { { userName, score } };
+            await collection.InsertOneAsync(document);
+        }
+
+        public async Task<List<HighScore>> GetScoresFromDataBase() 
+        {
+            var allScoresTask = collection.FindAsync(new BsonDocument());
+            var scoresAwaited = await allScoresTask;
+
+            List<HighScore> highscores = new List<HighScore>();
+            foreach (var score in scoresAwaited.ToList())
+            {
+                highscores.Add(Deserialize(score.ToString()));
+            }
+
+            return highscores;
+        }
+
+        private HighScore Deserialize(string rawJson)
+        {
+            var highScore = new HighScore();
+
+            var stringWithoutID = rawJson.Substring(rawJson.IndexOf("),") + 4);
+            var username = stringWithoutID.Substring(0, stringWithoutID.IndexOf(":") - 2);
+            var score = stringWithoutID.Substring(stringWithoutID.IndexOf(":") + 2, stringWithoutID.IndexOf("}")-stringWithoutID.IndexOf(":")-3);
+            highScore.UserName = username;
+            highScore.Score = score.ToString();
+            return highScore;
+        }
     }
 
-    private HighScore Deserialize(string rawJson)
+    public class HighScore
     {
-        var highScore = new HighScore();
-
-        var stringWithoutID = rawJson.Substring(rawJson.IndexOf("),") + 4);
-        var username = stringWithoutID.Substring(0, stringWithoutID.IndexOf(":") - 2);
-        var score = stringWithoutID.Substring(stringWithoutID.IndexOf(":") + 2, stringWithoutID.IndexOf("}")-stringWithoutID.IndexOf(":")-3);
-        highScore.UserName = username;
-        highScore.Score = Convert.ToInt32(score);
-        return highScore;
+        public string UserName { get; set; }
+        public string Score { get; set; }
     }
-}
-
-public class HighScore
-{
-    public string UserName { get; set; }
-    public int Score { get; set; }
 }

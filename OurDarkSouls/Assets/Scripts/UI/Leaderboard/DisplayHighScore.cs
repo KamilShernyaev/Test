@@ -4,30 +4,33 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DisplayHighScore : MonoBehaviour
+namespace SG
 {
-    private DatabaseAccess databaseAccess;
-
-   // private TextMeshPro highScoreOutPut;
-
-    public Text highScoreOutPut;
-
-    void Start()
+    public class DisplayHighScore : MonoBehaviour
     {
-        databaseAccess = GameObject.FindGameObjectWithTag("DatabaseAccess").GetComponent<DatabaseAccess>();
-        //highScoreOutPut = GetComponentInChildren<TextMeshPro>();
-        Invoke("DisplayHighScoreInTextMesh", 2f);
-    }
+        private DatabaseAccess databaseAccess;
 
-    private async void DisplayHighScoreInTextMesh()
-    {
-        var task = databaseAccess.GetScoresFromDataBase();
-        var result = await task;
-        var output = "";
-        foreach (var score in result)
+    // private TextMeshPro highScoreOutPut;
+
+        public Text highScoreOutPut;
+
+        void Start()
         {
-            output += score.UserName + " Score: " + score.Score + "\n";
+            databaseAccess = GameObject.FindGameObjectWithTag("DatabaseAccess").GetComponent<DatabaseAccess>();
+            //highScoreOutPut = GetComponentInChildren<TextMeshPro>();
+            Invoke("DisplayHighScoreInTextMesh", 2f);
         }
-        highScoreOutPut.text = output;
+
+        private async void DisplayHighScoreInTextMesh()
+        {
+            var task = databaseAccess.GetScoresFromDataBase();
+            var result = await task;
+            var output = "";
+            foreach (var score in result)
+            {
+                output += score.UserName + " Score: " + score.Score + "\n";
+            }
+            highScoreOutPut.text = output;
+        }
     }
 }

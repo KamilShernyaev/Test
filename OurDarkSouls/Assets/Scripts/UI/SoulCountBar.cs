@@ -7,11 +7,14 @@ namespace SG
 {
     public class SoulCountBar : MonoBehaviour
     {
-        public Text soulCountText;
+        public Text soulCountText;        
+        public UserData userNameDataScore;
+
     
         public void SetSoulCountText(int currentSoulCount)
         {
             soulCountText.text = currentSoulCount.ToString();
+            userNameDataScore.userScore = soulCountText.text;
         }
     }
 }

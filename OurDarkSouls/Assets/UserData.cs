@@ -6,5 +6,5 @@ using UnityEngine;
 public class UserData : ScriptableObject
 {
     public string userName;
-    public int userScore;
+    public string userScore;
 }
