@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c87cab02672c26469e96e659fb3e5a8, type: 3}
   m_Name: Defalt Hip
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 4230b6fe59b15b6da9593cdde4df9c87, type: 3}
   itemName: Standart Hip
-  physicalDefense: 4
+  physicalDefense: 0
   hipModelName: Chr_Hips_Male_00
   leftLegName: Chr_LegRight_Male_00
   rightLegName: Chr_LegLeft_Male_00

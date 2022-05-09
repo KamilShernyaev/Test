@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a22dbef1bbbc5c45b1ed15d86686b01, type: 3}
   m_Name: Defalt Body
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 3456131ecac92cfa7974329b7ecfc292, type: 3}
   itemName: Standart
   physicalDefense: 0
   bodyModelName: Chr_Torso_Male_00

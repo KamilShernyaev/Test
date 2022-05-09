@@ -11,6 +11,8 @@ namespace SG
         public LegEquipmentSlotUI legEquipmentSlotUI;
         public HandEquipmentSlotUI handEquipmentSlotUI;
 
+        
+
         public void LoadWeaponOnEquipmentScreen(PlayerInventoryManager playerInventoryManager)
         {
             for( int i = 0; i < weaponEquipmentSlotUI.Length; i++)

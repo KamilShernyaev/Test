@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 534e857c15b92dd43bf69826813d0660, type: 3}
   m_Name: th_Sword
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 21300000, guid: 72f906330ccacbe4a93ac57e4850d095, type: 3}
+  itemIcon: {fileID: 21300000, guid: ace13c3a1a6a52bb29296409a0a01663, type: 3}
   itemName: Two Handle Sword
   modelPrefab: {fileID: 3636202005967285217, guid: 7be5082617342a84b9cac0d1e99cba11, type: 3}
   isUnarmed: 0

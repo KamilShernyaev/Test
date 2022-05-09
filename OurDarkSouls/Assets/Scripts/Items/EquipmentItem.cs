@@ -8,5 +8,9 @@ namespace SG
     {
         [Header("Defense Bonus")]
         public float physicalDefense;
+        public float magicDefense;
+
+        [Header("Resistances")]
+        public float poisonResistance;
     }
 }

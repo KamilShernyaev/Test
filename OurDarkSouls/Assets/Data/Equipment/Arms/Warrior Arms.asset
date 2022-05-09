@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61e1a1254bd78934f8b452f8d95930e3, type: 3}
   m_Name: Warrior Arms
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 1a5ef2616782657e0da4e0515a27246d, type: 3}
   itemName: Warrior Arms
-  physicalDefense: 0
+  physicalDefense: 5
   leftHandModelName: Chr_HandLeft_Male_17
   rightHandModelName: Chr_HandRight_Male_17
   lowerLeftArmModelName: Chr_ArmLowerLeft_Male_09

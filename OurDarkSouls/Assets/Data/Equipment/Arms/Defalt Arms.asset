@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61e1a1254bd78934f8b452f8d95930e3, type: 3}
   m_Name: Defalt Arms
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 21300000, guid: 72f906330ccacbe4a93ac57e4850d095, type: 3}
+  itemIcon: {fileID: 21300000, guid: ad4f55b498f3f9132ab801afb472eea5, type: 3}
   itemName: Defalt
   physicalDefense: 0
   leftHandModelName: Chr_HandLeft_Male_00

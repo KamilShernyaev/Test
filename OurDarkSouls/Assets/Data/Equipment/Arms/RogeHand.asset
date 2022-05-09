@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61e1a1254bd78934f8b452f8d95930e3, type: 3}
   m_Name: RogeHand
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: dfca2e05e6261f5c3b0e9717f8b29fac, type: 3}
   itemName: Roge Hand
-  physicalDefense: 0
+  physicalDefense: 3
   leftHandModelName: Chr_HandLeft_Male_17
   rightHandModelName: Chr_HandRight_Male_17
   lowerLeftArmModelName: Chr_ArmLowerLeft_Male_02

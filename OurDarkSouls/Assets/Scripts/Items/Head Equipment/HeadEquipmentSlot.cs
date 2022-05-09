@@ -40,6 +40,7 @@ namespace SG
         public void SelectThisSlot()
         {
             uIManager.headEquipmentSlotSelected = true;
+            uIManager.itemStatsWindowUI.UpdateArmorItemStats(item);
         }
     }
 }

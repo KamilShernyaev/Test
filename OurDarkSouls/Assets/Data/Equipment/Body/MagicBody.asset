@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a22dbef1bbbc5c45b1ed15d86686b01, type: 3}
   m_Name: MagicBody
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 28f7dce044212d0673e6232c2a3d3922, type: 3}
   itemName: Magic Body
-  physicalDefense: 0
+  physicalDefense: 2
   bodyModelName: Chr_Torso_Male_09
   upperLeftArmModelName: Chr_ArmUpperLeft_Male_00
   upperRightArmModelName: Chr_ArmUpperRight_Male_00

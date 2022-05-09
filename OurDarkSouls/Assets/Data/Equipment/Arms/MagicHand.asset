@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61e1a1254bd78934f8b452f8d95930e3, type: 3}
   m_Name: MagicHand
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: dc7d76c4f28d6fdc692bbc7780afaf77, type: 3}
   itemName: Magic Hand
   physicalDefense: 0
   leftHandModelName: Chr_HandLeft_Male_09

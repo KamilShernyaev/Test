@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1670a5a98fdbcfc498eaf9eb635f225e, type: 3}
   m_Name: MagicHemlet
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 77c0cec31c8d8d9106dc714deba464bd, type: 3}
   itemName: Magic Hemlet
-  physicalDefense: 0
+  physicalDefense: 2
   helmetModelName: Chr_Head_No_Elements_Male_01
   hideFacialFeatures: 0
