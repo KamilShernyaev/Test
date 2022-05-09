@@ -15,6 +15,8 @@ namespace SG
         FocusPointBar focusPointBar;
         PlayerAnimatorManager playerAnimatorManager;
 
+        public AudioSource ouchSound;
+
         public float staminaRegenerationAmount = 30;
         public float staminaRegenTimer = 0;
         [SerializeField] private CapsuleCollider playerCapsuleCollider;
@@ -22,7 +24,7 @@ namespace SG
 
         private void Awake() 
         {
-
+            ouchSound = GetComponent<AudioSource>();
             character = FindObjectOfType<CharacterManager>();
             playerManager = GetComponent<PlayerManager>();
             healthBar = FindObjectOfType<HealthBar>();
@@ -62,6 +64,7 @@ namespace SG
             base.TakeDamage(damage, damageAnimation = "TakeDamage");
             healthBar.SetCurrentHealth(currentHealth);
             playerAnimatorManager.PlayTargetAnimation(damageAnimation, true);
+            ouchSound.Play();
 
             if(currentHealth <= 0)
             {
