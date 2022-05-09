@@ -8,12 +8,19 @@ namespace SG
     public class WeaponPickUp : Interactable
     {
        public WeaponItem weapon;
+       public AudioSource pickUpSound;
+
+        private void Start() 
+       {
+           pickUpSound.GetComponent<AudioSource>();
+       }
 
        public override void Interact(PlayerManager playerManager)
        {
            base.Interact(playerManager);
 
            PickUpItem(playerManager);
+           
        }
 
        private void PickUpItem(PlayerManager playerManager)
@@ -28,11 +35,13 @@ namespace SG
 
            playerLocomotionManager.rigidbody.velocity = Vector3.zero;
            playerAnimatorManager.PlayTargetAnimation("Pick Up Item", true);
+           pickUpSound.Play();
            playerInventoryManager.weaponsInventory.Add(weapon);
            playerManager.itemInteractableGameObject.GetComponentInChildren<Text>().text = weapon.itemName;
            playerManager.itemInteractableGameObject.GetComponentInChildren<RawImage>().texture = weapon.itemIcon.texture;
            playerManager.itemInteractableGameObject.SetActive(true);
-           Destroy(gameObject);
+
+           Destroy(gameObject, 0.5f);
        }
     }
 }

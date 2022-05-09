@@ -9,6 +9,8 @@ namespace SG
         public EnemyManager enemy;
         public UIEnemyHealthBar enemyHealthBar;
 
+        public AudioSource deathSound;
+
         // public delegate void EnemyKilled();
         // public static event EnemyKilled OnEnemyKilled;
 
@@ -20,7 +22,7 @@ namespace SG
 
         void Start()
         {
-            
+            deathSound.GetComponent<AudioSource>();
             maxHelth = SetMaxHealthFromHealthLevel();
             currentHealth = maxHelth;
             enemyHealthBar.SetMaxHealth(maxHelth);
@@ -54,6 +56,7 @@ namespace SG
 
             if (isDead == true)
             {
+                deathSound.Play();
                 Destroy(gameObject, 3f);
             }
 

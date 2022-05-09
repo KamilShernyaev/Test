@@ -9,6 +9,8 @@ namespace SG
         public WeaponItem rightHandWeapon;
         public WeaponItem leftHandWeapon;
 
+        public AudioSource attackSound;
+
         private void Awake() 
         {
             LoadWeaponHolderSlots();
@@ -17,6 +19,7 @@ namespace SG
         private void Start() 
         {
             LoadWeaponsOnBothHands();
+            attackSound.GetComponent<AudioSource>();
         }
 
         private void LoadWeaponOnSlot(WeaponItem weapon, bool isLeft)
@@ -84,6 +87,7 @@ namespace SG
 
         public void OpenDamageCollider()
         {
+            attackSound.Play();
             rightHandDamageCollider.EnableDamageColider();
         }
 

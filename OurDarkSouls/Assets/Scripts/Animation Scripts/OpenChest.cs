@@ -11,11 +11,17 @@ namespace SG
         public Transform playerStandingPosition;
         public GameObject itemSpawner;
         public WeaponItem itemInChest;
+        public AudioSource openChestSound;
 
         private void Awake() 
         {
             animator = GetComponent<Animator>();
             openChest = GetComponent<OpenChest>();
+        }
+
+        private void Start() 
+        {
+            openChestSound.GetComponent<AudioSource>();    
         }
 
         public override void Interact(PlayerManager playerManager)
@@ -35,6 +41,7 @@ namespace SG
             playerManager.OpenChestInteraction(playerStandingPosition);// tut
 
             animator.Play("Chest Open");
+            openChestSound.Play();
             StartCoroutine(SpawnItemInChest());
 
             WeaponPickUp weaponPickUp = itemSpawner.GetComponent<WeaponPickUp>();

@@ -15,6 +15,8 @@ namespace SG
         [Header("Attacking Weapon")]
         public WeaponItem attackingWeapon;
 
+        public AudioSource hitPlayerSound;
+
         private void Awake() 
         {
             playerManager = GetComponent<PlayerManager>();
@@ -24,6 +26,11 @@ namespace SG
             playerStatsManager = GetComponent<PlayerStatsManager>();
             inputHandler = GetComponent<InputHandler>();
             LoadWeaponHolderSlots();
+        }
+
+        private void Start() 
+        {
+            hitPlayerSound.GetComponent<AudioSource>();    
         }
 
         private void LoadWeaponHolderSlots()
@@ -128,6 +135,7 @@ namespace SG
     
         public void OpenDamageCollider()
         {
+            hitPlayerSound.Play();
             if(playerManager.isUsingRightHand)
             {
                 rightHandDamageCollider.EnableDamageColider();
