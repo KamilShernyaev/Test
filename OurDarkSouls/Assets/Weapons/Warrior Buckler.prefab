@@ -73,6 +73,8 @@ GameObject:
   - component: {fileID: 8224086590817160203}
   - component: {fileID: 8239353245220142969}
   - component: {fileID: 8249482258550672327}
+  - component: {fileID: 1743656707932960756}
+  - component: {fileID: 7890665025910191946}
   m_Layer: 0
   m_Name: SM_Wep_Shield_Buckler_01
   m_TagString: Untagged
@@ -143,3 +145,31 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1743656707932960756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8226928085040321907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b1df01a776c32c4099dc4dd0f041719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterManager: {fileID: 0}
+  enabledDamageColliderOnStartUp: 0
+  currentWeaponDamage: 1
+--- !u!65 &7890665025910191946
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8226928085040321907}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.61288357, y: 0.58288175, z: 0.14184369}
+  m_Center: {x: 0.00000047683716, y: 0.00000047683716, z: 0}

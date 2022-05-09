@@ -73,6 +73,8 @@ GameObject:
   - component: {fileID: 6077734073693244336}
   - component: {fileID: 6070295764317382594}
   - component: {fileID: 6061176939333086830}
+  - component: {fileID: 3295293405329123205}
+  - component: {fileID: 8682828996462582438}
   m_Layer: 0
   m_Name: SM_Wep_Mace_01
   m_TagString: Untagged
@@ -143,3 +145,31 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3295293405329123205
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6073879280650795598}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.146875, y: 0.55442464, z: 0.14882812}
+  m_Center: {x: -0.000032052398, y: 0.37083948, z: -0.00006400049}
+--- !u!114 &8682828996462582438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6073879280650795598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b1df01a776c32c4099dc4dd0f041719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterManager: {fileID: 0}
+  enabledDamageColliderOnStartUp: 0
+  currentWeaponDamage: 65
