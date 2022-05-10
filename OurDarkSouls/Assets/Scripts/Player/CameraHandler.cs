@@ -151,10 +151,6 @@ namespace SG
                 
                 if (inputHandler.lockOnFlag)
                 {
-                    //Vector3 relativeEnemyPosition = currentLockOnTarget.transform.InverseTransformPoint(availableTargets[k].transform.position);
-                    //var distanceFromLeftTarget = currentLockOnTarget.transform.position.x - availableTargets[k].transform.position.x;
-                    //var distanceFromRightTarget = currentLockOnTarget.transform.position.x + availableTargets[k].transform.position.x;
-
                     Vector3 relativeEnemyPosition = inputHandler.transform.InverseTransformPoint(availableTargets[k].transform.position);
                     var distanceFromLeftTarget = relativeEnemyPosition.x;
                     var distanceFromRightTarget = relativeEnemyPosition.x;
@@ -174,15 +170,15 @@ namespace SG
         }
 
         
-          public void ClearLockOnTarget()
-          {
+        public void ClearLockOnTarget()
+        {
             availableTargets.Clear();
             nearestLockOnTarget = null;
             currentLockOnTarget = null;
-          }
+        }
 
-          public void SetCameraHeigh()
-          {
+        public void SetCameraHeigh()
+        {
             Vector3 velocity = Vector3.zero;
             Vector3 newLockedPosition = new Vector3(0, lockedPivotPosition);
             Vector3 newUnlockedPosition = new Vector3(0,unlockedPivotPosition);
@@ -195,6 +191,6 @@ namespace SG
             {
                 cameraPivotTransform.transform.localPosition = Vector3.SmoothDamp(cameraPivotTransform.transform.localPosition, newUnlockedPosition, ref velocity, Time.deltaTime);
             }
-          }
+        }
     }
 }

@@ -62,25 +62,25 @@ namespace SG
                 enemyManager.navMeshAgent.SetDestination(enemyManager.currentTarget.transform.position);
                 float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
 
-            float rotationToApplyToDynamicEnemy = Quaternion.Angle(enemyManager.transform.rotation, Quaternion.LookRotation(enemyManager.navMeshAgent.desiredVelocity.normalized));
-            if (distanceFromTarget > 5) enemyManager.navMeshAgent.angularSpeed = 500f;
-            else if (distanceFromTarget < 5 && Mathf.Abs(rotationToApplyToDynamicEnemy) < 30) enemyManager.navMeshAgent.angularSpeed = 50f;
-            else if (distanceFromTarget < 5 && Mathf.Abs(rotationToApplyToDynamicEnemy) > 30) enemyManager.navMeshAgent.angularSpeed = 500f;
+                float rotationToApplyToDynamicEnemy = Quaternion.Angle(enemyManager.transform.rotation, Quaternion.LookRotation(enemyManager.navMeshAgent.desiredVelocity.normalized));
+                if (distanceFromTarget > 5) enemyManager.navMeshAgent.angularSpeed = 500f;
+                else if (distanceFromTarget < 5 && Mathf.Abs(rotationToApplyToDynamicEnemy) < 30) enemyManager.navMeshAgent.angularSpeed = 50f;
+                else if (distanceFromTarget < 5 && Mathf.Abs(rotationToApplyToDynamicEnemy) > 30) enemyManager.navMeshAgent.angularSpeed = 500f;
 
-            Vector3 targetDirection = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
-            Quaternion rotationToApplyToStaticEnemy = Quaternion.LookRotation(targetDirection);
+                Vector3 targetDirection = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
+                Quaternion rotationToApplyToStaticEnemy = Quaternion.LookRotation(targetDirection);
 
 
-            if (enemyManager.navMeshAgent.desiredVelocity.magnitude > 0)
-            {
-                enemyManager.navMeshAgent.updateRotation = false;
-                enemyManager.transform.rotation = Quaternion.RotateTowards(enemyManager.transform.rotation,
-                Quaternion.LookRotation(enemyManager.navMeshAgent.desiredVelocity.normalized), enemyManager.navMeshAgent.angularSpeed * Time.deltaTime);
-            }
-            else
-            {
-                enemyManager.transform.rotation = Quaternion.RotateTowards(enemyManager.transform.rotation, rotationToApplyToStaticEnemy, enemyManager.navMeshAgent.angularSpeed * Time.deltaTime);
-            }
+                if (enemyManager.navMeshAgent.desiredVelocity.magnitude > 0)
+                {
+                    enemyManager.navMeshAgent.updateRotation = false;
+                    enemyManager.transform.rotation = Quaternion.RotateTowards(enemyManager.transform.rotation,
+                    Quaternion.LookRotation(enemyManager.navMeshAgent.desiredVelocity.normalized), enemyManager.navMeshAgent.angularSpeed * Time.deltaTime);
+                }
+                else
+                {
+                    enemyManager.transform.rotation = Quaternion.RotateTowards(enemyManager.transform.rotation, rotationToApplyToStaticEnemy, enemyManager.navMeshAgent.angularSpeed * Time.deltaTime);
+                }
     
             }
         }

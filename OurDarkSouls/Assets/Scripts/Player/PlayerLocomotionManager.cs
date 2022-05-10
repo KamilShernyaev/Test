@@ -10,9 +10,7 @@ namespace SG
         PlayerStatsManager PlayerStatsManager;
         Transform cameraObject;
         InputHandler inputHandler;
-        //Новый скрипт
         public Vector3 moveDirection;
-        //конец Новый скрипт
 
         [HideInInspector]
         public Transform myTransform;
@@ -21,7 +19,6 @@ namespace SG
         public new Rigidbody rigidbody;
         public GameObject normalCamera;
 
-//Новый скрипт
         [Header("Ground & Air Detection Stats")]
         [SerializeField] float groundDetectiondRayStartPoint = 0.5f;
         [SerializeField] float minimumDistanceNeededToBeginFall = 1f;

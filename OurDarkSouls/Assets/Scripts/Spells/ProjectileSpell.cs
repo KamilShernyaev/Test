@@ -37,7 +37,6 @@ namespace SG
             base.SuccessfullyCastSpell(playerAnimatorManager, playerStatsManager, cameraHandler, playerWeaponSlotManager);
             GameObject instantiedSpellFX = Instantiate(spellCastFX, playerWeaponSlotManager.rightHandSlot.transform.position, cameraHandler.cameraPivotTransform.rotation);
             rigidBody = instantiedSpellFX.GetComponent<Rigidbody>();
-            // spellDamageCollider = instantiedSpellFX.GetComponent<SpellDamageCollider>();
 
             if(cameraHandler.currentLockOnTarget != null)
             {

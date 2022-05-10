@@ -12,8 +12,8 @@ namespace SG
         
 
 
-        public State currentState;   //Новое
-        public CharacterStatsManager currentTarget; //Новое
+        public State currentState;
+        public CharacterStatsManager currentTarget;
         public NavMeshAgent navMeshAgent;
         public Rigidbody enemyRigidbody;
 

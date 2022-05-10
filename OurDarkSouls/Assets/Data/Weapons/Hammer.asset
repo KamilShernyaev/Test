@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hammer
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 21300000, guid: f2d2669805de0c83014b205d4e078cd3, type: 3}
-  itemName: Hammer
+  itemName: "\u041C\u043E\u043B\u043E\u0442"
   modelPrefab: {fileID: 6664022221881477782, guid: ff4abace9fbb034488d74e776358cb6b, type: 3}
   isUnarmed: 0
   physicalDamage: 50

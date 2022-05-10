@@ -10,7 +10,6 @@ namespace  SG
         [Header("Weapons")]
         public WeaponItem tempPrimaryWeapon;
         public WeaponItem tempOffHandWeapon;
-        //public WeaponItem secondaryWeapon;
 
         [Header("Armor")]
         public HelmetEquipment tempHelmetEquipment;
@@ -21,9 +20,6 @@ namespace  SG
         public int healthLevel;
         public int staminaLevel;
         public int focusLevel;
-
-        //[Header("Spell Item")]
-        //public SpellItem startingSpell;
 
     }
 }

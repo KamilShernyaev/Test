@@ -19,9 +19,8 @@ namespace SG
         private void Start() 
         {
             database = client.GetDatabase("HighScoreDB");
-            collection = database.GetCollection<BsonDocument>("HighScoreCollectionTwo");
+            collection = database.GetCollection<BsonDocument>("HighScoreCollectionFour");
             SaveScoreToDateBase(userNameData.userName, userNameData.userScore);
-            // SaveScoreToDateBase("Second", 300);
         }
 
         public async void SaveScoreToDateBase(string userName, string score)

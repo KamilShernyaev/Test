@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HealThing
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 21300000, guid: f9df32828fa4964656e13eb12dec8b58, type: 3}
-  itemName: HealHammer
+  itemName: "\u041C\u043E\u043B\u043E\u0442 \u0437\u0434\u043E\u0440\u043E\u0432\u044C\u044F"
   modelPrefab: {fileID: 6170973935267080012, guid: 73c74e564ca714a4dadc51908fc64ca9, type: 3}
   isUnarmed: 0
   physicalDamage: 25

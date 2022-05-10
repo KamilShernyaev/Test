@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: RogeHemlet
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 21300000, guid: a49a09e2426123a97394dcfa528bbc7b, type: 3}
-  itemName: Roge Hemlet
+  itemName: "\u0428\u043B\u0435\u043C \u0440\u0430\u0437\u0431\u043E\u0439\u043D\u0438\u043A\u0430"
   physicalDefense: 3
+  magicDefense: 0
+  poisonResistance: 0
   helmetModelName: Chr_Head_Male_02
   hideFacialFeatures: 0

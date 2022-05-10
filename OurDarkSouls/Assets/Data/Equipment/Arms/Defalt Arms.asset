@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Defalt Arms
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 21300000, guid: ad4f55b498f3f9132ab801afb472eea5, type: 3}
-  itemName: Defalt
+  itemName: "\u041F\u0435\u0440\u0447\u0430\u0442\u043A\u0438"
   physicalDefense: 0
+  magicDefense: 0
+  poisonResistance: 0
   leftHandModelName: Chr_HandLeft_Male_00
   rightHandModelName: Chr_HandRight_Male_00
   lowerLeftArmModelName: Chr_ArmLowerLeft_Male_00

@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: MagicHand
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 21300000, guid: dc7d76c4f28d6fdc692bbc7780afaf77, type: 3}
-  itemName: Magic Hand
+  itemName: "\u041C\u0430\u0433\u0438\u0447\u0435\u0441\u043A\u0438\u0435 \u043F\u0435\u0440\u0447\u0430\u0442\u043A\u0438"
   physicalDefense: 0
+  magicDefense: 0
+  poisonResistance: 0
   leftHandModelName: Chr_HandLeft_Male_09
   rightHandModelName: Chr_HandRight_Male_04
   lowerLeftArmModelName: Chr_ArmLowerLeft_Male_17

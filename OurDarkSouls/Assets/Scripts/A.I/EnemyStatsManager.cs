@@ -11,9 +11,6 @@ namespace SG
 
         public AudioSource deathSound;
 
-        // public delegate void EnemyKilled();
-        // public static event EnemyKilled OnEnemyKilled;
-
         private void Awake() 
         {
             enemy = GetComponent<EnemyManager>();
@@ -59,11 +56,6 @@ namespace SG
                 deathSound.Play();
                 Destroy(gameObject, 3f);
             }
-
-            // if (OnEnemyKilled != null)
-            // {
-            //     OnEnemyKilled();
-            // }
         }
     }
 }

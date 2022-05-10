@@ -121,7 +121,6 @@ namespace SG
         #region Handle Weapons Damage Collider
         private void LoadLeftWeaponDamageCollider()
         {
-                                    //rightHandSlot использовать для обхода ошибки при ударе по противнику
             leftHandDamageCollider = leftHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
             leftHandDamageCollider.currentWeaponDamage = playerInventoryManager.leftWeapon.physicalDamage;
         }

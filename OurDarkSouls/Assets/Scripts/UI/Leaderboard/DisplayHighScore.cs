@@ -10,14 +10,12 @@ namespace SG
     {
         private DatabaseAccess databaseAccess;
 
-    // private TextMeshPro highScoreOutPut;
 
         public Text highScoreOutPut;
 
         void Start()
         {
             databaseAccess = GameObject.FindGameObjectWithTag("DatabaseAccess").GetComponent<DatabaseAccess>();
-            //highScoreOutPut = GetComponentInChildren<TextMeshPro>();
             Invoke("DisplayHighScoreInTextMesh", 2f);
         }
 
@@ -28,7 +26,7 @@ namespace SG
             var output = "";
             foreach (var score in result)
             {
-                output += score.UserName + " Score: " + score.Score + "\n";
+                output += score.UserName + " Набрано очков: " + score.Score + "\n";
             }
             highScoreOutPut.text = output;
         }

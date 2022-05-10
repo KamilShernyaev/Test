@@ -72,15 +72,11 @@ namespace SG
             if (isLeft)
             {
                 leftHandDamageCollider = leftHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
-                //Если убрать leftHandDamageCollider, то ошибка пропадает, так как я в этом скрипте обозначаю characterManager, хотя это лишнее 
-                //Нужно поставить leftHandDamageCollider.
                 leftHandDamageCollider.characterManager = GetComponentInParent<CharacterManager>();
             }
             else
             {
                 rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
-                //Если убрать rightHandDamageCollider, то ошибка пропадает, так как я в этом скрипте обозначаю characterManager, хотя это лишнее
-                //Нужно поставить rightHandDamageCollider.
                 rightHandDamageCollider.characterManager = GetComponentInParent<CharacterManager>();
             }
         }

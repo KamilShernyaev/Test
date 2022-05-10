@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Defalt Body
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 21300000, guid: 3456131ecac92cfa7974329b7ecfc292, type: 3}
-  itemName: Standart
+  itemName: "\u0420\u0443\u0431\u0430\u0448\u043A\u0430"
   physicalDefense: 0
+  magicDefense: 0
+  poisonResistance: 0
   bodyModelName: Chr_Torso_Male_00
   upperLeftArmModelName: Chr_ArmUpperLeft_Male_00
   upperRightArmModelName: Chr_ArmUpperRight_Male_00

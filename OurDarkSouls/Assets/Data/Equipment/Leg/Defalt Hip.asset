@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Defalt Hip
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 21300000, guid: 4230b6fe59b15b6da9593cdde4df9c87, type: 3}
-  itemName: Standart Hip
+  itemName: "\u041D\u043E\u0433\u0438"
   physicalDefense: 0
+  magicDefense: 0
+  poisonResistance: 0
   hipModelName: Chr_Hips_Male_00
   leftLegName: Chr_LegRight_Male_00
   rightLegName: Chr_LegLeft_Male_00

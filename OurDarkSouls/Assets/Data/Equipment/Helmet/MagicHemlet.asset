@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: MagicHemlet
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 21300000, guid: 77c0cec31c8d8d9106dc714deba464bd, type: 3}
-  itemName: Magic Hemlet
+  itemName: "\u041C\u0430\u0433\u0438\u0447\u0435\u0441\u043A\u0438\u0439 \u0448\u043B\u0435\u043C"
   physicalDefense: 2
+  magicDefense: 0
+  poisonResistance: 0
   helmetModelName: Chr_Head_No_Elements_Male_01
   hideFacialFeatures: 0

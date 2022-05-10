@@ -64,7 +64,6 @@ namespace SG
         private void Awake()
         {
             player = FindObjectOfType<PlayerManager>();
-            //itemStatsWindowUI = FindObjectOfType<ItemStatsWindowUI>();
             weaponInventorySlots = weaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
             headEquipmentInventorySlots = headEquipmentInventorySlotParent.GetComponentsInChildren<HeadEquipmentInventorySlot>();
             bodyEquipmentInventorySlots = bodyEquipmentInventorySlotParent.GetComponentsInChildren<BodyEquipmentInventorySlot>();

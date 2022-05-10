@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: WarriorLeg
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 21300000, guid: 0b39a0e9e8b7ef093b4fd440ca486910, type: 3}
-  itemName: Warrior Leg
+  itemName: "\u041D\u043E\u0433\u0438 \u0432\u043E\u0438\u043D\u0430"
   physicalDefense: 5
+  magicDefense: 0
+  poisonResistance: 0
   hipModelName: Chr_Hips_Male_06
   leftLegName: Chr_LegRight_Male_14
   rightLegName: Chr_LegLeft_Male_14
