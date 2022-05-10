@@ -24,7 +24,7 @@ namespace SG
 
         private void Awake() 
         {
-            ouchSound = GetComponent<AudioSource>();
+            ouchSound = GetComponentInChildren<AudioSource>();
             character = FindObjectOfType<CharacterManager>();
             playerManager = GetComponent<PlayerManager>();
             healthBar = FindObjectOfType<HealthBar>();
