@@ -2833,7 +2833,7 @@ MonoBehaviour:
   isPreformingAction: 0
   rotationSpeed: 15
   maximumAttackRange: 1.5
-  detectionRadius: 20
+  detectionRadius: 50
   maximumDetectionAngle: 50
   mininumDetectionAngle: -50
   currentRecoveryTime: 0
