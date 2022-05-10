@@ -14,6 +14,7 @@ namespace SG
         StaminaBar staminaBar;
         FocusPointBar focusPointBar;
         PlayerAnimatorManager playerAnimatorManager;
+        public AudioSource takeDamageSound;
 
         public float staminaRegenerationAmount = 30;
         public float staminaRegenTimer = 0;
@@ -22,7 +23,7 @@ namespace SG
 
         private void Awake() 
         {
-
+            takeDamageSound = GetComponentInChildren<AudioSource>();
             character = FindObjectOfType<CharacterManager>();
             playerManager = GetComponent<PlayerManager>();
             healthBar = FindObjectOfType<HealthBar>();
@@ -62,6 +63,7 @@ namespace SG
             base.TakeDamage(damage, damageAnimation = "TakeDamage");
             healthBar.SetCurrentHealth(currentHealth);
             playerAnimatorManager.PlayTargetAnimation(damageAnimation, true);
+            takeDamageSound.Play();
 
             if(currentHealth <= 0)
             {

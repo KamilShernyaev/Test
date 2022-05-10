@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Name_Score
   m_EditorClassIdentifier: 
   userName: 
-  userScore: 
+  userScore: 0

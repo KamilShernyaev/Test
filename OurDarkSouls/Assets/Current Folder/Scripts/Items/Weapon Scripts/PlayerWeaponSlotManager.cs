@@ -11,12 +11,14 @@ namespace SG
         QuickSlotsUI quickSlotsUI;
         PlayerStatsManager playerStatsManager;
         InputHandler inputHandler;
+        public AudioSource hitSound;
 
         [Header("Attacking Weapon")]
         public WeaponItem attackingWeapon;
 
         private void Awake() 
         {
+            hitSound = GetComponentInChildren<AudioSource>();
             playerManager = GetComponent<PlayerManager>();
             playerInventoryManager = GetComponent<PlayerInventoryManager>();
             animator = GetComponent<Animator>();
@@ -128,6 +130,7 @@ namespace SG
     
         public void OpenDamageCollider()
         {
+            hitSound.Play();
             if(playerManager.isUsingRightHand)
             {
                 rightHandDamageCollider.EnableDamageColider();

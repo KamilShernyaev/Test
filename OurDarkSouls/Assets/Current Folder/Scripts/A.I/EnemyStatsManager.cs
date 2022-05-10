@@ -8,10 +8,8 @@ namespace SG
     {
         public EnemyManager enemy;
         public UIEnemyHealthBar enemyHealthBar;
-
-        // public delegate void EnemyKilled();
-        // public static event EnemyKilled OnEnemyKilled;
-
+        public AudioSource enemySound;
+        public AudioClip[] enemyAudioClip;
         private void Awake() 
         {
             enemy = GetComponent<EnemyManager>();
@@ -20,7 +18,7 @@ namespace SG
 
         void Start()
         {
-            
+            enemySound = GetComponent<AudioSource>();
             maxHelth = SetMaxHealthFromHealthLevel();
             currentHealth = maxHelth;
             enemyHealthBar.SetMaxHealth(maxHelth);
@@ -39,6 +37,8 @@ namespace SG
                 base.TakeDamage(physicalDamage, damageAnimation = "TakeDamage");
                 enemyHealthBar.SetHealth(currentHealth);
                 enemy.enemyAnimatorManager.PlayTargetAnimation(damageAnimation, true);
+                enemySound.clip = enemyAudioClip[1];
+                enemySound.Play();
                 if(currentHealth <= 0)
                 {
                     HandleDeath();
@@ -51,16 +51,13 @@ namespace SG
             currentHealth = 0;
             enemy.enemyAnimatorManager.PlayTargetAnimation("Death", true);
             isDead = true;
-
+            
             if (isDead == true)
-            {
+            {   
+                enemySound.clip = enemyAudioClip[0];
+                enemySound.Play();
                 Destroy(gameObject, 3f);
             }
-
-            // if (OnEnemyKilled != null)
-            // {
-            //     OnEnemyKilled();
-            // }
         }
     }
 }
