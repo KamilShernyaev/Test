@@ -17,11 +17,16 @@ namespace SG
         public string consumeAnimation;
         public bool isInteracting;
 
+        private void Awake() 
+        {
+            currentItemAmount = maxItemAmount;
+        }
         public virtual void AttemptToConsumeItem(PlayerAnimatorManager playerAnimatorManager, PlayerWeaponSlotManager playerWeaponSlotManager, PlayerEffectsManager playerEffectsManager)
         {
             if (currentItemAmount > 0)
             {
                 playerAnimatorManager.PlayTargetAnimation(consumeAnimation, isInteracting, true);
+                currentItemAmount = currentItemAmount - 1;
             }
             else
             {

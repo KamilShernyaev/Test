@@ -23,13 +23,13 @@ namespace SG
 
         private void Awake() 
         {
-            takeDamageSound = GetComponentInChildren<AudioSource>();
             character = FindObjectOfType<CharacterManager>();
             playerManager = GetComponent<PlayerManager>();
             healthBar = FindObjectOfType<HealthBar>();
             staminaBar = FindObjectOfType<StaminaBar>();
             focusPointBar = FindObjectOfType<FocusPointBar>();
             playerAnimatorManager = GetComponentInChildren<PlayerAnimatorManager>();
+            takeDamageSound = GetComponentInChildren<AudioSource>();
         }
 
         void Start()
@@ -51,7 +51,6 @@ namespace SG
             currentFocusPoints = maxFocusPoints;
             focusPointBar.SetMaxFocusPoints(maxFocusPoints);
             focusPointBar.SetCurrentFocusPoints(currentFocusPoints);
-
         }
 
 

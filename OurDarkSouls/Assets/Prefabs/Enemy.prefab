@@ -878,7 +878,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6015636610011774039}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.98, y: -13.654909, z: 17.81}
+  m_LocalPosition: {x: -5.3025393, y: -13.62712, z: 33.17934}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9147708785795044154}
@@ -973,8 +973,8 @@ MonoBehaviour:
   backSlot: {fileID: 0}
   leftHandDamageCollider: {fileID: 0}
   rightHandDamageCollider: {fileID: 0}
-  rightHandWeapon: {fileID: 11400000, guid: bf88f266bca7d5f44bb6b2226abd44dc, type: 2}
-  leftHandWeapon: {fileID: 11400000, guid: bf88f266bca7d5f44bb6b2226abd44dc, type: 2}
+  rightHandWeapon: {fileID: 11400000, guid: 74822b7e3ebf7844893c2972ff21f4cf, type: 2}
+  leftHandWeapon: {fileID: 0}
 --- !u!114 &8452465137113805627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1054,9 +1054,9 @@ MonoBehaviour:
   isPreformingAction: 0
   rotationSpeed: 15
   maximumAttackRange: 1.5
-  detectionRadius: 20
-  maximumDetectionAngle: 50
-  mininumDetectionAngle: -50
+  detectionRadius: 100
+  maximumDetectionAngle: 360
+  mininumDetectionAngle: -360
   currentRecoveryTime: 0
   allowAIPerfomConbos: 1
   comboLikelyHood: 100
@@ -2027,7 +2027,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentOverride: {fileID: 9147564459913798690}
-  currentWeapon: {fileID: 11400000, guid: bf88f266bca7d5f44bb6b2226abd44dc, type: 2}
+  currentWeapon: {fileID: 11400000, guid: 74822b7e3ebf7844893c2972ff21f4cf, type: 2}
   isLeftHandSlot: 0
   isRightHandSlot: 1
   isBackSlots: 0
@@ -2417,7 +2417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentOverride: {fileID: 9145871511298602926}
-  currentWeapon: {fileID: 11400000, guid: bf88f266bca7d5f44bb6b2226abd44dc, type: 2}
+  currentWeapon: {fileID: 0}
   isLeftHandSlot: 1
   isRightHandSlot: 0
   isBackSlots: 0

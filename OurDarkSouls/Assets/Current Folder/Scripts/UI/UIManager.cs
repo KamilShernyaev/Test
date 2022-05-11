@@ -64,7 +64,6 @@ namespace SG
         private void Awake()
         {
             player = FindObjectOfType<PlayerManager>();
-            //itemStatsWindowUI = FindObjectOfType<ItemStatsWindowUI>();
             weaponInventorySlots = weaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
             headEquipmentInventorySlots = headEquipmentInventorySlotParent.GetComponentsInChildren<HeadEquipmentInventorySlot>();
             bodyEquipmentInventorySlots = bodyEquipmentInventorySlotParent.GetComponentsInChildren<BodyEquipmentInventorySlot>();
@@ -180,6 +179,10 @@ namespace SG
         public void CloseSelectWindow()
         {
             selectWindow.SetActive(false);
+        }
+        public void CloseLevelUpPWindow()
+        {
+            levelUpWindow.SetActive(false);
         }
 
         public void CloseAllInventoryWindow()
